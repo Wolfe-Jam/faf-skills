@@ -40,7 +40,7 @@ project.faf = For AI to understand your project
 
 ---
 
-## The 7 Core Skills
+## The Core Skills
 
 ### 1. faf-teacher
 **Foundational education before action.**
@@ -223,6 +223,59 @@ project.faf = For AI to understand your project
 - Shows command examples
 
 **Result:** Instant answers. Zero context switching.
+
+---
+
+### 9. faf-git
+**Basic Git practices for .faf files.**
+
+**When it activates:**
+- "Should I commit project.faf?"
+- "Add FAF to Git"
+- "Share on GitHub"
+
+**What it does:**
+- Guides on committing project.faf and CLAUDE.md
+- Provides .gitignore patterns
+- Basic repository setup (NOT comprehensive GitHub guide)
+
+**Result:** Correct version control for FAF files.
+
+---
+
+### 10. faf-platforms
+**Understand CLI vs MCP vs claude.ai.**
+
+**When it activates:**
+- "Does FAF work with Claude Desktop?"
+- "CLI vs MCP - which one?"
+- "Can I use FAF on claude.ai?"
+
+**What it does:**
+- Explains Claude Code (CLI + Skills)
+- Explains Claude Desktop (MCP)
+- Explains claude.ai (file upload only)
+- Compares platforms with feature matrix
+
+**Result:** Clear platform understanding.
+
+---
+
+### 11. faf-format-validator
+**Validate both YAML formats: SKILL.md and project.faf.**
+
+**When it activates:**
+- "Validate my skill format"
+- "Check my SKILL.md"
+- "Is my project.faf valid?"
+
+**What it does:**
+- Validates SKILL.md frontmatter format
+- Validates project.faf IANA format
+- Detects format conflicts (mixed formats)
+- Provides format comparison guide
+
+**Result:** Format integrity for both tooling and infrastructure.
 
 ---
 
@@ -474,7 +527,7 @@ You: "Ready to share!"
 ```
 faf-agent-toolkit/
 ├── README.md                    # This file
-├── skills/                      # Core skills
+├── skills/                      # 11 total skills
 │   ├── faf-teacher/
 │   │   └── SKILL.md            # Foundational education (420 lines)
 │   ├── faf-init/
@@ -489,16 +542,21 @@ faf-agent-toolkit/
 │   │   └── SKILL.md            # Format compliance (320 lines)
 │   ├── faf-migrate/
 │   │   └── SKILL.md            # Version upgrade (310 lines)
-│   └── faf-docs/
-│       └── SKILL.md            # Documentation access (315 lines)
-├── agents/                      # Specialized subagents (future)
-├── docs/                        # Supporting documentation
-├── examples/                    # Usage examples
-├── install.sh                   # Installation script
+│   ├── faf-docs/
+│   │   └── SKILL.md            # Documentation access (315 lines)
+│   ├── faf-git/
+│   │   └── SKILL.md            # Basic Git practices (117 lines)
+│   ├── faf-platforms/
+│   │   └── SKILL.md            # Platform comparison (358 lines)
+│   └── faf-format-validator/
+│       └── SKILL.md            # Dual format validation (485 lines)
+├── CONTRIBUTING.md              # Contribution guide (269 lines)
+├── TESTING.md                   # Testing documentation
+├── install.sh                   # Installation script (executable)
 └── LICENSE                      # MIT License
 ```
 
-**Total:** 2,680 lines of markdown (no TypeScript needed)
+**Total:** 7,109 lines of markdown (no TypeScript needed)
 
 ---
 
