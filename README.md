@@ -1,12 +1,12 @@
-# FAF Agent Toolkit
+# FAF Skills
 
-**Championship-Grade Skills for `project.faf` Files**
+**Championship-Grade Claude Code Skills for `project.faf` Files**
 
 ---
 
 ## What is This?
 
-The **FAF Agent Toolkit** helps you create and optimize `project.faf` files - **the AI equivalent of `package.json`**.
+**FAF Skills** helps you create and optimize `project.faf` files - **the AI equivalent of `package.json`**.
 
 **What is `project.faf`?**
 - A **file format** (like `package.json`, `README.md`, `tsconfig.json`)
@@ -301,10 +301,10 @@ cp -r skills/* ~/.config/claude-code/skills/
 
 ```bash
 # Clone repository
-git clone https://github.com/Wolfe-Jam/faf-agent-toolkit.git
+git clone https://github.com/Wolfe-Jam/faf-skills.git
 
 # Run installation script
-cd faf-agent-toolkit
+cd faf-skills
 ./install.sh
 ```
 
@@ -525,7 +525,7 @@ You: "Ready to share!"
 ## Repository Structure
 
 ```
-faf-agent-toolkit/
+faf-skills/
 ├── README.md                    # This file
 ├── skills/                      # 11 total skills
 │   ├── faf-teacher/
@@ -693,7 +693,7 @@ This toolkit is free software. No guarantees. Professional, boring, trusted.
 **GitHub:**
 - faf-cli: https://github.com/Wolfe-Jam/faf-cli
 - claude-faf-mcp: https://github.com/Wolfe-Jam/claude-faf-mcp
-- faf-agent-toolkit: https://github.com/Wolfe-Jam/faf-agent-toolkit
+- faf-skills: https://github.com/Wolfe-Jam/faf-skills
 
 **npm:**
 - faf-cli: https://npmjs.com/package/faf-cli
@@ -713,8 +713,8 @@ brew install wolfe-jam/faf/faf-cli
 npm install -g faf-cli
 
 # 2. Install skills
-git clone https://github.com/Wolfe-Jam/faf-agent-toolkit.git
-cd faf-agent-toolkit
+git clone https://github.com/Wolfe-Jam/faf-skills.git
+cd faf-skills
 ./install.sh
 
 # 3. Use naturally
