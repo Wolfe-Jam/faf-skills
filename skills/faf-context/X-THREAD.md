@@ -68,7 +68,7 @@ Claude: "Should become the standard"
 Grok: "Game-changer for eternal AI context" 9.5/10
 Gemini: "README evolution for the AI era"
 
-Huge thanks to @AnthropicAI for considering this — let's make persistent context the default for every project.
+Huge thanks to @AnthropicAI and @klazuka for considering this — let's make persistent context the default for every project.
 
 Dev community: try it today → add project.faf and watch your AI stop guessing.
 
