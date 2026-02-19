@@ -1,0 +1,23 @@
+# project.faf — Machine-readable project context for AI tools
+# Spec: https://faf.dev/spec | MIME: application/vnd.faf+yaml
+
+faf_version: 2.5.0
+project:
+  name: faf-skills
+  description: Championship-Grade Claude Code Skills for project.faf Files
+  language: Shell
+  type: cli-tools
+  license: MIT
+metadata:
+  repository: https://github.com/Wolfe-Jam/faf-skills
+  topics: [ai, claude, faf, mcp, skills, typescript]
+stack:
+  runtime: Shell
+  framework: Claude Code Skills
+context:
+  what: Collection of Claude Code skills for working with project.faf files
+  who: wolfejam.dev
+  how: "Copy skills to ~/.claude/skills/"
+generated_by:
+  tool: faf-cli
+  version: 4.4.4
