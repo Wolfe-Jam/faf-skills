@@ -1,0 +1,42 @@
+{
+  "name": "faf",
+  "version": "1.0.0",
+  "description": "17 Claude Code skills for AI-context, testing, and MCP development. IANA-registered format (application/vnd.faf+yaml). Create .faf project DNA, score AI-readiness, sync with CLAUDE.md, build MCP servers, generate test suites.",
+  "namespace": "faf",
+  "author": {
+    "name": "wolfejam",
+    "email": "james@wolfejames.com",
+    "url": "https://faf.one"
+  },
+  "repository": "https://github.com/Wolfe-Jam/faf-skills",
+  "license": "MIT",
+  "keywords": [
+    "ai-context",
+    "project-dna",
+    "faf",
+    "mcp",
+    "testing",
+    "wjttc",
+    "claude-code",
+    "skills"
+  ],
+  "skills": {
+    "context": "skills/faf-context/SKILL.md",
+    "expert": "skills/faf-expert/SKILL.md",
+    "enhance": "skills/faf-enhance/SKILL.md",
+    "score": "skills/faf-score/SKILL.md",
+    "sync": "skills/faf-sync/SKILL.md",
+    "validate": "skills/faf-validate/SKILL.md",
+    "git": "skills/faf-git/SKILL.md",
+    "migrate": "skills/faf-migrate/SKILL.md",
+    "docs": "skills/faf-docs/SKILL.md",
+    "platforms": "skills/faf-platforms/SKILL.md",
+    "teacher": "skills/faf-teacher/SKILL.md",
+    "format-inspector": "skills/faf-format-inspector/SKILL.md",
+    "mcp-builder": "skills/mcp-builder/SKILL.md",
+    "n8n-builder": "skills/n8n-builder/SKILL.md",
+    "n8n-debugger": "skills/n8n-debugger/SKILL.md",
+    "wjttc-builder": "skills/wjttc-builder/SKILL.md",
+    "wjttc-tester": "skills/wjttc-tester/SKILL.md"
+  }
+}
