@@ -363,7 +363,7 @@ npm install -g faf-cli
 brew install wolfe-jam/faf/faf-cli
 
 # Verify installation
-faf --version  # Should show v3.1.1 or later
+faf --version  # Should show v5.0.6 or later
 ```
 
 **Optional but recommended:**

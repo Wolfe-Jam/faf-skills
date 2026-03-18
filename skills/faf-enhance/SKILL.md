@@ -54,7 +54,7 @@ Run the existing enhancement command:
 faf enhance
 ```
 
-Note: In faf-cli v3.1.1, this might be called `faf analyze`. The command:
+Note: In faf-cli v5.0.6, this might be called `faf analyze`. The command:
 - Analyzes current project.faf
 - Identifies missing or weak sections
 - Suggests specific improvements
@@ -563,7 +563,7 @@ faf score
 ## Supporting Files
 
 This skill works with:
-- **faf-cli** (v3.1.1+) - Enhancement engine
+- **faf-cli** (v5.0.6+) - Enhancement engine
 - **project.faf** - File being enhanced
 - **faf score** - Progress measurement
 - **faf validate** - Format verification

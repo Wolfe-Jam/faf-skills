@@ -19,7 +19,7 @@
 
 **Output:**
 - Created skills directory: `~/.config/claude-code/skills`
-- Verified faf-cli prerequisite: v3.1.1 installed
+- Verified faf-cli prerequisite: v5.0.6 installed
 - Installed all 10 skills successfully
 - Clear success message and next steps provided
 

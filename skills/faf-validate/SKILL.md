@@ -44,7 +44,7 @@ Run the existing validation command:
 faf validate
 ```
 
-This command (from faf-cli v3.1.1):
+This command (from faf-cli v5.0.6):
 - Parses YAML syntax
 - Checks required fields
 - Verifies format version
@@ -143,7 +143,7 @@ Allowed values for `architecture.type`:
 
 ### Format Version Requirements
 
-**Current:** 3.0.0 (as of faf-cli v3.1.1)
+**Current:** 3.0.0 (as of faf-cli v5.0.6)
 
 **History:**
 - v1.x: Original format (deprecated)
@@ -464,7 +464,7 @@ architecture:
 ## Supporting Files
 
 This skill works with:
-- **faf-cli** (v3.1.1+) - Validation engine
+- **faf-cli** (v5.0.6+) - Validation engine
 - **project.faf** - File being validated
 - **IANA specification** - application/vnd.faf+yaml
 

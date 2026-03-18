@@ -60,7 +60,7 @@ Run the existing bi-sync command:
 faf bi-sync
 ```
 
-This command (from faf-cli v3.1.1):
+This command (from faf-cli v5.0.6):
 - Detects which file changed
 - Syncs changed content bidirectionally
 - Maintains format-specific sections
@@ -636,7 +636,7 @@ type: description
 ## Supporting Files
 
 This skill works with:
-- **faf-cli** (v3.1.1+) - Bi-sync engine
+- **faf-cli** (v5.0.6+) - Bi-sync engine
 - **project.faf** - Project DNA file
 - **CLAUDE.md** - Workflow instructions file
 

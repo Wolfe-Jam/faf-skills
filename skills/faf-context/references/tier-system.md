@@ -6,7 +6,6 @@ The Michelin Star rating for AI context quality.
 
 | Tier | Score | Meaning |
 |------|-------|---------|
-| Big Orange | 105% | Michelin Star - Perfect + bonus |
 | Trophy | 100% | Perfect compliance |
 | Gold | 99%+ | Exceptional |
 | Silver | 95%+ | Excellent |

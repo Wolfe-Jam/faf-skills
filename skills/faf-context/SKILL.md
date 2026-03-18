@@ -1,6 +1,6 @@
 ---
 name: faf-context
-description: Generate AI-context DNA for ANY project - new, legacy, famous, or forgotten. Creates .faf files that eliminate "explain your codebase again" across ALL AI tools. IANA-registered format (application/vnd.faf+yaml), 21,000+ npm downloads, Anthropic MCP ecosystem. Use when Claude asks "what does this project do?", when context drifts between sessions, or when onboarding AI to any codebase. Works with Claude, Cursor, Gemini CLI, WARP, Windsurf.
+description: Generate AI-context DNA for ANY project - new, legacy, famous, or forgotten. Creates .faf files that eliminate "explain your codebase again" across ALL AI tools. IANA-registered format (application/vnd.faf+yaml), 36,000+ npm downloads, Anthropic MCP ecosystem. Use when Claude asks "what does this project do?", when context drifts between sessions, or when onboarding AI to any codebase. Works with Claude, Cursor, Gemini CLI, WARP, Windsurf.
 ---
 
 # FAF Context - AI-Context DNA for Any Project
@@ -98,7 +98,6 @@ To reach Silver (95%):
 
 | Tier | Score | Meaning |
 |------|-------|---------|
-| Big Orange | 105% | Michelin Star - Perfect + bonus |
 | Trophy | 100% | Perfect compliance |
 | Gold | 99%+ | Exceptional |
 | Silver | 95%+ | Excellent |

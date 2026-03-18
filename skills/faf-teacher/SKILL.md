@@ -458,7 +458,7 @@ Use **faf-sync** skill
 
 **Means:**
 - IANA registration is real (Oct 31, 2025)
-- Download numbers are real (4,100+)
+- Download numbers are real (36,000+)
 - ROI data from Anthropic research (verified)
 - No guarantees (it's free software, MIT license)
 
@@ -521,7 +521,7 @@ Demonstrate The Reading Order:
 **Real numbers:**
 - IANA registration (Internet standard authority)
 - Anthropic research (73% reduction, 6,444% ROI)
-- Production usage (4,100+ downloads)
+- Production usage (36,000+ downloads)
 
 ### Guide To Action
 

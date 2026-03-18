@@ -1,5 +1,5 @@
 ---
-name: faf-format-validator
+name: faf-format-inspector
 description: Validate both YAML frontmatter formats (SKILL.md for Claude Code) and IANA-registered project.faf formats. Use when user asks "validate my skill", "check YAML format", "is my SKILL.md correct", or needs to verify format compliance for either Claude Code skills or project.faf files.
 allowed-tools: Read, Bash, Grep
 ---

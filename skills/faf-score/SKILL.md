@@ -46,7 +46,7 @@ Run the existing `faf score` command:
 faf score
 ```
 
-This command (from faf-cli v3.1.1):
+This command (from faf-cli v5.0.6):
 - Analyzes project.faf completeness
 - Calculates 0-100% score
 - Assigns Podium tier
@@ -451,7 +451,7 @@ Even Bronze tier saves significant time. Trophy tier is transformational.
 npm install -g faf-cli
 
 # Verify
-faf --version  # Should show v3.1.1 or later
+faf --version  # Should show v5.0.6 or later
 ```
 
 **Issue: "No project.faf found"**
@@ -486,7 +486,7 @@ faf enhance
 ## Supporting Files
 
 This skill works with:
-- **faf-cli** (v3.1.1+) - Scoring engine
+- **faf-cli** (v5.0.6+) - Scoring engine
 - **project.faf** - File being scored
 - **Podium scorer** - 0-100% algorithm
 

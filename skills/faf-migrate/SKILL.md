@@ -61,7 +61,7 @@ Run the migration command:
 faf migrate
 ```
 
-This command (from faf-cli v3.1.1):
+This command (from faf-cli v5.0.6):
 - Detects current version
 - Determines required upgrades
 - Adds missing fields
@@ -450,7 +450,7 @@ faf migrate --verbose  # (if supported)
 ## Supporting Files
 
 This skill works with:
-- **faf-cli** (v3.1.1+) - Migration engine
+- **faf-cli** (v5.0.6+) - Migration engine
 - **project.faf** - File being migrated
 - **project.faf.backup** - Safety backup
 
