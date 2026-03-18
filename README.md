@@ -1,6 +1,16 @@
 # FAF Skills
 
-**Championship-Grade Claude Code Skills for `project.faf` Files**
+**17 Claude Code skills for AI-context, testing, and MCP development**
+
+[![Claude Code Plugin](https://img.shields.io/badge/Claude_Code-Plugin-blueviolet)](https://github.com/Wolfe-Jam/faf-skills)
+
+## Install
+
+```bash
+claude /plugin install faf-skills
+```
+
+All 17 skills activate under the `faf:` namespace — `/faf:context`, `/faf:expert`, `/faf:score`, etc.
 
 ---
 
@@ -261,7 +271,7 @@ project.faf = For AI to understand your project
 
 ---
 
-### 11. faf-format-validator
+### 11. faf-format-inspector
 **Validate both YAML formats: SKILL.md and project.faf.**
 
 **When it activates:**
@@ -281,34 +291,21 @@ project.faf = For AI to understand your project
 
 ## Installation
 
-### Quick Start (Copy Individual Skills)
-
-**Copy any skill to your Claude Code skills directory:**
+### Plugin Install (Recommended)
 
 ```bash
-# Copy one skill
-cp -r skills/faf-init ~/.config/claude-code/skills/
-
-# Or copy all skills
-cp -r skills/* ~/.config/claude-code/skills/
+claude /plugin install faf-skills
 ```
 
-**Restart Claude Code and skills activate automatically.**
+All 17 skills available instantly under `faf:` namespace.
 
-### Full Installation
-
-**Clone the entire toolkit:**
+### Manual Install
 
 ```bash
-# Clone repository
+# Clone and copy all skills
 git clone https://github.com/Wolfe-Jam/faf-skills.git
-
-# Run installation script
-cd faf-skills
-./install.sh
+cp -r faf-skills/skills/* ~/.claude/skills/
 ```
-
-**This installs all 7 core skills at once.**
 
 ---
 
@@ -526,55 +523,48 @@ You: "Ready to share!"
 
 ```
 faf-skills/
-├── README.md                    # This file
-├── skills/                      # 11 total skills
-│   ├── faf-teacher/
-│   │   └── SKILL.md            # Foundational education (420 lines)
-│   ├── faf-init/
-│   │   └── SKILL.md            # Project initialization (272 lines)
-│   ├── faf-score/
-│   │   └── SKILL.md            # AI-readiness scoring (308 lines)
-│   ├── faf-enhance/
-│   │   └── SKILL.md            # Guided improvement (370 lines)
-│   ├── faf-sync/
-│   │   └── SKILL.md            # Bidirectional sync (365 lines)
-│   ├── faf-validate/
-│   │   └── SKILL.md            # Format compliance (320 lines)
-│   ├── faf-migrate/
-│   │   └── SKILL.md            # Version upgrade (310 lines)
-│   ├── faf-docs/
-│   │   └── SKILL.md            # Documentation access (315 lines)
-│   ├── faf-git/
-│   │   └── SKILL.md            # Basic Git practices (117 lines)
-│   ├── faf-platforms/
-│   │   └── SKILL.md            # Platform comparison (358 lines)
-│   └── faf-format-validator/
-│       └── SKILL.md            # Dual format validation (485 lines)
-├── CONTRIBUTING.md              # Contribution guide (269 lines)
-├── TESTING.md                   # Testing documentation
-├── install.sh                   # Installation script (executable)
-└── LICENSE                      # MIT License
+├── .claude-plugin/              # Claude Code Plugin manifest
+│   └── plugin.json              # v1.0.0, namespace: faf
+├── skills/                      # 17 skills
+│   ├── faf-context/             # AI-context DNA generator
+│   ├── faf-expert/              # .faf specialist
+│   ├── faf-enhance/             # Guided improvement
+│   ├── faf-score/               # AI-readiness scoring
+│   ├── faf-sync/                # Bidirectional sync (8ms)
+│   ├── faf-validate/            # Format compliance
+│   ├── faf-migrate/             # Version upgrade
+│   ├── faf-docs/                # Documentation
+│   ├── faf-git/                 # Git practices
+│   ├── faf-platforms/           # Platform comparison
+│   ├── faf-teacher/             # Foundational education
+│   ├── faf-format-inspector/    # Dual format validation
+│   ├── mcp-builder/             # MCP server creation
+│   ├── n8n-builder/             # n8n workflow creation
+│   ├── n8n-debugger/            # n8n debugging
+│   ├── wjttc-builder/          # Test suite generation
+│   └── wjttc-tester/           # F1-inspired testing
+├── README.md
+├── CONTRIBUTING.md
+├── TESTING.md
+├── install.sh
+└── LICENSE                      # MIT
 ```
-
-**Total:** 7,109 lines of markdown (no TypeScript needed)
 
 ---
 
 ## Verified Stats
 
-**FAF Ecosystem (as of Nov 2025):**
-- ✅ IANA registration: application/vnd.faf+yaml (Oct 31, 2025)
-- ✅ faf-cli downloads: 4,100+ (npm + Homebrew)
-- ✅ claude-faf-mcp downloads: 800+ weekly
-- ✅ AI-readiness reduction: 73% (Anthropic research)
-- ✅ Average ROI: 6,444%
+**FAF Ecosystem (as of March 2026):**
+- ✅ IANA registration: application/vnd.faf+yaml
+- ✅ 36,000+ downloads across npm, PyPI, crates.io
+- ✅ 6 packages: faf-cli + 5 MCP servers (Claude, Gemini, Grok, Cursor/IDEs, Rust)
 - ✅ Format compliance: 100% (IANA spec)
 
 **Performance:**
-- faf-cli: <50ms target, 18ms average
-- bi-sync: <10ms target, 8ms achieved
+- faf-cli: 1,143 tests, 50 suites, 18ms average
+- faf-wasm-sdk: 136 tests in 0.13s
+- bi-sync: 8ms achieved
 - Skills idle: 30-50 tokens
-- Token efficiency: 99%+ savings
 
 ---
 
@@ -628,30 +618,12 @@ faf-skills/
 
 ## Roadmap
 
-**Phase 1: Core Skills (Complete) ✅**
-- [x] 7 core skills written
-- [x] Toolkit repository created
-- [x] README documentation
-- [ ] Installation script
-- [ ] Manual testing
-
-**Phase 2: Distribution (Week 1)**
-- [ ] Publish to GitHub
-- [ ] Create installation docs
-- [ ] Blog post: "Introducing FAF Skills"
-- [ ] Social media campaign
-
-**Phase 3: Expansion (Week 2-4)**
-- [ ] 3 specialized subagents
-- [ ] Plugin support (experimental)
+- [x] 17 skills written and tested
+- [x] Claude Code Plugin manifest (v1.0.0)
+- [x] `faf:` namespace
+- [x] GitHub distribution
+- [ ] Smithery marketplace submission
 - [ ] Community contributions
-- [ ] Video tutorials
-
-**Phase 4: Growth (Ongoing)**
-- [ ] npm package (automation)
-- [ ] Skill marketplace submission
-- [ ] Integration examples
-- [ ] Advanced workflows
 
 ---
 
@@ -683,50 +655,17 @@ This toolkit is free software. No guarantees. Professional, boring, trusted.
 
 ---
 
-## Resources
-
-**Official:**
-- Website: https://faf.one
-- Docs: https://faf.one/docs
-- IANA Registration: application/vnd.faf+yaml
-
-**GitHub:**
-- faf-cli: https://github.com/Wolfe-Jam/faf-cli
-- claude-faf-mcp: https://github.com/Wolfe-Jam/claude-faf-mcp
-- faf-skills: https://github.com/Wolfe-Jam/faf-skills
-
-**npm:**
-- faf-cli: https://npmjs.com/package/faf-cli
-- claude-faf-mcp: https://npmjs.com/package/claude-faf-mcp
-
-**Homebrew:**
-```bash
-brew install wolfe-jam/faf/faf-cli
-```
-
----
-
-## Quick Start Summary
+## Quick Start
 
 ```bash
-# 1. Install faf-cli
-npm install -g faf-cli
+# Install the plugin
+claude /plugin install faf-skills
 
-# 2. Install skills
-git clone https://github.com/Wolfe-Jam/faf-skills.git
-cd faf-skills
-./install.sh
-
-# 3. Use naturally
-# Just ask Claude in natural language:
-# - "What is FAF?" → faf-teacher
-# - "Set up project context" → faf-init
-# - "What's my score?" → faf-score
-# - "Improve my score" → faf-enhance
-# - "Sync my files" → faf-sync
-# - "Validate my FAF" → faf-validate
-
-# Skills activate automatically. Zero memorization.
+# Use naturally — skills activate automatically:
+# /faf:context  → generate .faf for any project
+# /faf:score    → measure AI-readiness (0-100%)
+# /faf:expert   → .faf specialist
+# /faf:sync     → bidirectional sync (8ms)
 ```
 
 ---
