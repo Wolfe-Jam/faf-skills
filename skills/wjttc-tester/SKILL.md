@@ -1,7 +1,7 @@
 ---
 name: wjttc-tester
-description: F1-inspired software testing expert. Tests any software with championship-grade standards and writes detailed WJTTC reports. Use when testing code, finding bugs, validating functionality, performing edge case analysis, or creating test reports. Follows F1 philosophy - when brakes must work flawlessly, so must our code.
-license: MIT
+description: Automated test suite generator and QA expert. Creates test plans, writes test files, finds bugs, and generates detailed reports. Use when testing any project, building regression suites, or running QA audits. Supports any language and framework.
+license: Complete terms in LICENSE.txt
 ---
 
 # WJTTC Championship Tester
@@ -497,14 +497,15 @@ const boundaries = [
 
 ### Report Storage
 
-**Save reports to project directory:**
+**Save reports to:**
 ```
-./wjttc-reports/
+/Users/wolfejam/FAF-GOLD/PLANET-FAF/WJTTC - WolfeJam Technical & Testing Center/
 ├── reports/
-│   ├── 2025-10-20-feature-tests.yaml
-│   └── 2025-10-20-regression-tests.yaml
+│   ├── 2025-10-20-faf-cli-tests.yaml
+│   ├── 2025-10-20-mcp-server-tests.yaml
+│   └── 2025-10-20-n8n-workflow-tests.yaml
 └── templates/
-    └── WJTTC-REPORT-FORMAT.yaml
+    └── WJTC-REPORT-FORMAT.yaml
 ```
 
 ### Report Naming Convention

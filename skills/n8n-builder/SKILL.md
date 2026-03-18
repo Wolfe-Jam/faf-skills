@@ -1,7 +1,7 @@
 ---
 name: n8n-builder
-description: Expert in building n8n workflows from scratch. Use when creating new n8n workflows, adding nodes, connecting APIs, setting up webhooks, transforming data, or implementing automation patterns. Focuses on workflow structure, node configuration, best practices, and clean architecture.
-license: MIT
+description: Build workflow automations and API integrations with n8n. Use when creating no-code/low-code pipelines, connecting APIs, setting up webhooks, or implementing automation patterns.
+license: Complete terms in LICENSE.txt
 ---
 
 # n8n Workflow Builder
@@ -634,12 +634,12 @@ return {
 
 **To disable this skill temporarily:**
 ```bash
-mv ~/.claude/skills/n8n-builder ~/.claude/skills/n8n-builder.disabled
+mv ~/.claude/skills/n8n ~/.claude/skills/n8n.disabled
 ```
 
 **To re-enable:**
 ```bash
-mv ~/.claude/skills/n8n-builder.disabled ~/.claude/skills/n8n-builder
+mv ~/.claude/skills/n8n.disabled ~/.claude/skills/n8n
 ```
 
 ---

@@ -1,12 +1,36 @@
 ---
 name: faf-expert
-description: Expert in .faf (Foundational AI-context Format) files for persistent project context. Use when working with .faf files, project DNA, CLAUDE.md bi-sync, faf-cli commands, MCP server configuration, or AI-readiness scoring (0-100%). Updated for v3.3.7.
+description: Expert in .faf (Foundational AI-context Format) files for persistent project context. Use when working with .faf files, project DNA, CLAUDE.md bi-sync, faf-cli commands, MCP server configuration, or AI-readiness scoring (0-100%). Updated for v5.1.0.
 license: MIT
 ---
 
 # FAF Expert - Project DNA Specialist
 
+> **Become an expert.** The mechanic's manual — install, configure, troubleshoot, score.
+> See also: `faf-context` — the "done for you" pit crew that generates .faf files for any project.
+
 ## What is .faf?
+
+**The package.json for Context.**
+
+```
+project/
+├── package.json     ← npm reads this
+├── project.faf      ← AI reads this
+├── README.md
+└── src/
+```
+
+> "package.json wasn't built for this, .faf was"
+> — .faf Inventor
+
+> "package.json gives me a list of dependencies,
+> .faf shows me how to use them"
+> — Claude Code (Anthropic)
+
+**Once you get used to it, it's just another file helping you code.**
+
+---
 
 `.faf` is the universal format for persistent AI project context - "Project DNA ✨ for ANY AI".
 
@@ -16,6 +40,7 @@ license: MIT
 - **Universal** - Works with Claude, ChatGPT, Gemini, Cursor, any AI
 - **Measurable** - Championship scoring system (0-100% AI-readiness)
 - **Official Anthropic MCP Steward** - PR #2759 MERGED
+- **Foundation Layer** - CLAUDE.md syncs FROM .faf, preventing context drift
 
 ## When to Use This Skill
 
@@ -50,11 +75,9 @@ faf doctor            # Diagnose and fix issues
 faf migrate           # Migrate to latest format
 ```
 
-### MCP Tools (claude-faf-mcp v2.8.0+)
+### MCP Tools (claude-faf-mcp v5.1.0)
 
-**v2.8.0 introduces Tool Visibility System:**
-- **21 Core Tools** (default) - Essential workflow
-- **51 Total Tools** (opt-in) - All features
+**33 tools** available:
 
 **Configuration:**
 ```json
@@ -237,22 +260,21 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 - **Trust is Everything** - Built on credibility
 - **Professional, Boring, Trusted** - F1-grade engineering
 
-## Stats (Real, Verified - December 2025)
+## Stats (Real, Verified - March 2026)
 
-- **18,000+ total downloads** (CLI + MCP combined)
-- **6,700+ MCP downloads** (weekly: 800+)
-- **6,500+ CLI downloads**
-- **79 tests passing** (57 MCP + 22 visibility)
+- **36,400+ total downloads** across npm, PyPI, crates.io
+- **94+ production releases** across 16 packages, 3 registries
+- **1,143 tests passing** (faf-cli) + **351 tests** (claude-faf-mcp)
 - **153+ formats validated** (TURBO-CAT engine)
-- **<10ms tool filtering** (5x better than 50ms target)
-- **Zero regressions** in v2.8.0 release
+- **IETF Internet-Draft filed:** draft-wolfe-faf-format
+- **Zenodo/CERN publication:** #18251362
 - **WJTTC Gold Certified** - F1-inspired testing standards
 - **Anthropic-approved** MCP server (Official steward)
 
 ## Version History
 
-- **v3.2.6** - faf-cli latest
-- **v3.3.7** - claude-faf-mcp latest (TYPE_DEFINITIONS parity)
+- **v5.0.6** - faf-cli latest (1,143 tests, Bun-optimized)
+- **v5.1.0** - claude-faf-mcp latest (33 tools, 351 tests)
 - **v1.2.0** - faf-mcp universal
 
 ## Resources
@@ -381,5 +403,5 @@ faf skill install faf-expert
 
 *Made with 🧡 by wolfejam.dev*
 *Official Anthropic MCP Steward*
-*Championship Edition v3.3.7* 🏎️✨
+*Championship Edition v5.1.0* 🏎️✨
 *IANA-Registered Format: application/vnd.faf+yaml (Oct 30, 2025)*

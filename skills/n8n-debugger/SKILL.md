@@ -1,7 +1,7 @@
 ---
 name: n8n-debugger
-description: Expert in debugging and fixing broken n8n workflows. Use when troubleshooting workflow errors, fixing failed executions, resolving expression issues, debugging HTTP requests, handling credential problems, or optimizing slow workflows. Focuses on error messages, execution logs, and systematic debugging.
-license: MIT
+description: Fix broken workflow automations and debug n8n issues. Use when troubleshooting workflow errors, failed executions, expression bugs, credential problems, or slow automations.
+license: Complete terms in LICENSE.txt
 ---
 
 # n8n Workflow Debugger
