@@ -1,6 +1,6 @@
 # FAF Skills
 
-**31 Claude Code Skills for Professional Developers**
+**31 Claude Code Skills for Developers and Builders**
 
 ---
 
