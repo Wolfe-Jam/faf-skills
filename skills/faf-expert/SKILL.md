@@ -1,13 +1,13 @@
 ---
 name: faf-expert
-description: Expert in .faf (Foundational AI-context Format) files for persistent project context. Use when working with .faf files, project DNA, CLAUDE.md bi-sync, faf-cli commands, MCP server configuration, or AI-readiness scoring (0-100%). Updated for v5.1.0.
+description: Expert in .faf (Foundational AI-context Format) files for persistent project context. Use when working with .faf files, project DNA, CLAUDE.md bi-sync, faf-cli commands, MCP server configuration, or AI-readiness scoring (0-100%). Updated for v5.2.0.
 license: MIT
 ---
 
 # FAF Expert - Project DNA Specialist
 
 > **Become an expert.** The mechanic's manual — install, configure, troubleshoot, score.
-> See also: `faf-context` — the "done for you" pit crew that generates .faf files for any project.
+> See also: `faf-wizard` — the "done for you" pit crew that generates .faf files for any project.
 
 ## What is .faf?
 

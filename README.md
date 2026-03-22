@@ -1,6 +1,6 @@
 # FAF Skills
 
-**30 Claude Code Skills for Professional Developers**
+**31 Claude Code Skills for Professional Developers**
 
 ---
 
@@ -18,16 +18,17 @@ Skills activate automatically via `/skillname` or natural language in Claude Cod
 
 ---
 
-## Skills (30)
+## Skills (31)
 
-### FAF Context (14 skills)
+### FAF Context (15 skills)
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
+| **faf-wizard** | `/faf-wizard` | Done-for-you .faf generator — point at any project, get a scored file back |
+| **faf-expert** | `/faf-expert` | The mechanic's manual — deep expertise on `.faf` files |
 | **faf-teacher** | — | Explains FAF concepts and The Reading Order |
 | **faf-init** | — | Initialize `project.faf` from any codebase |
 | **faf-go** | `/faf-go` | Guided interview to 100% AI-readiness |
-| **faf-expert** | `/faf-expert` | Deep expertise on `.faf` files and project DNA |
 | **faf-score** | — | Measure AI-readiness (0-100%, 7-tier system) |
 | **faf-enhance** | — | Guided improvement to reach higher tiers |
 | **faf-sync** | — | Bidirectional sync: `.faf` ↔ `CLAUDE.md` (8ms) |
@@ -142,11 +143,12 @@ npm install -g claude-faf-mcp
 ```
 faf-skills/
 ├── README.md
-├── skills/               # 30 skills
+├── skills/               # 31 skills
+│   ├── faf-wizard/       # Done-for-you generator
+│   ├── faf-expert/       # Mechanic's manual
 │   ├── faf-teacher/      # FAF education
 │   ├── faf-init/         # Project initialization
 │   ├── faf-go/           # Guided interview
-│   ├── faf-expert/       # .faf expertise
 │   ├── faf-score/        # AI-readiness scoring
 │   ├── faf-enhance/      # Score improvement
 │   ├── faf-sync/         # Bidirectional sync
