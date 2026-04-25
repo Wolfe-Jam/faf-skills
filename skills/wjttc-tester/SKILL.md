@@ -82,6 +82,44 @@ Activate this skill when:
 
 ## Test Execution Process
 
+### Step 0: Signal Integrity Pre-Audit (Run BEFORE adding any new tests)
+
+**Doctrine: Red CI is a contract — it must always mean "stop, look, fix." If the existing reds don't, fix the signal before adding more tests.**
+
+Before validating coverage or running new tests, audit the suite's existing signal trust. A test suite with high coverage but flaky reds is **less trustworthy** than a smaller suite with zero false alarms — because the team has stopped reading the reds.
+
+**Audit method:** classify the last 30 days of CI failures into three buckets:
+
+| Bucket | Definition | Verdict |
+|--------|-----------|---------|
+| **Real bug** | Red corresponded to an actual code defect; fixed by a code change | ✓ Signal worked |
+| **Flake** | Red was timing/network/concurrency noise; passed on rerun, no code change | ✗ Test design defect |
+| **Infra** | Red was missing secret, runner image change, dep upstream — not the code | ✗ Workflow design defect |
+
+**Signal Integrity Score:**
+
+```
+SI = (Real bugs) / (Real bugs + Flakes + Infra) × 100
+```
+
+| SI % | Verdict | Required Action |
+|------|---------|-----------------|
+| 100% | TROPHY 🏆 | Maintain — exemplary signal |
+| 95-99% | Championship | Annotate any flake immediately |
+| 85-94% | Acceptable | Schedule flake-class fix this sprint |
+| 70-84% | Eroding | Stop adding tests; fix flakes first |
+| <70% | DEAD SIGNAL | Block all merges until signal restored |
+
+**Common flake sources to eliminate on sight:**
+- Hard absolute-time perf assertions on shared CI runners (`expect(time).toBeLessThan(30)`) — move to non-gating workflow
+- Network-dependent tests in main suite — mock at the boundary
+- Concurrency tests without explicit ordering
+- Secret-dependent steps that fail when missing — grey-skip instead
+
+**The inverse rule:** Green CI that passes when something is broken is equally a contract violation. If a real bug shipped despite green CI, write the regression test BEFORE the fix lands.
+
+**The conversation is the real gate.** Automated CI is supporting infrastructure that serves the human + AI audit. Flaky CI wastes the audit's bandwidth. Signal Integrity exists to keep CI worthy of the conversation.
+
 ### Step 1: Understand What to Test
 
 **Questions to Answer:**
@@ -343,7 +381,7 @@ Stack trace: [If applicable]
 
 ## Championship Certification
 
-**Current Status:** 🥈 Bronze (92% pass rate)
+**Current Status:** ◆ Silver (92% pass rate)
 
 **To Reach Championship 🏆:**
 - Fix 2 failing tests
@@ -523,13 +561,13 @@ YYYY-MM-DD-{project}-{feature}-tests.yaml
 
 **Pass Rate to Championship Tier:**
 - 🏆 **95-100%** - Championship (Gold)
-- 🥇 **85-94%** - Podium (Silver)
-- 🥈 **70-84%** - Points (Bronze)
-- 🥉 **55-69%** - Midfield
-- 🟢 **40-54%** - Backmarker
-- 🟡 **25-39%** - Struggling
-- 🔴 **10-24%** - Critical
-- 🤍 **0-9%** - DNF (Did Not Finish)
+- ★ **85-94%** - Podium (Gold)
+- ◆ **70-84%** - Points (Silver)
+- ◇ **55-69%** - Midfield (Bronze)
+- ● **40-54%** - Backmarker (Green)
+- ● **25-39%** - Struggling (Yellow, dim)
+- ○ **10-24%** - Critical (Red)
+- ♡ **0-9%** - DNF (White)
 
 ## Quick Test Checklist
 
@@ -594,7 +632,7 @@ const deepNest = { level1: { level2: { level3: { level4: { level5: 'data' } } } 
 const specialChars = "!@#$%^&*(){}[]|\\:;\"'<>,.?/~`";
 
 // Test with unicode
-const unicode = "🏎️⚡️🏁🏆🥇🥈🥉";
+const unicode = "🏎️⚡️🏁🏆★◆◇●○♡";
 
 // Test with very long strings
 const longString = 'a'.repeat(100000);
