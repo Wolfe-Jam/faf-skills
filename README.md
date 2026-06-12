@@ -196,6 +196,8 @@ faf-skills/
 
 ---
 
+If `faf-skills` has been useful, consider starring the repo — it helps others find it.
+
 ## License
 
 MIT License
