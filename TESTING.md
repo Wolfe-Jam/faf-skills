@@ -1,4 +1,4 @@
-# Manual Testing Results - FAF Agent Toolkit
+# Manual Testing Results - FAF Skills
 
 **Date:** 2025-11-02
 **Version:** 1.0.0
@@ -18,7 +18,7 @@
 **Result:** ✅ PASSED
 
 **Output:**
-- Created skills directory: `~/.config/claude-code/skills`
+- Created skills directory: `~/.claude/skills`
 - Verified faf-cli prerequisite: v5.0.6 installed
 - Installed all 10 skills successfully
 - Clear success message and next steps provided
@@ -43,7 +43,7 @@
 
 **Command:**
 ```bash
-ls -la ~/.config/claude-code/skills/
+ls -la ~/.claude/skills/
 ```
 
 **Result:** ✅ PASSED
@@ -208,7 +208,7 @@ allowed-tools: Read, Write, Bash, Grep, Glob
 
 **Verified Structure:**
 ```
-faf-agent-toolkit/
+faf-skills/
 ├── README.md ✅ (679 lines)
 ├── LICENSE ✅ (MIT)
 ├── CONTRIBUTING.md ✅ (269 lines)
@@ -330,5 +330,5 @@ faf-agent-toolkit/
 ---
 
 **Testing Complete: 2025-11-02 01:10**
-**Tested By:** Claude (faf-agent-toolkit v1.0.0)
+**Tested By:** Claude (faf-skills v1.0.0)
 **Championship-Grade Quality:** ✅ ACHIEVED

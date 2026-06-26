@@ -1,23 +1,38 @@
-# project.faf — Machine-readable project context for AI tools
-# Spec: https://faf.dev/spec | MIME: application/vnd.faf+yaml
-
-faf_version: 2.5.0
+faf_version: "3.0"
 project:
   name: faf-skills
-  description: Championship-Grade Claude Code Skills for project.faf Files
-  language: Shell
+  goal: A curated set of Claude Code skills — the FAF Way — that take any project to 100% ✪ AI-readiness; each skill is receipt-proven before it ships.
+  main_language: Markdown
   type: cli-tools
-  license: MIT
-metadata:
-  repository: https://github.com/Wolfe-Jam/faf-skills
-  topics: [ai, claude, faf, mcp, skills, typescript]
+human_context:
+  who: developers using Claude Code (and any SKILL.md-reading agent)
+  what: a curated set of Claude Code skills
+  why: reach 100% ✪ AI-readiness with skills that are proven, not just written
+  where: GitHub (Wolfe-Jam/faf-skills) → ~/.claude/skills; browsed at skills.faf.one
+  when: launched 2026 — one proven skill a day
+  how: SKILL.md format; install via /plugin marketplace add or git clone
 stack:
-  runtime: Shell
+  runtime: Node.js
   framework: Claude Code Skills
-context:
-  what: Collection of Claude Code skills for working with project.faf files
-  who: wolfejam.dev
-  how: "Copy skills to ~/.claude/skills/"
-generated_by:
-  tool: faf-cli
-  version: 4.4.4
+  build: scripts/build-skills-json.mjs (manifest generator)
+  cicd: GitHub Actions
+  hosting: GitHub + Cloudflare Pages (skills.faf.one)
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  backend: slotignored
+  api_type: slotignored
+  database: slotignored
+  connection: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+key_files:
+  - README.md
+  - skills/faf-context/SKILL.md
+  - .claude-plugin/marketplace.json
