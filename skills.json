@@ -5,64 +5,14 @@
     "description": "100% 🏆 AI-readiness, fast — typed, portable context you own (IANA-registered .faf)"
   },
   {
-    "name": "faf-docs",
-    "category": "faf",
-    "description": "Access FAF documentation, guides, and resources"
-  },
-  {
-    "name": "faf-enhance",
-    "category": "faf",
-    "description": "Improve project.faf AI-readiness score through guided enhancements"
-  },
-  {
     "name": "faf-expert",
     "category": "faf",
     "description": "Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model"
   },
   {
-    "name": "faf-format-inspector",
-    "category": "faf",
-    "description": "Validate both YAML frontmatter formats (SKILL.md for Claude Code) and IANA-registered project.faf formats"
-  },
-  {
-    "name": "faf-git",
-    "category": "faf",
-    "description": "Basic Git practices for project.faf files - committing, sharing, and .gitignore patterns"
-  },
-  {
     "name": "faf-go",
     "category": "faf",
     "description": "Guided interview to Gold Code (100% AI-Readiness)"
-  },
-  {
-    "name": "faf-migrate",
-    "category": "faf",
-    "description": "Migrate old project.faf formats to current IANA-registered version (3.0.0+)"
-  },
-  {
-    "name": "faf-platforms",
-    "category": "faf",
-    "description": "Understand where FAF works - Claude Code (CLI + Skills), claude-faf-mcp (Desktop + MCP), vs claude.ai (web - file upload only)"
-  },
-  {
-    "name": "faf-score",
-    "category": "faf",
-    "description": "Calculate AI-readiness score (0-100%) for any project with project.faf file"
-  },
-  {
-    "name": "faf-sync",
-    "category": "faf",
-    "description": "Keep project.faf and CLAUDE.md in bidirectional sync using Context-Mirroring technology (8ms bi-sync)"
-  },
-  {
-    "name": "faf-teacher",
-    "category": "faf",
-    "description": "Explain what FAF is, why it matters, and how it works when user asks about FAF, project context, AI-readiness, The Reading Order, or persistent context"
-  },
-  {
-    "name": "faf-validate",
-    "category": "faf",
-    "description": "Validate project.faf format compliance with IANA-registered application/vnd.faf+yaml specification"
   },
   {
     "name": "faf-wizard",
@@ -83,51 +33,6 @@
     "name": "wjttc-tester",
     "category": "mcp",
     "description": "Automated test suite generator and QA expert"
-  },
-  {
-    "name": "arch-builder",
-    "category": "docs",
-    "description": "Generate Technical Architecture documents"
-  },
-  {
-    "name": "prd-builder",
-    "category": "docs",
-    "description": "Generate Product Requirements Documents (PRD)"
-  },
-  {
-    "name": "sys-reqs-builder",
-    "category": "docs",
-    "description": "Generate System Requirements documents"
-  },
-  {
-    "name": "commit",
-    "category": "dev",
-    "description": "Context-aware git commits powered by FAF"
-  },
-  {
-    "name": "pr",
-    "category": "dev",
-    "description": "Create context-aware pull requests powered by FAF"
-  },
-  {
-    "name": "review",
-    "category": "dev",
-    "description": "Context-aware code reviews powered by FAF"
-  },
-  {
-    "name": "n8n-builder",
-    "category": "integration",
-    "description": "Build workflow automations and API integrations with n8n"
-  },
-  {
-    "name": "n8n-debugger",
-    "category": "integration",
-    "description": "Fix broken workflow automations and debug n8n issues"
-  },
-  {
-    "name": "gif-recorder",
-    "category": "utility",
-    "description": "Create terminal GIF recordings using VHS (Charmbracelet)"
   },
   {
     "name": "repo-maintainer",

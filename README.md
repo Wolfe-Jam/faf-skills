@@ -1,118 +1,71 @@
 # FAF Skills
 
-**Claude Code Skills for Developers and Builders**
+**A curated set of Claude Code skills — quality over quantity.**
 
-A **Core** FAF on-ramp set (`faf-context` · `faf-wizard` · `faf-expert` · `faf-go`) gets any project to **100% 🏆**. The **full set** adds testing, MCP, architecture, code review, workflow, and n8n skills. The toolkit grows and changes with the ecosystem — there's no fixed count to chase.
+Every skill here is held to one bar: accurate, on-brand, and genuinely procedural (it teaches an agent to *do* something, not just narrate a CLI command). **`faf-context` is the reference standard** the rest conform to. Built on the FAF ecosystem (`application/vnd.faf+yaml` — IANA-registered).
 
 ---
 
-## What is This?
+## What is this?
 
-Reusable Claude Code skills for project context, testing, architecture, code review, and workflow automation. Built on the FAF ecosystem (`application/vnd.faf+yaml` — IANA-registered).
+Reusable, championship-grade Claude Code skills for getting any project to **100% 🏆 AI-readiness** and shipping it well. Not a dumping ground — a curated bundle. Skills activate automatically via `/skillname` or natural language in Claude Code.
 
 ```bash
-# Install all skills
-git clone https://github.com/Wolfe-Jam/faf-skills.git
-cp -r faf-skills/skills/* ~/.claude/skills/
-```
+# Plugin marketplace (recommended)
+/plugin marketplace add Wolfe-Jam/faf-skills
+/plugin install faf@faf-skills
 
-Skills activate automatically via `/skillname` or natural language in Claude Code.
+# Or manual
+git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills/* ~/.claude/skills/
+```
 
 ---
 
 ## Skills
 
-> **Core** (the 100% on-ramp): `faf-context` · `faf-wizard` · `faf-expert` · `faf-go`. Everything below is the **full set**.
-
-### FAF Context
+### Core — the path to 100% 🏆
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
-| **faf-context** | `/faf-context` | Builder quickstart — hand the AI the underivable context (goal + 6Ws) to hit 100% AI-readiness, fast |
+| **faf-context** | `/faf-context` | The builder's quickstart **and the reference standard** — hand the AI the underivable context (goal + 6 Ws) to hit 100%, fast |
 | **faf-wizard** | `/faf-wizard` | Done-for-you `.faf` generator — point at any project, get a scored file back |
-| **faf-expert** | `/faf-expert` | The mechanic's manual — deep expertise on `.faf` files |
-| **faf-go** | `/faf-go` | Guided interview to 100% AI-readiness |
-| **faf-teacher** | — | Explains FAF concepts and The Reading Order |
-| **faf-score** | — | Measure AI-readiness (0–100%, tiered) |
-| **faf-enhance** | — | Guided improvement to reach higher tiers |
-| **faf-sync** | — | Bidirectional sync: `.faf` ↔ `CLAUDE.md` |
-| **faf-validate** | — | IANA format compliance checking |
-| **faf-migrate** | — | Upgrade old formats to current spec |
-| **faf-docs** | — | FAF documentation and reference |
-| **faf-git** | — | Git practices for `.faf` files |
-| **faf-platforms** | — | CLI vs MCP vs claude.ai comparison |
-| **faf-format-inspector** | — | Deep inspection of `.faf` file format details |
+| **faf-expert** | `/faf-expert` | The mechanic's manual — scoring internals, MCP config, bi-sync, the full 21-slot model |
+| **faf-go** | `/faf-go` | Guided AskUserQuestion interview to 100% AI-readiness |
 
-### MCP & Testing
+### Build & Test
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
-| **mcp-builder** | `/mcp-builder` | Guide for creating MCP servers |
-| **wjttc-builder** | `/wjttc-builder` | Auto-generate championship-grade test suites |
-| **wjttc-tester** | `/wjttc-tester` | F1-inspired testing with detailed reports |
+| **mcp-builder** | `/mcp-builder` | Build high-quality MCP servers (phased: research → implement → review → evaluate) |
+| **wjttc-builder** | `/wjttc-builder` | Generate WJTTC championship-grade test plans (F1 tiers + Signal Integrity) |
+| **wjttc-tester** | `/wjttc-tester` | Execute tests and file detailed WJTTC reports |
 
-### Architecture & Planning
-
-| Skill | Command | What it does |
-|-------|---------|-------------|
-| **sys-reqs-builder** | `/sys-reqs-builder` | Generate system requirements documents |
-| **prd-builder** | `/prd-builder` | Generate product requirements documents |
-| **arch-builder** | `/arch-builder` | Generate technical architecture documents |
-
-### Git & Code Review
+### Author & Maintain
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
-| **commit** | `/commit` | Context-aware git commits powered by FAF |
-| **pr** | `/pr` | Context-aware pull requests powered by FAF |
-| **review** | `/review` | Context-aware code reviews powered by FAF |
-
-### Workflow & Utilities
-
-| Skill | Command | What it does |
-|-------|---------|-------------|
-| **skill-creator** | `/skill-creator` | Guide for creating new Claude Code skills |
-| **gif-recorder** | `/gif-recorder` | Terminal GIF recordings using VHS |
-| **repo-maintainer** | `/repo-maintainer` | Repository health audits and cleanup |
-
-### n8n Automation
-
-| Skill | Command | What it does |
-|-------|---------|-------------|
-| **n8n-builder** | `/n8n-builder` | Build n8n workflows from scratch |
-| **n8n-debugger** | `/n8n-debugger` | Debug and fix broken n8n workflows |
+| **skill-creator** | `/skill-creator` | Author well-formed Claude Code skills (anatomy, progressive disclosure) |
+| **repo-maintainer** | `/repo-maintainer` | Multi-phase repository health audit → prioritized cleanup |
 
 ---
 
 ## Installation
 
-### Copy Individual Skills
-
 ```bash
-# Copy one skill
-cp -r skills/faf-expert ~/.claude/skills/
-
-# Copy a category
-cp -r skills/wjttc-* ~/.claude/skills/
-```
-
-### Install All Skills
-
-```bash
+# All skills
 git clone https://github.com/Wolfe-Jam/faf-skills.git
 cp -r faf-skills/skills/* ~/.claude/skills/
+
+# One skill
+cp -r faf-skills/skills/faf-expert ~/.claude/skills/
 ```
 
 Restart Claude Code. Skills activate automatically.
 
 ### Prerequisites
-
 ```bash
-# Required for FAF skills
-npm install -g faf-cli
-
-# Optional: MCP server
-npm install -g claude-faf-mcp
+npm install -g faf-cli           # required
+npm install -g claude-faf-mcp    # optional: MCP server
 ```
 
 ---
@@ -137,52 +90,32 @@ npm install -g claude-faf-mcp
 ```
 faf-skills/
 ├── README.md
-├── skills/               # Core on-ramp + full set
-│   ├── faf-context/      # Builder quickstart on-ramp
+├── skills/
+│   ├── faf-context/      # Builder quickstart + reference standard
 │   ├── faf-wizard/       # Done-for-you generator
 │   ├── faf-expert/       # Mechanic's manual
 │   ├── faf-go/           # Guided interview
-│   ├── faf-teacher/      # FAF education
-│   ├── faf-score/        # AI-readiness scoring
-│   ├── faf-enhance/      # Score improvement
-│   ├── faf-sync/         # Bidirectional sync
-│   ├── faf-validate/     # Format compliance
-│   ├── faf-migrate/      # Version upgrade
-│   ├── faf-docs/         # Documentation
-│   ├── faf-git/          # Git practices
-│   ├── faf-platforms/    # Platform comparison
-│   ├── faf-format-inspector/ # Format inspection
-│   ├── mcp-builder/      # MCP server creation
-│   ├── wjttc-builder/    # Test suite generator
-│   ├── wjttc-tester/     # F1-inspired testing
-│   ├── sys-reqs-builder/ # System requirements
-│   ├── prd-builder/      # Product requirements
-│   ├── arch-builder/     # Architecture docs
-│   ├── commit/           # Git commits
-│   ├── pr/               # Pull requests
-│   ├── review/           # Code reviews
-│   ├── skill-creator/    # Create new skills
-│   ├── gif-recorder/     # Terminal GIF recording
-│   ├── repo-maintainer/  # Repository health
-│   ├── n8n-builder/      # n8n workflow building
-│   └── n8n-debugger/     # n8n workflow debugging
-├── CONTRIBUTING.md
-├── TESTING.md
-├── install.sh
-├── project.faf
-└── LICENSE
+│   ├── mcp-builder/      # Build MCP servers
+│   ├── wjttc-builder/    # Test-plan generator (F1 tiers)
+│   ├── wjttc-tester/     # Test execution + reports
+│   ├── skill-creator/    # Author new skills
+│   └── repo-maintainer/  # Repository health audit
+├── scripts/
+│   └── build-skills-json.mjs   # generates skills.json (single source for skills.faf.one)
+├── skills.json           # the hub manifest (generated — do not hand-edit)
+├── CONTRIBUTING.md · TESTING.md · install.sh · project.faf · LICENSE
 ```
+
+> `skills.json` is **generated** from the SKILL.md frontmatters and verified in CI — never edit it by hand. After changing a skill, run `node scripts/build-skills-json.mjs`.
 
 ---
 
 ## Resources
 
-- **Website:** https://faf.one
-- **Skills hub:** https://skills.faf.one
-- **faf-cli:** https://github.com/Wolfe-Jam/faf-cli
+- **Website:** https://faf.one · **Skills hub:** https://skills.faf.one
+- **faf-cli:** https://github.com/Wolfe-Jam/faf-cli · **npm:** https://npmjs.com/package/faf-cli
 - **claude-faf-mcp:** https://github.com/Wolfe-Jam/claude-faf-mcp
-- **IANA Registration:** `application/vnd.faf+yaml`
-- **npm:** https://npmjs.com/package/faf-cli
+- **IANA:** `application/vnd.faf+yaml`
 
 ---
 
@@ -194,4 +127,4 @@ MIT License
 
 ---
 
-*By [@Wolfe-Jam](https://github.com/Wolfe-Jam)*
+*By [@Wolfe-Jam](https://github.com/Wolfe-Jam) · curated, not collected.*

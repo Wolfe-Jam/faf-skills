@@ -21,17 +21,11 @@ const SKILLS_DIR = join(ROOT, 'skills');
 // Unknown skills default to 'faf' with a warning — graceful, never breaks the build.
 const CATEGORY = {
   'faf-context': 'faf', 'faf-wizard': 'faf', 'faf-expert': 'faf', 'faf-go': 'faf',
-  'faf-teacher': 'faf', 'faf-score': 'faf', 'faf-enhance': 'faf', 'faf-sync': 'faf',
-  'faf-validate': 'faf', 'faf-migrate': 'faf', 'faf-docs': 'faf', 'faf-git': 'faf',
-  'faf-platforms': 'faf', 'faf-format-inspector': 'faf',
   'mcp-builder': 'mcp', 'wjttc-builder': 'mcp', 'wjttc-tester': 'mcp',
-  'sys-reqs-builder': 'docs', 'prd-builder': 'docs', 'arch-builder': 'docs',
-  'commit': 'dev', 'pr': 'dev', 'review': 'dev',
-  'skill-creator': 'utility', 'gif-recorder': 'utility', 'repo-maintainer': 'utility',
-  'n8n-builder': 'integration', 'n8n-debugger': 'integration',
+  'skill-creator': 'utility', 'repo-maintainer': 'utility',
 };
 // Render order for the hub (faf first; then the rest).
-const CATEGORY_ORDER = ['faf', 'mcp', 'docs', 'dev', 'integration', 'utility'];
+const CATEGORY_ORDER = ['faf', 'mcp', 'utility'];
 
 // Optional curated card taglines — override the mechanical first-sentence extraction
 // for skills where a positioning-led card beats the trigger description. Single place
