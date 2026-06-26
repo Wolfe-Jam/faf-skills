@@ -1,6 +1,6 @@
 ---
 name: faf-context
-description: Get your project to 100% 🏆 AI-readiness the fast way. The AI detects your whole stack automatically — you only supply the handful of things it CANNOT know (the project's goal and the human "why"). Helps a human hand the AI exactly the context it needs to write their best code, with the least typing. For time-conscious builders. See also faf-wizard for the done-for-you path, faf-expert for the mechanic's manual.
+description: Get your project to 100% 🏆 AI-readiness, fast — the AI auto-detects your stack and only asks for what it can't know (your goal and the human "why"). Least typing, maximum context. For time-conscious builders; feeds into faf-expert for depth.
 license: MIT
 ---
 
@@ -8,7 +8,7 @@ license: MIT
 
 **AI writes its best code when it has your project's context. This skill helps you hand it over — fast, and to 100%.**
 
-The whole point of `.faf` is one number: **AI-readiness, 0–100%.** At **100% 🏆** the AI starts every session already knowing your project — no re-explaining, no guessing. This skill is the *builder's* path to that number: minimum typing, maximum context.
+`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI (no bespoke manifest, no vendor lock-in). The whole point is one number: **AI-readiness, 0–100%.** At **100% 🏆** the AI starts every session already knowing your project — no re-explaining, no guessing. This skill is the *builder's* path to that number: minimum typing, maximum context.
 
 > For the done-for-you one-click path, use **faf-wizard**. To master the format, use **faf-expert**. This skill is the quickstart in between.
 
