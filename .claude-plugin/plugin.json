@@ -5,8 +5,8 @@
   "version": "1.1.0",
   "description": "Claude Code skills for AI-context, testing, and MCP development. IANA-registered format (application/vnd.faf+yaml). Create .faf project DNA, score AI-readiness, sync with CLAUDE.md, build MCP servers, generate test suites.",
   "author": {
-    "name": "wolfejam",
-    "email": "james@wolfejames.com",
+    "name": "FAF Foundation",
+    "email": "team@faf.one",
     "url": "https://faf.one"
   },
   "homepage": "https://skills.faf.one",
