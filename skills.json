@@ -57,7 +57,7 @@
   {
     "name": "faf-teacher",
     "category": "faf",
-    "description": "Explain what FAF is, why it matters, and how it works when user asks about FAF, project context, AI-readiness, The Reading Order, or persis…"
+    "description": "Explain what FAF is, why it matters, and how it works when user asks about FAF, project context, AI-readiness, The Reading Order, or persistent context"
   },
   {
     "name": "faf-validate",
@@ -72,7 +72,7 @@
   {
     "name": "mcp-builder",
     "category": "mcp",
-    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-desig…"
+    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools"
   },
   {
     "name": "wjttc-builder",

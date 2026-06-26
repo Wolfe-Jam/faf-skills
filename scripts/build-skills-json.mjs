@@ -33,6 +33,14 @@ const CATEGORY = {
 // Render order for the hub (faf first; then the rest).
 const CATEGORY_ORDER = ['faf', 'mcp', 'docs', 'dev', 'integration', 'utility'];
 
+// Optional curated card taglines — override the mechanical first-sentence extraction
+// for skills where a positioning-led card beats the trigger description. Single place
+// to curate; falls back to shorten(description) when a skill isn't listed here.
+// (Keeps the generator NON-DESTRUCTIVE: re-running never clobbers curated card copy.)
+const TAGLINE = {
+  'faf-context': '100% 🏆 AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
+};
+
 // Pull a frontmatter scalar (single-line) from the leading --- block.
 function frontmatter(md, key) {
   const m = md.match(/^---\n([\s\S]*?)\n---/);
@@ -43,13 +51,17 @@ function frontmatter(md, key) {
 }
 
 // Card descriptions want a short tagline, not the full trigger sentence.
-function shorten(desc, cap = 140) {
+// Prefer the whole first sentence; only truncate (on a WORD boundary, never
+// mid-word) if there's no sentence break within the cap.
+function shorten(desc, cap = 160) {
   if (!desc) return '';
-  // first sentence up to ". " (keep it tight), else hard cap.
   const dot = desc.indexOf('. ');
-  let s = dot > 0 && dot < cap ? desc.slice(0, dot) : desc;
-  if (s.length > cap) s = s.slice(0, cap - 1).trimEnd() + '…';
-  return s;
+  const firstSentence = dot > 0 ? desc.slice(0, dot) : desc;
+  if (firstSentence.length <= cap) return firstSentence;       // clean whole sentence
+  let s = desc.slice(0, cap);                                  // too long: cut back to a word boundary
+  const sp = s.lastIndexOf(' ');
+  if (sp > 40) s = s.slice(0, sp);
+  return s.trimEnd() + '…';
 }
 
 const dirs = readdirSync(SKILLS_DIR).filter((d) => {
@@ -62,7 +74,7 @@ for (const dir of dirs) {
   let md;
   try { md = readFileSync(path, 'utf8'); } catch { console.warn(`⚠ no SKILL.md in ${dir} — skipped`); continue; }
   const name = frontmatter(md, 'name') || dir;
-  const description = shorten(frontmatter(md, 'description'));
+  const description = TAGLINE[name] || shorten(frontmatter(md, 'description'));
   let category = CATEGORY[name];
   if (!category) { console.warn(`⚠ no category mapping for "${name}" — defaulting to "faf"`); category = 'faf'; }
   skills.push({ name, category, description });
