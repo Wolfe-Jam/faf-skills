@@ -1,5 +1,11 @@
 # FAF Skills
 
+[![skills.faf.one](https://img.shields.io/badge/skills-faf.one-FF6B35)](https://skills.faf.one)
+[![Open SKILL.md format](https://img.shields.io/badge/format-SKILL.md-1a1a1a)](https://agentskills.io)
+[![.faf — IANA registered](https://img.shields.io/badge/.faf-IANA%20registered-00D4D4)](https://www.iana.org/assignments/media-types/application/vnd.faf+yaml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf-skills?style=flat&color=FF6B35)](https://github.com/Wolfe-Jam/faf-skills/stargazers)
+
 **A Skill a Day — one genuinely-tested skill, daily this week.**
 
 Quality over quantity, and proof over promises. Every skill ships only after it's **run end-to-end and receipt-proven** — not just written. `faf-context` is the reference standard the rest conform to. Built on the FAF ecosystem (`application/vnd.faf+yaml` — IANA-registered).
