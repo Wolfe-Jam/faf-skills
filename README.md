@@ -36,7 +36,7 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 | **skill-creator** | Author Claude Code skills to the FAF Skill Standard | …a full create→validate→package run |
 | **repo-maintainer** | Multi-phase repository health audit | …a live repo audit runs |
 
-Each is held to the **FAF Skill Standard** (accurate · on-brand · genuinely procedural) and gated before it goes live. The hub grows daily; every entry is earned.
+Each is held to the **FAF Skill Standard** (accurate · on-brand · genuinely procedural) and gated before it goes live. The Skills Site grows daily; every entry is earned.
 
 ---
 
@@ -53,7 +53,7 @@ Each is held to the **FAF Skill Standard** (accurate · on-brand · genuinely pr
 | 1% | Red | ○ |
 | 0% | White | ♡ |
 
-> **✪ = 🏆 = 100%** — the same Trophy, two surfaces: **✪** is the FAF-at-Work mark (code · skills · CLI · this hub); **🏆** is the social mark (X · blogs).
+> **✪ = 🏆 = 100%** — the same Trophy, two surfaces: **✪** is the FAF-at-Work mark (code · skills · CLI · the Skills Site); **🏆** is the social mark (X · blogs).
 
 ---
 
@@ -70,7 +70,7 @@ npm install -g claude-faf-mcp    # optional: MCP server
 
 ## Resources
 
-- **Website:** https://faf.one · **Skills hub:** https://skills.faf.one
+- **Website:** https://faf.one · **Skills Site:** https://skills.faf.one
 - **faf-cli:** https://github.com/Wolfe-Jam/faf-cli · **npm:** https://npmjs.com/package/faf-cli
 - **claude-faf-mcp:** https://github.com/Wolfe-Jam/claude-faf-mcp
 - **IANA:** `application/vnd.faf+yaml`
