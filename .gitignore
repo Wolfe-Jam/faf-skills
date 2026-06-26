@@ -48,3 +48,6 @@ temp/
 
 # FAF specific
 *.faf.backup*
+
+# Skill-a-Day staging — proven skills graduate one/day into skills/
+.staging/
