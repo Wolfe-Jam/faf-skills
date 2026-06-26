@@ -1,6 +1,7 @@
 ---
 name: wjttc-builder
-description: Auto-generate WJTTC (Championship-Grade) test suites for any project. This skill analyzes codebases, identifies critical test tiers (Brake/Engine/Aero), creates comprehensive test plans, and generates executable test files. Use when starting testing on a new project, creating test documentation, or building regression test suites.
+description: PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project. Analyzes the codebase, classifies components across the WJTTC five tiers (Brake · Engine · Aero · Tyre · Pit), writes a tiered test plan, and scaffolds executable test files. This is the BUILDER — it plans and generates; use wjttc-tester to execute the suite and write reports.
+license: MIT
 ---
 
 # WJTTC Builder - Championship Test Suite Generator
@@ -175,9 +176,11 @@ Automated CI is supporting infrastructure. **The human + AI conversational audit
 - When fixing a bug (write failing test first)
 - Building regression test suites
 
-## Test Tier System
+## Test Tier System — the WJTTC Five
 
-### Tier 1: BRAKE SYSTEMS 🚨 (Critical)
+WJTTC has **five** tiers: **Brake · Engine · Aero · Tyre · Pit**. The builder classifies every component into one of them. (`faf wjttc` audits a suite for the same five and flags untiered tests — name your tests with a tier word so the audit can place them.)
+
+### Tier 1: BRAKE (Safety — Critical)
 **When failure = catastrophic consequences**
 
 Identify and test:
@@ -187,7 +190,7 @@ Identify and test:
 - API key/credential exposure
 - Backup/restore functionality
 
-### Tier 2: ENGINE SYSTEMS ⚡ (Core Functionality)
+### Tier 2: ENGINE (Core Functionality)
 **When failure = poor experience or incorrect results**
 
 Identify and test:
@@ -197,7 +200,7 @@ Identify and test:
 - Integration points
 - Performance benchmarks
 
-### Tier 3: AERODYNAMICS 🏁 (Polish)
+### Tier 3: AERO (Polish)
 **When failure = minor inconvenience**
 
 Identify and test:
@@ -205,6 +208,24 @@ Identify and test:
 - Error message formatting
 - Optional features
 - Documentation accuracy
+
+### Tier 4: TYRE (Live — the Real Road)
+**Where the rubber meets the road: durability under real conditions over time**
+
+Identify and test:
+- Edge cases and boundary inputs against the real surface (live data shapes, large payloads)
+- Wear and durability — long-running sessions, repeated calls, soak/load behavior
+- Degraded conditions — slow networks, partial data, rate limits, retries
+- Resource leaks (memory, file handles, connections) under sustained use
+
+### Tier 5: PIT (Operational — When Needed)
+**The pit stop: getting it onto the track and keeping it serviceable**
+
+Identify and test:
+- Integration and end-to-end wiring across components
+- Deploy / release checks (build, packaging, smoke tests, migrations)
+- Ops health — startup/shutdown, config loading, secrets present, observability
+- Rollback and recovery paths
 
 ## Test Suite Generation Process
 
@@ -219,12 +240,14 @@ To understand what to test:
 
 ### Step 2: Categorize by Tier
 
-For each identified component, assign a tier:
+For each identified component, assign one of the five tiers:
 
 ```
 Tier 1 (Brake): Authentication, data writes, payments, security
 Tier 2 (Engine): Core features, API responses, business logic
-Tier 3 (Aero): UI polish, optional features, edge cases
+Tier 3 (Aero):  UI polish, optional features, error formatting
+Tier 4 (Tyre):  Edge cases, durability, soak/load, degraded conditions
+Tier 5 (Pit):   Integration, deploy/release checks, ops health, rollback
 ```
 
 ### Step 3: Generate Test Plan
@@ -233,13 +256,14 @@ Create a WJTTC-TEST-SUITE.md file with:
 
 1. **Header** - Project name, version, date, tester
 2. **Test Summary** - Objectives and pass rate targets
-3. **Tier 1 Tests** - All critical tests with pass/fail tables
-4. **Tier 2 Tests** - Core functionality tests
-5. **Tier 3 Tests** - Polish and edge case tests
-6. **Edge Cases** - Error handling, network issues
-7. **Performance Targets** - Timing benchmarks
-8. **Execution Log** - Checklist for running tests
-9. **Championship Certification** - Pass rate to tier mapping
+3. **Tier 1 (Brake) Tests** - All critical/safety tests with pass/fail tables
+4. **Tier 2 (Engine) Tests** - Core functionality tests
+5. **Tier 3 (Aero) Tests** - Polish and formatting tests
+6. **Tier 4 (Tyre) Tests** - Edge cases, durability, degraded conditions
+7. **Tier 5 (Pit) Tests** - Integration, deploy/ops, rollback checks
+8. **Performance Targets** - Timing benchmarks
+9. **Execution Log** - Checklist for running tests
+10. **Championship Certification** - Pass rate to tier mapping
 
 ### Step 4: Generate Executable Tests (Optional)
 
@@ -255,21 +279,28 @@ If requested, generate test files:
 ```
 project/
 └── tests/
-    ├── WJTTC-TEST-SUITE.md    # Test plan document
-    ├── test_tier1_critical.js  # Executable tests (optional)
-    ├── test_tier2_core.js
-    └── test_tier3_polish.js
+    ├── WJTTC-TEST-SUITE.md     # Test plan document
+    ├── test_tier1_brake.js     # Executable tests (optional)
+    ├── test_tier2_engine.js
+    ├── test_tier3_aero.js
+    ├── test_tier4_tyre.js
+    └── test_tier5_pit.js
 ```
 
 ### Championship Scoring
 
-| Pass Rate | Tier | Badge |
-|-----------|------|-------|
-| 95-100% | Championship | 🏆 |
-| 85-94% | Podium | ★ |
-| 70-84% | Points | ◆ |
-| 55-69% | Midfield | ◇ |
-| <55% | DNF | ○ |
+Pass rate maps to the canonical FAF tier system (same scale everywhere — `~/FAF/cli/src/core/tiers.ts`):
+
+| Score | Tier | Symbol | Status |
+|-------|------|--------|--------|
+| 100% | Trophy | 🏆 | Perfect — Gold Code |
+| 99% | Gold | ★ | Exceptional |
+| 95% | Silver | ◆ | Top tier |
+| 85% | Bronze | ◇ | Production ready |
+| 70% | Green | ● | Solid foundation |
+| 55% | Yellow | ● | Needs improvement |
+| 1% | Red | ○ | Major work needed |
+| 0% | White | ♡ | Empty |
 
 ## Quick Generation Command
 
@@ -299,9 +330,13 @@ To generate a test suite for the current project:
 \`\`\`
 ```
 
-## Integration with Existing WJTTC-Tester
+## Integration — where the builder hands off
 
-This skill generates the test plan. Use the `wjttc-tester` skill to execute tests and generate reports.
+This skill is the **builder**: it plans and generates. It does **not** run the suite.
+
+- **Execute + report** → use the `wjttc-tester` skill (it runs tests, finds bugs, writes WJTTC reports).
+- **Audit tier balance** → `faf wjttc` classifies an existing suite across the five tiers and flags untiered tests (`--strict` exits non-zero on any untiered; `--json` for CI). Name your generated tests with a tier word (brake/engine/aero/tyre/pit) so the audit can place them.
+- **Wire CI receipts** → `faf taf setup` installs the TAF receipt printer so each run leaves a verifiable record.
 
 ---
 

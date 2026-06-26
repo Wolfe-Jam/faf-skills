@@ -1,48 +1,14 @@
 ---
 name: faf-go
 description: Guided interview to Gold Code (100% AI-Readiness). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
+license: MIT
 ---
 
-# FAF Go - Guided Path to Gold Code
+# FAF Go — Guided Path to 100% 🏆
 
 **"Just type /faf-go, answer questions till you're done. 100% target."**
 
----
-
-## The package.json for Context
-
-```
-project/
-├── package.json     ← npm reads this
-├── project.faf      ← AI reads this
-├── README.md
-└── src/
-```
-
-> "package.json wasn't built for this, .faf was"
-> — .faf Inventor
-
-> "package.json gives me a list of dependencies,
-> .faf shows me how to use them"
-> — Claude Code (Anthropic)
-
-Once you get used to it, it's just another file helping you code.
-
----
-
-## Foundation Layer Status
-
-When activated, FAF Go connects to your project's foundation:
-
-```
-🔗 CONNECTING TO FOUNDATION
-   Reading: project.faf
-   Syncing: CLAUDE.md ←→ .faf
-   Status: ALIGNED
-
-✅ Your CLAUDE.md is synced at the foundational layer
-   Context drift: PREVENTED
-```
+`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **faf-cli scores on 21 slots**; your `app_type` selects which are *active*, and **100% 🏆 = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
 
 ## When to Use This Skill
 
@@ -52,7 +18,6 @@ Activate when:
 - User has incomplete project context
 - After `faf init` to fill in missing fields
 - User says "help me with my .faf"
-- CLAUDE.md needs fresh context from foundation
 
 ## Integration with Claude Code
 
@@ -80,7 +45,7 @@ When `multiSelect: true`, user can pick 2+ options. Results are joined with " + 
 Run faf score to understand current position:
 
 ```bash
-faf score --breakdown
+faf score --verbose
 ```
 
 Or use the structured output:
@@ -110,7 +75,7 @@ For each missing field, use Claude Code's AskUserQuestion tool:
 9. `stack.backend` - Backend framework
 10. `human_context.where` - Environment
 11. `human_context.when` - Timeline/phase
-12. `human_context.how` - AI assistance preferences
+12. `human_context.how` - How the project is built (sourced from the stack)
 
 ### Step 3: Apply Answers
 
@@ -285,7 +250,7 @@ User: /faf-go
 
 Claude: Let me check your current .faf status.
 
-[Runs: faf score --breakdown]
+[Runs: faf score --verbose]
 
 Your score is 45%. Let's get you to Gold Code!
 
@@ -335,32 +300,28 @@ This returns structured JSON that can be processed programmatically.
 
 ## On Completion
 
-When Gold Code is achieved:
+When 100% 🏆 is achieved:
 
 ```
-🏆 GOLD CODE ACHIEVED - 100%
+🏆 100% — Gold Code
 
-✅ project.faf: Complete
-✅ CLAUDE.md: Synced from foundation
-✅ Context drift: PREVENTED
-
-Your AI now has complete, aligned context.
-Foundation layer is locked in.
+project.faf: complete
+CLAUDE.md:   synced from .faf
 ```
+
+Optionally run `faf sync` to emit CLAUDE.md / AGENTS.md from the .faf. Your AI now starts every session with complete project context.
 
 ## Related Skills
 
-- `/faf-status` - Quick foundation health check
-- `/faf-score` - Score your foundation
-- `/faf-sync` - Bi-sync .faf ←→ CLAUDE.md
+- **faf-context** — the builder's quickstart: hand the AI what it needs to hit 100%, fast
+- **faf-wizard** — done-for-you, one-click .faf for any project
+- **faf-expert** — master the format: scoring internals, MCP config, bi-sync, the full 21-slot model
 
 ---
-
-## The Foundation Promise
 
 > .faf is the format. project.faf is the file.
-> 100% 🏆 AI Readiness is the result.
+> 100% 🏆 AI-Readiness is the result.
 
 ---
 
-*FAF Foundation Layer - Native to Claude Code*
+*MIT · part of the FAF skill family (faf-context · faf-wizard · faf-expert). Native to Claude Code.*

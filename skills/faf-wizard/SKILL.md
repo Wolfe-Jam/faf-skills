@@ -1,6 +1,7 @@
 ---
 name: faf-wizard
 description: Done-for-you .faf generator. Creates AI-context DNA for ANY project — new, legacy, famous, or forgotten. Detects stack, mines existing context, generates project.faf, scores AI-readiness. Use when onboarding AI to any codebase. Works with Claude, Cursor, Gemini CLI, WARP, Windsurf. See also faf-expert for the mechanic's manual.
+license: MIT
 ---
 
 # FAF Wizard - Done For You
@@ -64,7 +65,7 @@ Pull signals from what exists:
 
 ### Step 3: Generate project.faf
 
-Create focused AI context at project root using Mk4 33-slot structure:
+Create focused AI context at project root. **faf-cli scores on 21 slots** — `app_type` selects which are *active*; the rest are `slotignored` (never counted against you). Detection fills the stack; the human supplies the underivable bits (`project.name`/`goal` + the 6 Ws). `human_context.how` is **how it's built** (sourced from the stack), not AI preferences.
 
 ```yaml
 faf_version: "3.0"
@@ -80,17 +81,17 @@ human_context:
   why: Learning project, portfolio piece
   where: Vercel (serverless)
   when: Started March 2026
-  how: TypeScript, Express, PostgreSQL
+  how: TypeScript · Express · PostgreSQL
 
 stack:
   frontend: react
-  css_framework: tailwind
   backend: express
   api_type: rest
   runtime: node
   database: postgresql
-  hosting: vercel
+  deployment: vercel
   build: vite
+  testing: vitest
   cicd: github-actions
 ```
 
@@ -100,30 +101,33 @@ Keep under 200 lines. Only what changes AI behavior.
 
 ```
 Generated: project.faf
-AI-Readiness: 87% 🥉 Bronze — Production ready
+AI-Readiness: 87% ◇ Bronze — Production ready
 
 Filled: 9/11 active slots
-Ignored: 22 slots (not applicable for this project type)
+slotignored: the slots that don't apply to this app_type (never counted)
 
-To reach Silver (95%):
-  - Add deployment details (+5%)
-  - Document API patterns (+3%)
+To reach 100% 🏆:
+  - Add deployment details
+  - Document the testing strategy
+  - Fill the last Ws the AI couldn't source
 ```
 
-## Tier System (Mk4)
+**The target is 100% 🏆 — Bronze is the floor, not the finish line.** At 100% every *active* slot is filled and the AI starts every session already knowing the project.
 
-| Score | Tier | Emoji |
-|-------|------|-------|
-| 100% | Trophy | 🏆 |
-| 99%+ | Gold | 🥇 |
-| 95%+ | Silver | 🥈 |
-| 85%+ | Bronze | 🥉 |
-| 70%+ | Green | 🟢 |
-| 55%+ | Yellow | 🟡 |
-| > 0% | Red | 🔴 |
-| 0% | White | 🤍 |
+## Tier System
 
-**Target: 🥉 Bronze (85%+).** This is where AI collaboration becomes productive.
+| Score | Tier | Symbol | Status |
+|-------|------|--------|--------|
+| 100% | Trophy | 🏆 | Perfect — Gold Code |
+| 99% | Gold | ★ | Exceptional |
+| 95% | Silver | ◆ | Top tier |
+| 85% | Bronze | ◇ | Production ready |
+| 70% | Green | ● | Solid foundation |
+| 55% | Yellow | ● | Needs improvement |
+| 1% | Red | ○ | Major work needed |
+| 0% | White | ♡ | Empty |
+
+**Target: 100% 🏆.** Bronze (◇ 85%) is the floor where AI collaboration becomes productive — Trophy is the goal: every *active* slot filled, the AI fully grounded from session one.
 
 ## Migration
 
@@ -143,5 +147,5 @@ Generated files must:
 ## Credentials
 
 - **IANA Media Type:** `application/vnd.faf+yaml`
-- **Anthropic MCP:** Registry #2759 (merged)
+- In the **original Anthropic MCP ecosystem** (#2759, merged Oct 2025)
 - **Website:** https://faf.one

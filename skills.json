@@ -22,17 +22,17 @@
   {
     "name": "mcp-builder",
     "category": "mcp",
-    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools"
+    "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools, including…"
   },
   {
     "name": "wjttc-builder",
     "category": "mcp",
-    "description": "Auto-generate WJTTC (Championship-Grade) test suites for any project"
+    "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project"
   },
   {
     "name": "wjttc-tester",
     "category": "mcp",
-    "description": "Automated test suite generator and QA expert"
+    "description": "F1-inspired test EXECUTOR + reporter"
   },
   {
     "name": "repo-maintainer",
@@ -42,6 +42,6 @@
   {
     "name": "skill-creator",
     "category": "utility",
-    "description": "Guide for creating effective skills"
+    "description": "Guide for creating effective skills, including the FAF Skill Standard conventions every skill that carries the FAF name must meet"
   }
 ]

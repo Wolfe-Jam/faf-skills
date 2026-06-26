@@ -1,659 +1,178 @@
 ---
 name: wjttc-tester
-description: Automated test suite generator and QA expert. Creates test plans, writes test files, finds bugs, and generates detailed reports. Use when testing any project, building regression suites, or running QA audits. Supports any language and framework.
+description: F1-inspired test EXECUTOR + reporter. Runs a test plan, finds and reproduces bugs, audits suite signal integrity, then files a WJTTC report (Brake/Engine/Aero/Tyre/Pit) with a tier verdict. Use when you need to test code, validate functionality, reproduce a failure, or produce a test report. For PLANNING/GENERATING test suites and files, use wjttc-builder instead — this skill runs and reports.
 license: Complete terms in LICENSE.txt
 ---
 
 # WJTTC Championship Tester
 
-## Philosophy
-
 **"We break things so others never have to know they were broken."**
 
-Apply Formula 1 engineering standards to software testing. When brakes must work flawlessly at 200mph, so must our code work flawlessly in production.
+Apply Formula 1 standards to software testing. When brakes must work flawlessly at 200mph, so must the code in production. This skill **executes** test plans and **files reports** — it is the driver, not the engineer. To plan and generate the suite, use **wjttc-builder**.
 
-## When to Use This Skill
+## When to use this skill
 
-Activate this skill when:
-- Testing new features or code changes
-- Finding and documenting bugs
-- Validating edge cases and error handling
-- Performing regression testing
-- Creating WJTTC test reports
-- Reviewing code for potential failures
-- Stress testing performance
-- Validating data integrity
-- Testing integrations and APIs
-- Documenting test results
+- Running an existing or just-written test plan and reporting outcomes
+- Reproducing and root-causing a reported bug
+- Edge-case / error-handling / regression validation
+- Auditing whether the suite's CI signal can still be trusted
+- Producing a WJTTC report with a tier verdict
 
-## WJTTC Testing Tiers (F1-Inspired)
+## The WJTTC five tiers
 
-### Tier 1: BRAKE SYSTEMS 🚨 (Life-Critical)
-**When failure = catastrophic consequences**
+Triage every test by blast radius. The first three set severity; Tyre and Pit cover durability and the release gate.
 
-**Examples:**
-- File corruption or data loss
-- Security vulnerabilities
-- Authentication/authorization bypass
-- Payment processing errors
-- Data deletion without confirmation
-- Backup/restore failures
+| Tier | Symbol | Meaning | Examples |
+|------|--------|---------|----------|
+| **Brake** | 🚨 | Life-critical — failure is catastrophic | data loss, auth bypass, payment errors, destructive ops without confirm |
+| **Engine** | ⚡ | Performance-critical — wrong results / poor UX | API accuracy, data transforms, calculations, format compliance, perf |
+| **Aero** | 🏁 | Polish & edge cases — minor inconvenience | UI quirks, rare message formatting, optional-feature edges, docs |
+| **Tyre** | 🛞 | Durability under load — degradation over time | stress/volume, concurrency, memory growth, large inputs |
+| **Pit** | 🔧 | Release gate — the stop that lets you go | smoke/regression suite, CI green, the WJTTC report filed |
 
-**Testing Approach:**
-- Zero tolerance for failures
-- Test ALL edge cases
-- Simulate worst-case scenarios
-- Validate rollback mechanisms
-- Document every failure mode
+Test Brake first. If the brakes don't work, nothing else matters.
 
-### Tier 2: ENGINE SYSTEMS ⚡ (Performance-Critical)
-**When failure = poor experience or incorrect results**
+## Step 0 — Signal Integrity pre-audit (run BEFORE adding/running anything new)
 
-**Examples:**
-- API response accuracy
-- Data transformation correctness
-- Formula calculations
-- File format compliance
-- Cross-platform compatibility
-- Performance benchmarks
+**Red CI is a contract: it must always mean "stop, look, fix."** A suite with high coverage but flaky reds is *less* trustworthy than a smaller suite with zero false alarms — because the team has stopped reading the reds. Fix the signal before you add more tests.
 
-**Testing Approach:**
-- Validate core functionality
-- Test with real-world data
-- Measure performance metrics
-- Check error handling
-- Verify expected outputs
-
-### Tier 3: AERODYNAMICS 🏁 (Polish & Edge Cases)
-**When failure = minor inconvenience**
-
-**Examples:**
-- UI/UX edge cases
-- Rare error message formatting
-- Optional feature quirks
-- Documentation accuracy
-- Non-critical warnings
-
-**Testing Approach:**
-- Test common edge cases
-- Validate user experience
-- Check for graceful degradation
-- Document known limitations
-
-## Test Execution Process
-
-### Step 0: Signal Integrity Pre-Audit (Run BEFORE adding any new tests)
-
-**Doctrine: Red CI is a contract — it must always mean "stop, look, fix." If the existing reds don't, fix the signal before adding more tests.**
-
-Before validating coverage or running new tests, audit the suite's existing signal trust. A test suite with high coverage but flaky reds is **less trustworthy** than a smaller suite with zero false alarms — because the team has stopped reading the reds.
-
-**Audit method:** classify the last 30 days of CI failures into three buckets:
+**Method** — classify the last 30 days of CI failures:
 
 | Bucket | Definition | Verdict |
 |--------|-----------|---------|
-| **Real bug** | Red corresponded to an actual code defect; fixed by a code change | ✓ Signal worked |
-| **Flake** | Red was timing/network/concurrency noise; passed on rerun, no code change | ✗ Test design defect |
-| **Infra** | Red was missing secret, runner image change, dep upstream — not the code | ✗ Workflow design defect |
+| **Real bug** | Red mapped to a real defect; fixed by a code change | ✓ Signal worked |
+| **Flake** | Timing/network/concurrency noise; passed on rerun, no code change | ✗ Test design defect |
+| **Infra** | Missing secret, runner image change, upstream dep — not the code | ✗ Workflow design defect |
 
-**Signal Integrity Score:**
+**Signal Integrity Score:** `SI = Real bugs / (Real bugs + Flakes + Infra) × 100`
 
-```
-SI = (Real bugs) / (Real bugs + Flakes + Infra) × 100
-```
+| SI % | Verdict | Action |
+|------|---------|--------|
+| 100% | 🏆 | Maintain — exemplary signal |
+| 95–99% | ★ Championship | Annotate any flake immediately |
+| 85–94% | ◇ Acceptable | Schedule the flake-class fix this sprint |
+| 70–84% | ● Eroding | Stop adding tests — fix flakes first |
+| <70% | ○ Dead signal | Block merges until signal restored |
 
-| SI % | Verdict | Required Action |
-|------|---------|-----------------|
-| 100% | TROPHY 🏆 | Maintain — exemplary signal |
-| 95-99% | Championship | Annotate any flake immediately |
-| 85-94% | Acceptable | Schedule flake-class fix this sprint |
-| 70-84% | Eroding | Stop adding tests; fix flakes first |
-| <70% | DEAD SIGNAL | Block all merges until signal restored |
+**Eliminate on sight:** hard absolute-time perf asserts on shared runners (`expect(t).toBeLessThan(30)`) → move to a non-gating workflow; network calls in the main suite → mock at the boundary; concurrency tests without explicit ordering; secret-dependent steps that hard-fail when missing → grey-skip.
 
-**Common flake sources to eliminate on sight:**
-- Hard absolute-time perf assertions on shared CI runners (`expect(time).toBeLessThan(30)`) — move to non-gating workflow
-- Network-dependent tests in main suite — mock at the boundary
-- Concurrency tests without explicit ordering
-- Secret-dependent steps that fail when missing — grey-skip instead
+**The inverse rule:** green CI that passes while something is broken is equally a violation. If a real bug shipped despite green, write the regression test BEFORE the fix lands.
 
-**The inverse rule:** Green CI that passes when something is broken is equally a contract violation. If a real bug shipped despite green CI, write the regression test BEFORE the fix lands.
+**The conversation is the real gate.** CI is supporting infrastructure for the human + AI audit; flaky CI wastes the audit's bandwidth. Signal Integrity keeps CI worthy of the conversation.
 
-**The conversation is the real gate.** Automated CI is supporting infrastructure that serves the human + AI audit. Flaky CI wastes the audit's bandwidth. Signal Integrity exists to keep CI worthy of the conversation.
+## Execution loop
 
-### Step 1: Understand What to Test
+1. **Scope** — what should it do? happy path, edges, failure modes, perf targets, tier of each.
+2. **Audit signal** (Step 0) before trusting or extending the suite.
+3. **Run** each test: set up, prepare data, execute, observe actual vs expected, record pass/fail/blocked, capture evidence on failure.
+4. **Reproduce** every failure deterministically; root-cause it; note the fix.
+5. **Tier coverage check** — confirm every test is tiered:
+   ```bash
+   faf wjttc --path tests          # audit tier coverage (vendor-neutral)
+   faf wjttc --strict --json       # CI gate: non-zero if any test is untiered
+   ```
+6. **Report** — file the WJTTC report (below), then surface the tier verdict.
 
-**Questions to Answer:**
-- What is the feature/code supposed to do?
-- What are the happy path scenarios?
-- What are the edge cases?
-- What could go wrong?
-- What data formats are expected?
-- What are the performance requirements?
+## WJTTC report format
 
-### Step 2: Create Test Plan
-
-**Define:**
-- Test objectives
-- Test scope (what's in/out)
-- Test tier (Brake/Engine/Aero)
-- Test scenarios (happy + edge + error)
-- Expected results
-- Pass/fail criteria
-
-### Step 3: Execute Tests
-
-**For Each Test:**
-1. Set up test environment
-2. Prepare test data
-3. Execute test steps
-4. Observe actual results
-5. Compare to expected results
-6. Document outcome (pass/fail/blocked)
-7. Capture errors/screenshots if failed
-
-### Step 4: Document Results
-
-**Create WJTTC Report** (see format below)
-
-## Test Scenario Types
-
-### 1. Happy Path Testing
-**Test the ideal, expected flow**
-
-```yaml
-Scenario: User creates new .faf file
-Given: Valid project directory with package.json
-When: User runs `faf init`
-Then:
-  - .faf file is created
-  - File contains valid YAML
-  - Project metadata is detected
-  - Success message is displayed
-```
-
-### 2. Edge Case Testing
-**Test boundary conditions and unusual inputs**
-
-**Examples:**
-- Empty strings
-- Very long strings (>1000 chars)
-- Special characters (unicode, emoji, etc.)
-- Null/undefined values
-- Empty arrays/objects
-- Maximum/minimum numeric values
-- Zero/negative numbers
-- Duplicate data
-- Concurrent operations
-
-### 3. Error Handling Testing
-**Test that errors are handled gracefully**
-
-**Examples:**
-- File doesn't exist
-- Permission denied
-- Network timeout
-- Invalid input format
-- Missing required fields
-- Malformed JSON/YAML
-- Circular references
-- Out of memory
-- Disk full
-
-### 4. Integration Testing
-**Test interactions between components**
-
-**Examples:**
-- API calls with different responses
-- Database connections
-- File system operations
-- External service dependencies
-- Authentication flows
-- Data synchronization
-
-### 5. Performance Testing
-**Test speed, memory, and scalability**
-
-**Metrics to Test:**
-- Execution time (<50ms target for FAF operations)
-- Memory usage
-- File size handling (small, medium, large)
-- Concurrent operations
-- Load handling (100, 1000, 10000 items)
-
-### 6. Regression Testing
-**Test that old functionality still works**
-
-**After:**
-- Code refactoring
-- Dependency updates
-- New feature additions
-- Bug fixes
-
-## WJTTC Report Format
-
-### Standard Report Template
+Save reports to **`./wjttc-reports/`** in the project under test (or a path the user specifies). Never write to an absolute/personal path. Name files `YYYY-MM-DD-{project}-{feature}-tests.yaml`.
 
 ```yaml
 ---
 # WJTTC Test Report
 project: "project-name"
 feature: "feature-being-tested"
-tester: "wolfejam (via Claude)"
-date: "2025-10-20"
-tier: "Tier 2 - Engine Systems"
+date: "2026-06-26"
+tier: "Engine"            # Brake | Engine | Aero | Tyre | Pit
+result: "PASS"            # PASS | FAIL | BLOCKED
+environment: "OS, runtime version, key deps"
 ---
 
-## Test Summary
+## Summary
+objective: What was tested
+totals: { total: 25, passed: 23, failed: 2, blocked: 0, pass_rate: "92%" }
 
-**Objective:** [What was being tested]
-**Result:** [PASS / FAIL / BLOCKED]
-**Duration:** [Time taken to run tests]
-**Environment:** [OS, Node version, dependencies, etc.]
+## Failures
+- name: "Long-string handling"
+  tier: "Engine ⚡"
+  status: "FAIL"
+  steps: ["...", "..."]
+  expected: "Handle gracefully"
+  actual: "Crash"
+  error: "RangeError: ..."
+  root_cause: "Unbounded buffer"
+  fix: "Cap input length / stream"
 
-## Test Statistics
+## Edge cases
+- { case: "Empty string", input: "''", expected: "error", actual: "error", status: "PASS" }
+- { case: "Unicode", input: "🏎️", expected: "stored", actual: "stored", status: "PASS" }
 
-- **Total Tests:** 25
-- **Passed:** 23
-- **Failed:** 2
-- **Blocked:** 0
-- **Pass Rate:** 92%
+## Performance
+- { op: "file read",  target: "<50ms", actual: "18ms", status: "PASS" }
+- { op: "parse YAML", target: "<50ms", actual: "12ms", status: "PASS" }
 
-## Test Scenarios
+## Bugs found
+- id: 1
+  title: "..."
+  severity: "Brake"      # tier doubles as severity
+  reproducibility: "Always"
+  impact: "Who is affected, how serious"
+  fix: "..."
 
-### 1. [Scenario Name]
+## Coverage
+tested:     ["happy path", "edges", "error handling", "perf"]
+not_tested: ["concurrent access", "files >100MB"]
 
-**Tier:** Tier 1 - Brake Systems 🚨
-**Status:** ✅ PASS
-**Duration:** 15ms
-
-**Test Steps:**
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
-
-**Expected Result:**
-[What should happen]
-
-**Actual Result:**
-[What actually happened]
-
-**Evidence:**
-```
-[Code output, logs, screenshots]
-```
-
----
-
-### 2. [Scenario Name]
-
-**Tier:** Tier 2 - Engine Systems ⚡
-**Status:** ❌ FAIL
-**Duration:** 250ms
-
-**Test Steps:**
-1. [Step 1]
-2. [Step 2]
-
-**Expected Result:**
-[What should happen]
-
-**Actual Result:**
-[What actually happened - THE FAILURE]
-
-**Error Details:**
-```
-Error: [Actual error message]
-Stack trace: [If applicable]
+## Verdict
+tier: "◆ Silver"          # from the tier table below
+to_next: ["Fix 2 failing Engine tests", "Add Tyre concurrency tests"]
 ```
 
-**Root Cause:**
-[Analysis of why it failed]
+## Tier verdict
 
-**Recommended Fix:**
-[How to fix the issue]
+Map the pass rate (or SI score) to the single canonical FAF tier ladder. No second ladder, no medals.
 
----
+| Score | Tier | Symbol |
+|-------|------|--------|
+| 100% | Trophy | 🏆 |
+| 99% | Gold | ★ |
+| 95% | Silver | ◆ |
+| 85% | Bronze | ◇ |
+| 70% | Green | ● |
+| 55% | Yellow | ● |
+| 1% | Red | ○ |
+| 0% | White | ♡ |
 
-## Edge Cases Tested
+The FAF score is **deterministic** — same input, same score. A test report should be just as falsifiable: every verdict traces to a reproducible run. **FAF doesn't lie.**
 
-| Case | Input | Expected | Actual | Status |
-|------|-------|----------|--------|--------|
-| Empty string | `""` | Error message | Error message | ✅ PASS |
-| Null value | `null` | Error message | Error message | ✅ PASS |
-| Very long string | `"a".repeat(10000)` | Handle gracefully | Crash | ❌ FAIL |
-| Unicode emoji | `"🏎️"` | Store correctly | Stored correctly | ✅ PASS |
+## WJTTC method notes
 
-## Performance Metrics
+- **Test with real data**, not just sanitized inputs — anonymized production data, messy inputs, production-like volume.
+- **Document every failure** so it can be reproduced: what failed, how to repro, why it matters, how to fix.
+- **Tier before you test** — severity is the tier, so triage first; `faf wjttc` enforces that nothing ships untiered.
+- **Wire it into CI** with TAF receipts so the report is part of the record, not a one-off:
+  ```bash
+  faf taf setup --write     # create .github/workflows/taf.yml (test receipts)
+  faf score --json          # deterministic score snapshot for the receipt
+  ```
 
-| Operation | Target | Actual | Status |
-|-----------|--------|--------|--------|
-| File read | <50ms | 18ms | ✅ PASS |
-| File write | <50ms | 23ms | ✅ PASS |
-| Parse YAML | <50ms | 12ms | ✅ PASS |
-| Score calculation | <50ms | 8ms | ✅ PASS |
+## Quick checklist (before release)
 
-## Bugs Found
+- [ ] Signal Integrity audited (SI ≥ 85%)
+- [ ] Brake tests pass — zero tolerance
+- [ ] Edges + error handling tested
+- [ ] Tyre: behaves under load / concurrency
+- [ ] `faf wjttc --strict` green — every test tiered
+- [ ] Regression (Pit) suite passes
+- [ ] WJTTC report filed in `./wjttc-reports/`
+- [ ] Pass rate ≥ 85% (◇ Bronze, production-ready)
 
-### Bug #1: [Title]
-**Severity:** High (Tier 1)
-**Reproducibility:** Always
-**Steps to Reproduce:**
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
+## Resources
 
-**Expected:** [What should happen]
-**Actual:** [What happens instead]
-**Impact:** [Who is affected, how serious]
-**Suggested Fix:** [How to fix it]
+- Website: https://faf.one · Skills hub: https://skills.faf.one
+- faf-cli: https://github.com/Wolfe-Jam/faf-cli
+- Sibling skill: **wjttc-builder** (plan + generate the suite)
 
 ---
 
-## Test Coverage
-
-**Tested:**
-- ✅ Happy path scenarios
-- ✅ Edge cases (empty, null, special chars)
-- ✅ Error handling
-- ✅ Performance benchmarks
-- ✅ Cross-platform compatibility
-
-**Not Tested:**
-- ⏸️ Concurrent file access
-- ⏸️ Files >100MB
-- ⏸️ Network failures (not applicable)
-
-## Recommendations
-
-1. **Fix Critical Issues:**
-   - [Issue 1]
-   - [Issue 2]
-
-2. **Improve Error Messages:**
-   - [Suggestion 1]
-   - [Suggestion 2]
-
-3. **Performance Optimization:**
-   - [Suggestion 1]
-
-4. **Additional Testing Needed:**
-   - [What else to test]
-
-## Championship Certification
-
-**Current Status:** ◆ Silver (92% pass rate)
-
-**To Reach Championship 🏆:**
-- Fix 2 failing tests
-- Add tests for concurrent operations
-- Validate with 10,000+ item datasets
-
----
-
-## Appendix
-
-**Test Data Used:**
-```yaml
-# Sample test data
-test_cases:
-  - name: "valid-project"
-    input: {...}
-  - name: "empty-project"
-    input: {...}
-```
-
-**Environment Details:**
-- OS: macOS 14.5
-- Node: v18.17.0
-- Dependencies: [list]
-
-**Test Execution Logs:**
-```
-[Full test output if needed]
-```
-
----
-
-*Tested with Championship Standards 🏎️*
-*WJTTC Certified - We break things so you don't have to*
-```
-
-## Testing Best Practices
-
-### 1. Start with Tier 1 Tests
-Always test life-critical functionality first. If brakes don't work, nothing else matters.
-
-### 2. Test with Real Data
-Don't just test with perfect, sanitized data. Use:
-- Real user data (anonymized)
-- Production-like datasets
-- Messy, imperfect inputs
-
-### 3. Automate What You Can
-```javascript
-// Example: Automated test script
-const testCases = [
-  { input: '', expected: 'error' },
-  { input: 'valid', expected: 'success' },
-  { input: null, expected: 'error' },
-  { input: '🏎️', expected: 'success' }
-];
-
-testCases.forEach(test => {
-  const result = functionToTest(test.input);
-  console.log(`Input: ${test.input}, Expected: ${test.expected}, Actual: ${result}`);
-});
-```
-
-### 4. Document Every Failure
-Even small failures matter. Document:
-- What failed
-- How to reproduce
-- Why it matters
-- How to fix
-
-### 5. Think Like an Attacker
-**Ask:**
-- What if someone tries to break this?
-- What's the worst input I can give?
-- What happens if I do things in the wrong order?
-- Can I bypass validation?
-
-### 6. Test the Unhappy Paths
-Don't just test success scenarios:
-```yaml
-# Happy path
-Input: Valid email
-Result: Success
-
-# Unhappy paths
-Input: Invalid email → Error message
-Input: Empty string → Error message
-Input: null → Error message
-Input: SQL injection attempt → Sanitized/rejected
-Input: XSS attempt → Sanitized/rejected
-```
-
-### 7. Measure Everything
-- Execution time
-- Memory usage
-- File sizes
-- Error rates
-- Pass/fail counts
-
-## Common Test Patterns
-
-### Pattern 1: Arrange-Act-Assert (AAA)
-
-```javascript
-// Arrange - Set up test data
-const testData = { name: 'Test', value: 123 };
-
-// Act - Execute the code being tested
-const result = processData(testData);
-
-// Assert - Verify the result
-if (result.success === true && result.value === 123) {
-  console.log('✅ PASS');
-} else {
-  console.log('❌ FAIL');
-}
-```
-
-### Pattern 2: Test Table
-
-```javascript
-const testTable = [
-  { input: 0, expected: 'zero' },
-  { input: 1, expected: 'one' },
-  { input: -1, expected: 'error' },
-  { input: null, expected: 'error' }
-];
-
-testTable.forEach(({ input, expected }) => {
-  const result = numberToWord(input);
-  const status = result === expected ? '✅ PASS' : '❌ FAIL';
-  console.log(`${status} - Input: ${input}, Expected: ${expected}, Got: ${result}`);
-});
-```
-
-### Pattern 3: Boundary Value Testing
-
-```javascript
-// Test boundaries
-const boundaries = [
-  { value: -1, desc: 'Below minimum' },
-  { value: 0, desc: 'Minimum' },
-  { value: 1, desc: 'Just above minimum' },
-  { value: 99, desc: 'Just below maximum' },
-  { value: 100, desc: 'Maximum' },
-  { value: 101, desc: 'Above maximum' }
-];
-```
-
-## Integration with WJTTC
-
-### Report Storage
-
-**Save reports to:**
-```
-/Users/wolfejam/FAF-GOLD/PLANET-FAF/WJTTC - WolfeJam Technical & Testing Center/
-├── reports/
-│   ├── 2025-10-20-faf-cli-tests.yaml
-│   ├── 2025-10-20-mcp-server-tests.yaml
-│   └── 2025-10-20-n8n-workflow-tests.yaml
-└── templates/
-    └── WJTC-REPORT-FORMAT.yaml
-```
-
-### Report Naming Convention
-
-```
-YYYY-MM-DD-{project}-{feature}-tests.yaml
-```
-
-**Examples:**
-- `2025-10-20-faf-cli-init-command-tests.yaml`
-- `2025-10-20-claude-faf-mcp-bi-sync-tests.yaml`
-- `2025-10-20-n8n-workflow-http-node-tests.yaml`
-
-### Championship Scoring
-
-**Pass Rate to Championship Tier:**
-- 🏆 **95-100%** - Championship (Gold)
-- ★ **85-94%** - Podium (Gold)
-- ◆ **70-84%** - Points (Silver)
-- ◇ **55-69%** - Midfield (Bronze)
-- ● **40-54%** - Backmarker (Green)
-- ● **25-39%** - Struggling (Yellow, dim)
-- ○ **10-24%** - Critical (Red)
-- ♡ **0-9%** - DNF (White)
-
-## Quick Test Checklist
-
-**Before releasing any code:**
-- [ ] Happy path tested and passing
-- [ ] Edge cases tested (empty, null, max, min)
-- [ ] Error handling tested
-- [ ] Performance meets targets (<50ms for FAF operations)
-- [ ] Works on target platforms (macOS, Linux, Windows if applicable)
-- [ ] Regression tests pass
-- [ ] WJTTC report created and filed
-- [ ] Critical bugs fixed (Tier 1)
-- [ ] Pass rate ≥85% (Championship target)
-
-## Example Test Execution
-
-### Testing: faf-cli `init` command
-
-```bash
-# Test 1: Happy path
-cd /tmp/test-project
-faf init
-# ✅ Expected: .faf file created
-# ✅ Actual: .faf file created with valid YAML
-
-# Test 2: Already exists
-faf init
-# ✅ Expected: Error message about existing file
-# ✅ Actual: "Error: .faf file already exists"
-
-# Test 3: No package.json
-cd /tmp/empty-dir
-faf init
-# ✅ Expected: Still creates .faf, detects basic project info
-# ✅ Actual: Created .faf with minimal structure
-
-# Test 4: Permission denied
-chmod 000 /tmp/readonly-dir
-cd /tmp/readonly-dir
-faf init
-# ✅ Expected: Error message about permissions
-# ✅ Actual: "Error: EACCES: permission denied"
-
-# Test 5: Performance
-time faf init
-# ✅ Expected: <50ms
-# ✅ Actual: 18ms (Championship grade!)
-```
-
-## Stress Testing
-
-### Test with Extreme Data
-
-```javascript
-// Test with large arrays
-const largeArray = Array(10000).fill(0).map((_, i) => ({ id: i }));
-
-// Test with deeply nested objects
-const deepNest = { level1: { level2: { level3: { level4: { level5: 'data' } } } } };
-
-// Test with special characters
-const specialChars = "!@#$%^&*(){}[]|\\:;\"'<>,.?/~`";
-
-// Test with unicode
-const unicode = "🏎️⚡️🏁🏆★◆◇●○♡";
-
-// Test with very long strings
-const longString = 'a'.repeat(100000);
-```
-
----
-
-## Skill Control
-
-**To disable this skill temporarily:**
-```bash
-mv ~/.claude/skills/wjttc-tester ~/.claude/skills/wjttc-tester.disabled
-```
-
-**To re-enable:**
-```bash
-mv ~/.claude/skills/wjttc-tester.disabled ~/.claude/skills/wjttc-tester
-```
-
----
-
-*Made with 🧡 by wolfejam.dev*
-*Championship Testing Standards 🏎️*
-*"We break things so others never have to know they were broken."*
+*Made with 🧡 by wolfejam.dev — "We break things so others never have to know they were broken."*

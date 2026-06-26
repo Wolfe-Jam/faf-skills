@@ -1,6 +1,6 @@
 ---
 name: skill-creator
-description: Guide for creating effective skills. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
+description: Guide for creating effective skills, including the FAF Skill Standard conventions every skill that carries the FAF name must meet. This skill should be used when users want to create a new skill (or update an existing skill) that extends Claude's capabilities with specialized knowledge, workflows, or tool integrations.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -207,3 +207,15 @@ After testing the skill, users may request improvements. Often this happens righ
 2. Notice struggles or inefficiencies
 3. Identify how SKILL.md or bundled resources should be updated
 4. Implement changes and test again
+
+## FAF Skill Standard
+
+Skills that carry the **FAF** name are held to a higher, falsifiable bar than the generic process above. Apply these on top of it — `faf-context` is the canonical exemplar to mirror:
+
+- **Procedural, not a CLI echo.** A skill must teach an agent to *do* something. If it merely narrates a `faf` command of the same name, it's redundant — don't build it.
+- **Accuracy is fatal if wrong (FAF don't lie).** Verify every CLI command (`faf --help`) and MCP tool (the live default `tools/list`) against source — never trust a doc's own claim. No invented commands/tools, no fabricated metrics (ROI %, ms, score deltas as fact), and no absolute-promise language.
+- **Lean frontmatter only:** `name` (matches the directory) + `description` + `license`. No `version`/`author`/`categories`/`tags`/`namespace`, no `<!-- faf: -->` stamp.
+- **Brand:** tier symbols `🏆 ★ ◆ ◇ ● ○ ♡` only (never the retired medal / colored-circle emoji ladder); no unearned status claims (don't invent an "approved"/"certified" relationship) — the only sanctioned standing line is the factual "original Anthropic MCP ecosystem (#2759, merged Oct 2025)"; skills live in `~/.claude/skills/`; the source repo is `Wolfe-Jam/faf-skills`.
+- **Tiers:** 🏆=100 · ★ Gold=99 · ◆ Silver=95 · ◇ Bronze=85 · ● Green=70 · ● Yellow=55 · ○ Red=1 · ♡ White=0.
+
+Every FAF skill is reviewed against this standard before it's listed or shipped (APPROVE / NEEDS-WORK / REJECT). Build it to pass the first time. The standard is public — it's just `faf-context`.

@@ -1,6 +1,7 @@
 ---
 name: repo-maintainer
 description: Championship-grade repository maintenance. Audits for test artifacts, dependency issues, CI/CD health, documentation sync, and FAF alignment. Generates prioritized cleanup plans. Use when repos need deep cleaning or ongoing maintenance.
+license: MIT
 ---
 
 # Repo Maintainer - Championship Repository Hygiene
@@ -14,7 +15,7 @@ description: Championship-grade repository maintenance. Audits for test artifact
 Activate when:
 - User types `/repo-maintainer` or `/maintain`
 - User says "clean up this repo" or "audit the repo"
-- Starting maintenance on a repository (like claude-faf-mcp #2759)
+- Starting maintenance on a repository
 - After major refactoring or before releases
 - Monthly/quarterly repo health checks
 - Onboarding to a new codebase
@@ -69,10 +70,10 @@ Failed/skipped workflow runs
 Secrets/tokens properly configured
 ```
 
-**What We Fixed Today:**
-- ✅ Node 16 → removed from release.yml (EOL)
-- ✅ Node versions aligned across workflows (18/20/22)
-- ✅ `open@8.4.2` pinned to fix ESM issues
+**Common Fixes:**
+- Remove EOL runtimes (e.g. Node 16) from release workflows
+- Align Node versions across all workflows (e.g. 18/20/22)
+- Pin packages that break under ESM resolution
 
 #### 4. **Documentation Sync**
 ```bash
@@ -93,8 +94,8 @@ Links not broken (404 checks)
 ```bash
 # .gitignore audit
 Untracked files that should be ignored
-  *.config.mjs (like we saw today)
-  *.faf (test artifacts like svelte.faf)
+  *.config.mjs
+  *.faf test artifacts
   .env.local, .env.development
 Large files in git history (use git-filter-repo)
 Binary files that don't belong
@@ -106,7 +107,6 @@ Binary files that don't belong
 *.config.mjs
 *.faf.backup
 .faf-dna.tmp
-svelte.faf
 test-*.faf
 ```
 
@@ -126,19 +126,19 @@ For FAF projects specifically:
 ```yaml
 # Check FAF alignment
 .faf score accuracy (run faf score)
-Bi-sync status (faf bi-sync --check)
+Bi-sync status (faf sync --check)
 MCP server compliance (if applicable)
 WJTTC test coverage (for faf-cli, MCP servers)
 ```
 
-For MCP servers (#2759 claude-faf-mcp):
+For MCP servers:
 ```bash
 # MCP-specific checks
 package.json has "mcp" field
 Server implements required tools
 Tests cover all tool endpoints
 README has MCP installation instructions
-Listed in Anthropic MCP registry
+Registry listing accurate (npm + MCP registry)
 ```
 
 ---
@@ -150,7 +150,7 @@ After audit, generate prioritized task list:
 ```markdown
 # 🏎️ REPO HEALTH REPORT: faf-cli
 
-**Overall Score:** 85% 🥉 BRONZE
+**Overall Score:** 85% ◇ Bronze
 **Status:** Production-ready with minor cleanup needed
 
 ---
@@ -180,7 +180,6 @@ After audit, generate prioritized task list:
 - **Auto-fix:** Available
   ```gitignore
   *.config.mjs
-  svelte.faf
   test-*.faf
   ```
 
@@ -279,7 +278,6 @@ cat >> .gitignore <<EOF
 *.faf.backup
 .faf-dna.tmp
 test-*.faf
-svelte.faf
 EOF
 
 # 2. Generate CHANGELOG entry from git log
@@ -341,18 +339,18 @@ Never make changes without explicit approval.
 
 ---
 
-## MCP Server Maintenance (#2759 claude-faf-mcp)
+## MCP Server Maintenance
 
 ### Additional MCP Checks:
 
 ```bash
 # 1. MCP-specific structure
-package.json has "mcp" field ✅
-Server exports via index.ts ✅
-Tools properly registered ✅
+package.json has "mcp" field
+Server exports via index.ts
+Tools properly registered
 
 # 2. Registry compliance
-Listed in Anthropic registry ✅
+Registry listing accurate (npm + MCP registry)
 README has MCP install instructions
 Works with Claude Desktop config
 
@@ -385,18 +383,20 @@ npm published version
 
 **CRITICAL: Use Official FAF Tiers for All Scoring**
 
-| Score Range | Tier | Emoji | Description |
-|-------------|------|-------|-------------|
-| 100% | Trophy | 🏆 | Perfect |
-| 99% | Gold | 🥇 | Exceptional |
-| 90-95% | Silver | 🥈 | Top tier |
-| 85-89% | Bronze | 🥉 | Production ready |
-| 70-84% | Green | 🟢 | Solid foundation |
-| 55-69% | Yellow | 🟡 | Needs improvement |
-| <55% | Red | 🔴 | Major work needed |
-| 0% | White | 🤍 | Empty |
+| Score | Tier | Symbol | Status |
+|-------|------|--------|--------|
+| 100% | Trophy | 🏆 | Perfect — Gold Code |
+| 99% | Gold | ★ | Exceptional |
+| 95% | Silver | ◆ | Top tier |
+| 85% | Bronze | ◇ | Production ready |
+| 70% | Green | ● | Solid foundation |
+| 55% | Yellow | ● | Needs improvement |
+| 1% | Red | ○ | Major work needed |
+| 0% | White | ♡ | Empty |
 
-**Note:** 🍊 **Big Orange** is a **BADGE**, not a score. It's awarded for excellence beyond metrics, never calculated.
+The score is **deterministic** — same input → same score, every time. **FAF doesn't lie.**
+
+**Note:** 🍊 **Big Orange** is an **HONOR**, not a score or a badge. It recognizes sustained excellence across multiple criteria; it is never calculated from a single score.
 
 **Apply These Tiers to:**
 - Overall repo health score
@@ -406,22 +406,20 @@ npm published version
 
 **Examples:**
 ```
-✅ 95% Security     → 🥈 Silver (NOT 🥇 Gold)
-✅ 88% Overall      → 🥈 Silver
-✅ 78% Dependencies → 🟢 Green (NOT 🟡 Yellow)
-✅ 70% Git Hygiene  → 🟢 Green (NOT 🟡 Yellow)
-✅ 40% CI/CD        → 🔴 Red
-✅ 100% Tests       → 🏆 Trophy
+95% Security     → ◆ Silver
+88% Overall      → ◇ Bronze
+78% Dependencies → ● Green
+70% Git Hygiene  → ● Green
+40% CI/CD        → ○ Red
+100% Tests       → 🏆 Trophy
 ```
 
 ---
 
 ## Related Skills
 
-- `/pubpro` - FAF publish protocol (pre-release checks)
-- `/commit` - Context-aware commits (for cleanup commits)
-- `/pr` - Create cleanup PR
-- `/wjttc-builder` - Add missing tests
+- `/wjttc-builder` · `/wjttc-tester` - generate + run championship-grade tests before a release
+- `/faf-expert` - master the `.faf` format + score the repo's AI-readiness
 
 ---
 
@@ -466,7 +464,7 @@ Claude: 🏎️ Starting championship repo maintenance audit...
 
 📊 AUDIT COMPLETE
 
-Overall Health: 85% 🥉 BRONZE
+Overall Health: 85% ◇ Bronze
 Critical Issues: 2
 Medium Issues: 3
 Low Priority: 5

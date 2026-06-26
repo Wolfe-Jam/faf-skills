@@ -1,6 +1,6 @@
 ---
 name: mcp-builder
-description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
+description: Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools, including FAF's championship-grade MCP discipline (tight Core-tier tool surface, Glama-AAA conventions). Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).
 license: Complete terms in LICENSE.txt
 ---
 
@@ -326,3 +326,17 @@ Load these resources as needed during development:
   - XML format specifications
   - Example questions and answers
   - Running an evaluation with the provided scripts
+
+---
+
+# FAF MCP discipline (the FAF layer)
+
+The guide above builds a *correct* MCP server. These conventions make it a *championship-grade* one — the discipline behind FAF's own MCP fleet (`claude-faf-mcp`, `grok-faf-mcp`, `gemini-faf-mcp`, `faf-mcp`), all of which hold **AAA on Glama** (earned, not conferred):
+
+- **Keep the default tool surface TIGHT (Core-tier).** Expose a small, coherent set of essential tools by default; gate the rest behind an env flag (e.g. `FAF_MCP_SHOW_ADVANCED=true`). Directory graders (Glama) score the *default* `tools/list` for coherence — a bloated default tanks the grade, and every always-on tool is a token tax on the caller. The split, not the count, is the point.
+- **Earn the grade, don't claim it.** Quality must be falsifiable (Glama A–F, your test suite, real receipts). Never assert "official"/"approved"/"certified" standing you didn't earn.
+- **Parameterize before you ship a template ("de-FAF" it).** If you publish a starter, point namespace / domain / keys at the *builder's* identity — never hardcode your own (else builders fail, or squat your namespace).
+- **Publish on a DNS-verified namespace.** A reverse-DNS namespace you control (verified via DNS) is immune to the registry-key-on-a-mutable-GitHub-login squat risk.
+- **Reachability pre-flight before publish.** Validate the manifest, run the suite, and confirm the *real* default `tools/list` actually exposes your headline tool — a feature gated behind an off-by-default flag is unreachable, no matter what the code says.
+
+Reference implementations to study: the FAF MCP fleet (`claude-faf-mcp`, `grok-faf-mcp`, `gemini-faf-mcp`, `faf-mcp`) — and the `.faf` context format they all serve (`application/vnd.faf+yaml`, IANA-registered).
