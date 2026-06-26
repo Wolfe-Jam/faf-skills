@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
+  "name": "faf-skills",
+  "owner": {
+    "name": "wolfejam",
+    "email": "james@wolfejames.com"
+  },
+  "description": "FAF Skills — Claude Code skills for AI-context, testing, and MCP development. IANA-registered format (application/vnd.faf+yaml).",
+  "plugins": [
+    {
+      "name": "faf",
+      "source": "./",
+      "description": "Claude Code skills for AI-context, testing, and MCP development. Create .faf project DNA, score AI-readiness, sync with CLAUDE.md, build MCP servers, generate test suites.",
+      "homepage": "https://skills.faf.one",
+      "repository": "https://github.com/Wolfe-Jam/faf-skills",
+      "license": "MIT",
+      "keywords": ["ai-context", "project-dna", "faf", "mcp", "testing", "claude-code", "skills"]
+    }
+  ]
+}

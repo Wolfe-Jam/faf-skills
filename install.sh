@@ -21,18 +21,18 @@ echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━�
 echo ""
 
 # Detect skills directory
-# Claude Code uses: ~/.config/claude-code/skills
+# Claude Code uses: ~/.claude/skills
 # Or custom location if $CLAUDE_SKILLS_DIR is set
 
 if [ -n "$CLAUDE_SKILLS_DIR" ]; then
     SKILLS_DIR="$CLAUDE_SKILLS_DIR"
     echo -e "${BLUE}Using custom skills directory:${NC} $SKILLS_DIR"
-elif [ -d "$HOME/.config/claude-code/skills" ]; then
-    SKILLS_DIR="$HOME/.config/claude-code/skills"
+elif [ -d "$HOME/.claude/skills" ]; then
+    SKILLS_DIR="$HOME/.claude/skills"
     echo -e "${BLUE}Using Claude Code skills directory:${NC} $SKILLS_DIR"
 else
     # Create directory if it doesn't exist
-    SKILLS_DIR="$HOME/.config/claude-code/skills"
+    SKILLS_DIR="$HOME/.claude/skills"
     echo -e "${YELLOW}Creating skills directory:${NC} $SKILLS_DIR"
     mkdir -p "$SKILLS_DIR"
 fi
@@ -142,14 +142,14 @@ echo "  1. Restart Claude Code (skills activate automatically)"
 echo "  2. Try asking Claude:"
 echo ""
 echo -e "     ${BLUE}\"What is FAF?\"${NC}            → faf-teacher activates"
-echo -e "     ${BLUE}\"Set up project context\"${NC}  → faf-init activates"
+echo -e "     ${BLUE}\"Set up project context\"${NC}  → faf-wizard activates"
 echo -e "     ${BLUE}\"What's my score?\"${NC}        → faf-score activates"
 echo ""
 echo "  Skills activate automatically on natural language."
 echo "  No commands to memorize. Zero configuration."
 echo ""
 echo -e "${BLUE}Documentation:${NC} https://faf.one/docs"
-echo -e "${BLUE}GitHub:${NC} https://github.com/Wolfe-Jam/faf-agent-toolkit"
+echo -e "${BLUE}GitHub:${NC} https://github.com/Wolfe-Jam/faf-skills"
 echo ""
 echo -e "${GREEN}Happy context building!${NC}"
 echo ""

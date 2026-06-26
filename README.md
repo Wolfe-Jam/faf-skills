@@ -1,12 +1,14 @@
 # FAF Skills
 
-**31 Claude Code Skills for Developers and Builders**
+**Claude Code Skills for Developers and Builders**
+
+A **Core** FAF on-ramp set (`faf-context` · `faf-wizard` · `faf-expert` · `faf-go`) gets any project to **100% 🏆**. The **full set** adds testing, MCP, architecture, code review, workflow, and n8n skills. The toolkit grows and changes with the ecosystem — there's no fixed count to chase.
 
 ---
 
 ## What is This?
 
-Reusable Claude Code skills for project context, testing, publishing, architecture, and workflow automation. Built on the FAF ecosystem (`application/vnd.faf+yaml` — IANA-registered).
+Reusable Claude Code skills for project context, testing, architecture, code review, and workflow automation. Built on the FAF ecosystem (`application/vnd.faf+yaml` — IANA-registered).
 
 ```bash
 # Install all skills
@@ -18,46 +20,38 @@ Skills activate automatically via `/skillname` or natural language in Claude Cod
 
 ---
 
-## Skills (31)
+## Skills
 
-### FAF Context (15 skills)
+> **Core** (the 100% on-ramp): `faf-context` · `faf-wizard` · `faf-expert` · `faf-go`. Everything below is the **full set**.
+
+### FAF Context
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
-| **faf-wizard** | `/faf-wizard` | Done-for-you .faf generator — point at any project, get a scored file back |
+| **faf-context** | `/faf-context` | Builder quickstart — hand the AI the underivable context (goal + 6Ws) to hit 100% AI-readiness, fast |
+| **faf-wizard** | `/faf-wizard` | Done-for-you `.faf` generator — point at any project, get a scored file back |
 | **faf-expert** | `/faf-expert` | The mechanic's manual — deep expertise on `.faf` files |
-| **faf-teacher** | — | Explains FAF concepts and The Reading Order |
-| **faf-init** | — | Initialize `project.faf` from any codebase |
 | **faf-go** | `/faf-go` | Guided interview to 100% AI-readiness |
-| **faf-score** | — | Measure AI-readiness (0-100%, 7-tier system) |
+| **faf-teacher** | — | Explains FAF concepts and The Reading Order |
+| **faf-score** | — | Measure AI-readiness (0–100%, tiered) |
 | **faf-enhance** | — | Guided improvement to reach higher tiers |
-| **faf-sync** | — | Bidirectional sync: `.faf` ↔ `CLAUDE.md` (8ms) |
+| **faf-sync** | — | Bidirectional sync: `.faf` ↔ `CLAUDE.md` |
 | **faf-validate** | — | IANA format compliance checking |
 | **faf-migrate** | — | Upgrade old formats to current spec |
 | **faf-docs** | — | FAF documentation and reference |
 | **faf-git** | — | Git practices for `.faf` files |
 | **faf-platforms** | — | CLI vs MCP vs claude.ai comparison |
-| **faf-format-validator** | — | Validate both SKILL.md and project.faf |
-| **mcp-builder** | `/mcp-builder` | Guide for creating MCP servers |
+| **faf-format-inspector** | — | Deep inspection of `.faf` file format details |
 
-### Testing (2 skills)
+### MCP & Testing
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
+| **mcp-builder** | `/mcp-builder` | Guide for creating MCP servers |
 | **wjttc-builder** | `/wjttc-builder` | Auto-generate championship-grade test suites |
 | **wjttc-tester** | `/wjttc-tester` | F1-inspired testing with detailed reports |
 
-### Publishing (5 skills)
-
-| Skill | Command | What it does |
-|-------|---------|-------------|
-| **pubpro** | `/pubpro` | FAF publish protocol for npm + MCP Registry |
-| **publish** | `/publish` | Multi-platform publishing (npm, PyPI, blog, social) |
-| **pubcrate** | `/pubcrate` | Publish protocol for crates.io (Rust) |
-| **pubpypi** | `/pubpypi` | Publish protocol for PyPI (Python) |
-| **pubblog** | — | Generate release blog posts |
-
-### Architecture & Planning (3 skills)
+### Architecture & Planning
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
@@ -65,7 +59,7 @@ Skills activate automatically via `/skillname` or natural language in Claude Cod
 | **prd-builder** | `/prd-builder` | Generate product requirements documents |
 | **arch-builder** | `/arch-builder` | Generate technical architecture documents |
 
-### Git & Code Review (3 skills)
+### Git & Code Review
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
@@ -73,7 +67,7 @@ Skills activate automatically via `/skillname` or natural language in Claude Cod
 | **pr** | `/pr` | Context-aware pull requests powered by FAF |
 | **review** | `/review` | Context-aware code reviews powered by FAF |
 
-### Workflow & Utilities (3 skills)
+### Workflow & Utilities
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
@@ -81,7 +75,7 @@ Skills activate automatically via `/skillname` or natural language in Claude Cod
 | **gif-recorder** | `/gif-recorder` | Terminal GIF recordings using VHS |
 | **repo-maintainer** | `/repo-maintainer` | Repository health audits and cleanup |
 
-### n8n Automation (2 skills)
+### n8n Automation
 
 | Skill | Command | What it does |
 |-------|---------|-------------|
@@ -125,16 +119,16 @@ npm install -g claude-faf-mcp
 
 ## Tier System
 
-| Score | Tier | Emoji |
-|-------|------|-------|
+| Score | Tier | Symbol |
+|-------|------|--------|
 | 100% | Trophy | 🏆 |
-| 99%+ | Gold | 🥇 |
-| 95%+ | Silver | 🥈 |
-| 85%+ | Bronze | 🥉 |
-| 70%+ | Green | 🟢 |
-| 55%+ | Yellow | 🟡 |
-| < 55% | Red | 🔴 |
-| 0% | White | 🤍 |
+| 99% | Gold | ★ |
+| 95% | Silver | ◆ |
+| 85% | Bronze | ◇ |
+| 70% | Green | ● |
+| 55% | Yellow | ● |
+| 1% | Red | ○ |
+| 0% | White | ♡ |
 
 ---
 
@@ -143,12 +137,12 @@ npm install -g claude-faf-mcp
 ```
 faf-skills/
 ├── README.md
-├── skills/               # 31 skills
+├── skills/               # Core on-ramp + full set
+│   ├── faf-context/      # Builder quickstart on-ramp
 │   ├── faf-wizard/       # Done-for-you generator
 │   ├── faf-expert/       # Mechanic's manual
-│   ├── faf-teacher/      # FAF education
-│   ├── faf-init/         # Project initialization
 │   ├── faf-go/           # Guided interview
+│   ├── faf-teacher/      # FAF education
 │   ├── faf-score/        # AI-readiness scoring
 │   ├── faf-enhance/      # Score improvement
 │   ├── faf-sync/         # Bidirectional sync
@@ -157,15 +151,10 @@ faf-skills/
 │   ├── faf-docs/         # Documentation
 │   ├── faf-git/          # Git practices
 │   ├── faf-platforms/    # Platform comparison
-│   ├── faf-format-validator/ # Dual format validation
+│   ├── faf-format-inspector/ # Format inspection
 │   ├── mcp-builder/      # MCP server creation
 │   ├── wjttc-builder/    # Test suite generator
 │   ├── wjttc-tester/     # F1-inspired testing
-│   ├── pubpro/           # npm publish protocol
-│   ├── publish/          # Multi-platform publishing
-│   ├── pubcrate/         # crates.io publishing
-│   ├── pubpypi/          # PyPI publishing
-│   ├── pubblog/          # Release blog posts
 │   ├── sys-reqs-builder/ # System requirements
 │   ├── prd-builder/      # Product requirements
 │   ├── arch-builder/     # Architecture docs
@@ -189,10 +178,11 @@ faf-skills/
 ## Resources
 
 - **Website:** https://faf.one
+- **Skills hub:** https://skills.faf.one
 - **faf-cli:** https://github.com/Wolfe-Jam/faf-cli
 - **claude-faf-mcp:** https://github.com/Wolfe-Jam/claude-faf-mcp
 - **IANA Registration:** `application/vnd.faf+yaml`
-- **npm:** https://npmjs.com/package/faf-cli (36k+ downloads)
+- **npm:** https://npmjs.com/package/faf-cli
 
 ---
 
