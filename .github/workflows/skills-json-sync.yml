@@ -1,0 +1,40 @@
+name: skills.json sync
+
+# Drift guard: skills.json is GENERATED from the SKILL.md frontmatters by
+# scripts/build-skills-json.mjs and fetched live by skills.faf.one. This fails
+# the build if skills.json wasn't regenerated after a SKILL.md change — so the
+# single-source claim is ENFORCED, not trusted. Fix locally with:
+#   node scripts/build-skills-json.mjs  &&  git add skills.json
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'skills/**'
+      - 'scripts/build-skills-json.mjs'
+      - 'skills.json'
+  pull_request:
+    paths:
+      - 'skills/**'
+      - 'scripts/build-skills-json.mjs'
+      - 'skills.json'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Regenerate skills.json from the SKILL.md files
+        run: node scripts/build-skills-json.mjs
+      - name: Fail if skills.json drifted from source
+        run: |
+          if git diff --quiet skills.json; then
+            echo "✓ skills.json is in sync with the SKILL.md files"
+          else
+            echo "::error file=skills.json::skills.json is OUT OF SYNC with the SKILL.md files. Run 'node scripts/build-skills-json.mjs' and commit skills.json."
+            git --no-pager diff skills.json
+            exit 1
+          fi

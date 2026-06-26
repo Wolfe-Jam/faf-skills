@@ -99,7 +99,7 @@ What defines success for this skill.
 ### 4. Test Your Skill
 
 **Manual testing:**
-1. Copy skill to `~/.config/claude-code/skills/your-skill-name/`
+1. Copy skill to `~/.claude/skills/your-skill-name/`
 2. Restart Claude Code
 3. Use trigger phrases to activate
 4. Verify correct behavior
@@ -110,6 +110,15 @@ What defines success for this skill.
 - Instructions are clear and actionable
 - Examples work as described
 - No contradictions or errors
+
+**Regenerate the hub manifest (required — CI enforces it):**
+After adding, renaming, or editing a skill's `name`/`description`, regenerate the
+single-source manifest that skills.faf.one reads:
+```bash
+node scripts/build-skills-json.mjs   # updates skills.json
+git add skills.json
+```
+The **skills.json sync** workflow fails the build if `skills.json` is out of sync.
 
 ### 5. Submit Pull Request
 
