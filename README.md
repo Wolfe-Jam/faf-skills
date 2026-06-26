@@ -9,9 +9,9 @@ Quality over quantity, and proof over promises. Every skill ships only after it'
 ## Live now
 
 ### faf-context — `/faf-context`
-The builder's quickstart **and the reference standard**: hand the AI the underivable context (a sharp goal + the 6 Ws) and reach **100% 🏆 AI-readiness**, fast.
+The builder's quickstart **and the reference standard**: hand the AI the underivable context (a sharp goal + the 6 Ws) and reach **100% ✪ AI-readiness**, fast.
 
-> **Receipt:** a real project taken from `29%` → **`100% 🏆` (19/19 slots)** by following exactly the model this skill teaches — `faf auto` to detect + seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. Deterministic and falsifiable. *(FAF don't lie.)*
+> **Receipt:** a real project taken from `29%` → **`100% ✪` (19/19 slots)** by following exactly the model this skill teaches — `faf auto` to detect + seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. Deterministic and falsifiable. *(FAF don't lie.)*
 
 ```bash
 # Plugin marketplace
@@ -44,7 +44,7 @@ Each is held to the **FAF Skill Standard** (accurate · on-brand · genuinely pr
 
 | Score | Tier | Symbol |
 |-------|------|--------|
-| 100% | Trophy | 🏆 |
+| 100% | Trophy | ✪ |
 | 99% | Gold | ★ |
 | 95% | Silver | ◆ |
 | 85% | Bronze | ◇ |
@@ -52,6 +52,8 @@ Each is held to the **FAF Skill Standard** (accurate · on-brand · genuinely pr
 | 55% | Yellow | ● |
 | 1% | Red | ○ |
 | 0% | White | ♡ |
+
+> **✪ = 🏆 = 100%** — the same Trophy, two surfaces: **✪** is the FAF-at-Work mark (code · skills · CLI · this hub); **🏆** is the social mark (X · blogs).
 
 ---
 

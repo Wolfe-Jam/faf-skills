@@ -32,7 +32,7 @@ const CATEGORY_ORDER = ['faf', 'mcp', 'utility'];
 // to curate; falls back to shorten(description) when a skill isn't listed here.
 // (Keeps the generator NON-DESTRUCTIVE: re-running never clobbers curated card copy.)
 const TAGLINE = {
-  'faf-context': '100% 🏆 AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
+  'faf-context': '100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
   'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model',
 };
 

@@ -1,6 +1,6 @@
 ---
 name: faf-context
-description: Get your project to 100% 🏆 AI-readiness, fast — the AI auto-detects your stack and only asks for what it can't know (your goal and the human "why"). Least typing, maximum context. For time-conscious builders; feeds into faf-expert for depth.
+description: Get your project to 100% ✪ AI-readiness, fast — the AI auto-detects your stack and only asks for what it can't know (your goal and the human "why"). Least typing, maximum context. For time-conscious builders; feeds into faf-expert for depth.
 license: MIT
 ---
 
@@ -8,7 +8,7 @@ license: MIT
 
 **AI writes its best code when it has your project's context. This skill helps you hand it over — fast, and to 100%.**
 
-`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI (no bespoke manifest, no vendor lock-in). The whole point is one number: **AI-readiness, 0–100%.** At **100% 🏆** the AI starts every session already knowing your project — no re-explaining, no guessing. This skill is the *builder's* path to that number: minimum typing, maximum context.
+`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI (no bespoke manifest, no vendor lock-in). The whole point is one number: **AI-readiness, 0–100%.** At **100% ✪** the AI starts every session already knowing your project — no re-explaining, no guessing. This skill is the *builder's* path to that number: minimum typing, maximum context.
 
 > For the done-for-you one-click path, use **faf-wizard**. To master the format, use **faf-expert**. This skill is the quickstart in between.
 
@@ -18,7 +18,7 @@ license: MIT
 
 1. **Your app type sets which slots are *required*.** A CLI needs different slots than a full-stack web app — faf-cli right-sizes the set and `slotignored`s the rest (never counted against you).
 2. **The AI fills as many as it can.** `faf auto` detects your stack + language, and a sharp **goal sentence** seeds who/what/where. The better your goal, the more the AI fills for you.
-3. **Whatever's left empty, the AI asks you.** Those are the bits only you know — usually a couple of the 6 Ws (often *why* and *when*). Answer them → **100% 🏆.**
+3. **Whatever's left empty, the AI asks you.** Those are the bits only you know — usually a couple of the 6 Ws (often *why* and *when*). Answer them → **100% ✪.**
 
 So your job isn't "fill 21 boxes." It's: **write one good goal, then answer the few questions the AI couldn't fill itself.**
 
@@ -36,13 +36,13 @@ The 6 Ws are "the underivable half" — but you almost never write all six from 
 
 > **"Sometimes 3 Ws is enough. Sometimes the goal alone is enough."** A great goal sentence + auto-detection can carry who/what/where/how on their own — leaving you two small answers. The better your goal, the less you type.
 
-## The fastest path to 100% 🏆
+## The fastest path to 100% ✪
 
 ```bash
 faf auto      # 1. AI detects your whole stack + seeds context from your README
 faf score     # 2. See the number + exactly which slots are still empty
 faf go        # 3. Guided fill: confirm the seeded Ws, answer the 1–2 left
-faf score     # 4. 100% 🏆
+faf score     # 4. 100% ✪
 faf sync      # 5. Push context into CLAUDE.md / AGENTS.md (optional)
 ```
 
@@ -85,6 +85,6 @@ The AI **only seeds facts your goal/README literally state** — never invents, 
 
 ---
 
-**The goal:** the AI is only as good as the context you give it. Answer the few things only you know — the gaps it couldn't fill itself — and it's optimized to help you at **100% 🏆**.
+**The goal:** the AI is only as good as the context you give it. Answer the few things only you know — the gaps it couldn't fill itself — and it's optimized to help you at **100% ✪**.
 
 *MIT · part of the FAF skill family (faf-context · faf-wizard · faf-expert)*
