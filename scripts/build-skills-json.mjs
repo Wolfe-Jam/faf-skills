@@ -39,6 +39,7 @@ const CATEGORY_ORDER = ['faf', 'mcp', 'docs', 'dev', 'integration', 'utility'];
 // (Keeps the generator NON-DESTRUCTIVE: re-running never clobbers curated card copy.)
 const TAGLINE = {
   'faf-context': '100% 🏆 AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
+  'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model',
 };
 
 // Pull a frontmatter scalar (single-line) from the leading --- block.
