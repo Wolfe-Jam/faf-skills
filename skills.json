@@ -3,5 +3,10 @@
     "name": "faf-context",
     "category": "faf",
     "description": "100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)"
+  },
+  {
+    "name": "faf-expert",
+    "category": "faf",
+    "description": "Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model"
   }
 ]
