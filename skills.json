@@ -8,5 +8,10 @@
     "name": "faf-expert",
     "category": "faf",
     "description": "Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model"
+  },
+  {
+    "name": "faf-wizard",
+    "category": "faf",
+    "description": "Done-for-you .faf generator"
   }
 ]
