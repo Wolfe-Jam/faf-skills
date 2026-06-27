@@ -18,5 +18,10 @@
     "name": "faf-wizard",
     "category": "faf",
     "description": "Done-for-you .faf generator"
+  },
+  {
+    "name": "wjttc-builder",
+    "category": "mcp",
+    "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project"
   }
 ]
