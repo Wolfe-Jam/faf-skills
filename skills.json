@@ -10,6 +10,11 @@
     "description": "Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model"
   },
   {
+    "name": "faf-go",
+    "category": "faf",
+    "description": "Guided interview to Gold Code (100% AI-Readiness)"
+  },
+  {
     "name": "faf-wizard",
     "category": "faf",
     "description": "Done-for-you .faf generator"
