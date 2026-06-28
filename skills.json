@@ -23,5 +23,10 @@
     "name": "wjttc-builder",
     "category": "mcp",
     "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project"
+  },
+  {
+    "name": "wjttc-tester",
+    "category": "mcp",
+    "description": "F1-inspired test EXECUTOR + reporter"
   }
 ]
