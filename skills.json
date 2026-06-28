@@ -28,5 +28,10 @@
     "name": "wjttc-tester",
     "category": "mcp",
     "description": "F1-inspired test EXECUTOR + reporter"
+  },
+  {
+    "name": "repo-maintainer",
+    "category": "utility",
+    "description": "Championship-grade repository maintenance"
   }
 ]
