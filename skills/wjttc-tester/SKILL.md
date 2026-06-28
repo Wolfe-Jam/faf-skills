@@ -8,7 +8,7 @@ license: MIT
 
 **"We break things so others never have to know they were broken."**
 
-Apply Formula 1 standards to software testing. When brakes must work flawlessly at 200mph, so must the code in production. This skill **executes** test plans and **files reports** — it is the driver, not the engineer. To plan and generate the suite, use **wjttc-builder**.
+Apply F1-inspired standards to software testing. When brakes must work flawlessly at race pace, so must the code in production. This skill **executes** test plans and **files reports** — it is the driver, not the engineer. To plan and generate the suite, use **wjttc-builder**.
 
 ## When to use this skill
 

@@ -459,7 +459,7 @@ Create cleanup branch? (yes/no)
 
 ## The Championship Promise
 
-> "F1 teams maintain their cars between every race.
+> "Pit crews service the car between every race.
 > Your repos deserve the same attention."
 
 ---
