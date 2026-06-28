@@ -163,12 +163,6 @@ After audit, generate prioritized task list:
 - **Effort:** 5 minutes
 - **Auto-fix:** Available
 
-### 2. EOL Runtime: Node 16 in release.yml
-- **Impact:** Testing on unsupported runtime
-- **Fix:** Remove Node 16, add Node 22 ✅ FIXED
-- **Effort:** 2 minutes
-- **Auto-fix:** Available
-
 ---
 
 ## ⚠️  MEDIUM (This Week)
@@ -183,18 +177,6 @@ After audit, generate prioritized task list:
   test-*.faf
   ```
 
-### 4. Dependency Audit
-- **Issue:** 15 outdated packages, 3 low severity vulnerabilities
-- **Fix:** Run `npm update` for non-breaking, review majors
-- **Effort:** 30 minutes
-- **Auto-fix:** Partial
-
-### 5. CHANGELOG Missing v4.4.0
-- **Issue:** Latest release not documented
-- **Fix:** Add v4.4.0 section to CHANGELOG.md
-- **Effort:** 10 minutes
-- **Auto-fix:** Available (draft from git log)
-
 ---
 
 ## ℹ️  LOW (Nice to Have)
@@ -204,20 +186,9 @@ After audit, generate prioritized task list:
 - **Fix:** Update URLs
 - **Effort:** 5 minutes
 
-### 7. TODO Comments
-- **Issue:** 3 TODO comments in source code
-- **Fix:** Create issues or resolve
-- **Effort:** Variable
-- **Files:**
-  - src/cli.ts:511 (FAFb commands commented)
-  - src/utils/email-opt-in.ts:45
-  - tests/wjttc-cli.test.ts:89
-
-### 8. Unused Dependencies
-- **Issue:** `depcheck` found 2 unused packages
+### 7. Unused Dependencies
+- **Issue:** `depcheck` found unused packages
 - **Fix:** Remove or document why needed
-- **Effort:** 10 minutes
-- **Packages:** `chalk-animation`, `ora`
 
 ---
 
@@ -234,21 +205,9 @@ After audit, generate prioritized task list:
 
 ## 🎯 RECOMMENDED ACTIONS
 
-**Quick Wins (30 min):**
-1. ✅ Update .gitignore (1 min)
-2. ✅ Add CHANGELOG entry (10 min)
-3. ✅ Fix broken README links (5 min)
-4. ✅ Run npm update for safe updates (10 min)
-
-**This Week:**
-- Review TODO comments, create issues
-- Remove unused dependencies
-- Bump patch version (v4.4.1)
-
-**Monthly:**
-- Run full dependency audit
-- Review git history for large files
-- Performance baseline check
+**Quick wins:** .gitignore + CHANGELOG entry + README links + safe `npm update`.
+**This week:** triage TODOs, remove unused deps, bump patch.
+**Monthly:** full dependency audit, large-file scan, perf baseline.
 
 ---
 
