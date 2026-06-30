@@ -22,7 +22,7 @@ const SKILLS_DIR = join(ROOT, 'skills');
 const CATEGORY = {
   'faf-context': 'faf', 'faf-wizard': 'faf', 'faf-expert': 'faf', 'faf-go': 'faf',
   'mcp-builder': 'mcp', 'wjttc-builder': 'mcp', 'wjttc-tester': 'mcp',
-  'skill-creator': 'utility', 'repo-maintainer': 'utility',
+  'skill-creator': 'utility', 'repo-maintainer': 'utility', 'xquik-social-search': 'utility',
 };
 // Render order for the hub (faf first; then the rest).
 const CATEGORY_ORDER = ['faf', 'mcp', 'utility'];
