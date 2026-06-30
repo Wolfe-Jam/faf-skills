@@ -33,5 +33,10 @@
     "name": "repo-maintainer",
     "category": "utility",
     "description": "Championship-grade repository maintenance"
+  },
+  {
+    "name": "xquik-social-search",
+    "category": "utility",
+    "description": "Use Xquik's authenticated tweet search API for public X research when a workflow needs reproducible social data collection, query capture, and source-aware…"
   }
 ]
