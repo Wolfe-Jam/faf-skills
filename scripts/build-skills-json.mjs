@@ -34,6 +34,7 @@ const CATEGORY_ORDER = ['faf', 'mcp', 'utility'];
 const TAGLINE = {
   'faf-context': '100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
   'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model',
+  'wjttc-tester': 'WJTTC test EXECUTOR + reporter',
 };
 
 // Pull a frontmatter scalar (single-line) from the leading --- block.
@@ -80,5 +81,15 @@ skills.sort((a, b) => {
   return c !== 0 ? c : a.name.localeCompare(b.name);
 });
 
-writeFileSync(join(ROOT, 'skills.json'), JSON.stringify(skills, null, 2) + '\n');
+const json = JSON.stringify(skills, null, 2) + '\n';
+writeFileSync(join(ROOT, 'skills.json'), json);
 console.log(`✓ skills.json written — ${skills.length} skills, ${new Set(skills.map((s) => s.category)).size} categories`);
+
+// Same-origin copy for skills.faf.one (sibling checkout). Hub fetches /skills.json.
+const site = join(ROOT, '..', 'faf-skills-site', 'skills.json');
+try {
+  writeFileSync(site, json);
+  console.log(`✓ also wrote ${site}`);
+} catch {
+  /* site repo not checked out — hub copy is a separate commit */
+}

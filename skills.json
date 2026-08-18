@@ -27,7 +27,7 @@
   {
     "name": "wjttc-tester",
     "category": "mcp",
-    "description": "F1-inspired test EXECUTOR + reporter"
+    "description": "WJTTC test EXECUTOR + reporter"
   },
   {
     "name": "repo-maintainer",

@@ -1,6 +1,6 @@
 ---
 name: wjttc-tester
-description: F1-inspired test EXECUTOR + reporter. Runs a test plan, finds and reproduces bugs, audits suite signal integrity, then files a WJTTC report (Brake/Engine/Aero/Tyre/Pit) with a tier verdict. Use when you need to test code, validate functionality, reproduce a failure, or produce a test report. For PLANNING/GENERATING test suites and files, use wjttc-builder instead — this skill runs and reports.
+description: WJTTC test EXECUTOR + reporter. Runs a test plan, finds and reproduces bugs, audits suite signal integrity, then files a WJTTC report (Brake/Engine/Aero/Tyre/Pit) with a tier verdict. Use when you need to test code, validate functionality, reproduce a failure, or produce a test report. For PLANNING/GENERATING test suites and files, use wjttc-builder instead — this skill runs and reports.
 license: MIT
 ---
 
@@ -8,7 +8,7 @@ license: MIT
 
 **"We break things so others never have to know they were broken."**
 
-Apply F1-inspired standards to software testing. When brakes must work flawlessly at race pace, so must the code in production. This skill **executes** test plans and **files reports** — it is the driver, not the engineer. To plan and generate the suite, use **wjttc-builder**.
+Apply championship-grade standards to software testing. When brakes must work, so must the code. This skill **executes** test plans and **files reports** — it is the driver, not the engineer. To plan and generate the suite, use **wjttc-builder**.
 
 ## When to use this skill
 

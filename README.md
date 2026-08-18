@@ -37,7 +37,7 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 | **faf-expert** | The mechanic's manual — scoring internals, MCP config, the full 21-slot model | …it's proven genuinely expert |
 | **faf-wizard** | Done-for-you `.faf` generator | …it's proven the fastest path to 100% |
 | **faf-go** | Guided AskUserQuestion interview to 100% | …a live run hits a verified Trophy |
-| **wjttc-builder** · **wjttc-tester** | Generate + run championship-grade test suites (F1 tiers + Signal Integrity) | …a real plan→test→TAF receipt |
+| **wjttc-builder** · **wjttc-tester** | Generate + run championship-grade test suites (WJTTC tiers + Signal Integrity) | …a real plan→test→TAF receipt |
 | **mcp-builder** | Build high-quality MCP servers (with FAF's Core-tier discipline) | …a server scaffolds clean |
 | **skill-creator** | Author Claude Code skills to the FAF Skill Standard | …a full create→validate→package run |
 | **repo-maintainer** | Multi-phase repository health audit | …a live repo audit runs |
