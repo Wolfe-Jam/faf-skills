@@ -81,7 +81,7 @@ for skill_dir in skills/*/; do
 
     # Check if SKILL.md exists
     if [ ! -f "$skill_dir/SKILL.md" ]; then
-        echo -e "${YELLOW}⚠${NC}  Skipping $skill_name (no SKILL.md found)"
+        echo -e "${YELLOW}!${NC}  Skipping $skill_name (no SKILL.md found)"
         continue
     fi
 
@@ -90,7 +90,7 @@ for skill_dir in skills/*/; do
 
     # Check if skill already exists
     if [ -d "$TARGET_DIR" ]; then
-        echo -e "${YELLOW}⚠${NC}  $skill_name already exists, backing up..."
+        echo -e "${YELLOW}!${NC}  $skill_name already exists, backing up..."
         mv "$TARGET_DIR" "$TARGET_DIR.backup.$(date +%Y%m%d-%H%M%S)"
     fi
 
@@ -116,7 +116,7 @@ if [ $FAILED -eq 0 ]; then
     echo -e "  Installed: $INSTALLED skills"
     echo -e "  Location: $SKILLS_DIR"
 else
-    echo -e "${YELLOW}⚠ Installation completed with warnings${NC}"
+    echo -e "${YELLOW}! Installation completed with warnings${NC}"
     echo ""
     echo -e "  Installed: $INSTALLED skills"
     echo -e "  Failed: $FAILED skills"

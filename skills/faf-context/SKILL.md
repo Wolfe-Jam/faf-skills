@@ -51,9 +51,9 @@ Most projects are 1 good goal sentence + 2 answers away from Trophy.
 
 The goal is the **generative input** — it seeds who/what/where automatically. Make it a real, specific sentence (it's also your *use-case*):
 
-- ✅ *"A CLI that scores any repo's AI-readiness and syncs context to Claude, Cursor, and Gemini — for solo developers."*
+- ✓ *"A CLI that scores any repo's AI-readiness and syncs context to Claude, Cursor, and Gemini — for solo developers."*
   → seeds **what** (a CLI that scores AI-readiness), **where** (Claude, Cursor, Gemini), **who** (solo developers). You'd only add **why** + **when**.
-- ❌ *"A tool to improve development."* → generic; seeds nothing. (Generic phrases are *ignored* on purpose — empty beats wrong.)
+- ✗ *"A tool to improve development."* → generic; seeds nothing. (Generic phrases are *ignored* on purpose — empty beats wrong.)
 
 ## The 6 Ws — terse labels, not prose
 

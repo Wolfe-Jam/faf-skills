@@ -22,7 +22,7 @@ Activate when:
 
 ## What This Skill Does
 
-### 🔍 **Phase 1: Comprehensive Audit**
+### **Phase 1: Comprehensive Audit**
 
 Systematically checks 7 critical areas:
 
@@ -142,29 +142,29 @@ Registry listing accurate (npm + MCP registry)
 
 ---
 
-### 🛠️ **Phase 2: Cleanup Plan Generation**
+### **Phase 2: Cleanup Plan Generation**
 
 After audit, generate prioritized task list:
 
 ```markdown
-# 🏎️ REPO HEALTH REPORT: faf-cli
+# REPO HEALTH REPORT: faf-cli
 
 **Overall Score:** 85% ◇ Bronze
 **Status:** Production-ready with minor cleanup needed
 
 ---
 
-## 🚨 CRITICAL (Fix Now)
+## CRITICAL (Fix Now)
 
 ### 1. Security: `open@10` breaking CI/CD
 - **Impact:** Release pipeline failing
-- **Fix:** Pin to `open@8.4.2` ✅ FIXED
+- **Fix:** Pin to `open@8.4.2` (fixed)
 - **Effort:** 5 minutes
 - **Auto-fix:** Available
 
 ---
 
-## ⚠️  MEDIUM (This Week)
+## MEDIUM (This Week)
 
 ### 3. .gitignore Gaps
 - **Issue:** `*.config.mjs`, `*.faf` test files not ignored
@@ -178,7 +178,7 @@ After audit, generate prioritized task list:
 
 ---
 
-## ℹ️  LOW (Nice to Have)
+## LOW (Nice to Have)
 
 ### 6. README Links
 - **Issue:** 2 broken links to old docs
@@ -191,7 +191,7 @@ After audit, generate prioritized task list:
 
 ---
 
-## ✅ EXCELLENT
+## EXCELLENT
 
 - Test coverage: 799/799 passing
 - TypeScript strict mode: enabled
@@ -202,7 +202,7 @@ After audit, generate prioritized task list:
 
 ---
 
-## 🎯 RECOMMENDED ACTIONS
+## RECOMMENDED ACTIONS
 
 **Quick wins:** .gitignore + CHANGELOG entry + README links + a reviewed `npm update`.
 **This week:** triage TODOs, remove unused deps, bump patch.
@@ -210,20 +210,20 @@ After audit, generate prioritized task list:
 
 ---
 
-## 🔧 AUTO-FIX AVAILABLE
+## AUTO-FIX AVAILABLE
 
 I can automatically fix:
-- ✅ .gitignore additions
-- ✅ CHANGELOG draft
-- ✅ Safe dependency updates
-- ✅ Workflow alignment
+- ✓ .gitignore additions
+- ✓ CHANGELOG draft
+- ✓ Safe dependency updates
+- ✓ Workflow alignment
 
 **Run auto-fix?** (yes/no)
 ```
 
 ---
 
-### 🤖 **Phase 3: Auto-Fix (Optional)**
+### **Phase 3: Auto-Fix (Optional)**
 
 For safe, non-breaking fixes:
 
@@ -353,7 +353,7 @@ npm published version
 
 The score is **deterministic** — same input → same score, every time. **FAF doesn't lie.**
 
-**Note:** 🍊 **Big Orange** is an **HONOR**, not a score or a badge. It recognizes sustained excellence across multiple criteria; it is never calculated from a single score.
+**Note:** **Big Orange** is an **HONOR**, not a score or a badge. It recognizes sustained excellence across multiple criteria; it is never calculated from a single score.
 
 **Apply These Tiers to:**
 - Overall repo health score
@@ -399,10 +399,10 @@ The score is **deterministic** — same input → same score, every time. **FAF 
 - Document decisions in CLAUDE.md
 
 ### 4. **Automate Where Safe**
-- .gitignore additions ✅
-- CHANGELOG drafts ✅
-- Workflow alignment ✅
-- Breaking changes ❌ (need review)
+- .gitignore additions ✓
+- CHANGELOG drafts ✓
+- Workflow alignment ✓
+- Breaking changes ✗ (need review)
 
 ---
 
@@ -411,7 +411,7 @@ The score is **deterministic** — same input → same score, every time. **FAF 
 ```
 User: /repo-maintainer
 
-Claude: 🏎️ Starting championship repo maintenance audit...
+Claude: Starting championship repo maintenance audit...
 
 [Runs git status]
 [Checks workflows]
@@ -419,7 +419,7 @@ Claude: 🏎️ Starting championship repo maintenance audit...
 [Runs npm outdated]
 [Checks .gitignore]
 
-📊 AUDIT COMPLETE
+AUDIT COMPLETE
 
 Overall Health: 85% ◇ Bronze
 Critical Issues: 2
@@ -427,24 +427,24 @@ Medium Issues: 3
 Low Priority: 5
 
 Top Issues:
-1. 🚨 open@10 breaking CI/CD (auto-fixable)
-2. 🚨 Node 16 in workflows (EOL)
-3. ⚠️  .gitignore missing *.config.mjs
-4. ⚠️  15 outdated dependencies
-5. ⚠️  CHANGELOG missing v4.4.0
+1. [critical] open@10 breaking CI/CD (auto-fixable)
+2. [critical] Node 16 in workflows (EOL)
+3. [medium] .gitignore missing *.faf.backup
+4. [medium] 15 outdated dependencies
+5. [medium] CHANGELOG missing v4.4.0
 
 I can auto-fix items 1, 2, 3, and draft 5.
 Would you like me to proceed? (yes/no)
 
 User: yes
 
-Claude: ✅ Fixing...
+Claude: Fixing...
 [Pins open@8.4.2]
 [Updates workflows to the current Node LTS]
 [Adds .gitignore patterns]
 [Drafts CHANGELOG entry]
 
-✅ Auto-fixes complete!
+✓ Auto-fixes complete!
 
 Remaining manual items:
 - Review 15 dependency updates

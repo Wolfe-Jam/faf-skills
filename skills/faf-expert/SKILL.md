@@ -58,7 +58,7 @@ faf --version
 
 **2. Add the MCP server.** In Claude Code:
 ```bash
-claude mcp add faf -- npx -y claude-faf-mcp
+claude mcp add faf -- npx -y claude-faf-mcp@7.0.1
 ```
 Or in Claude Desktop, add this to `claude_desktop_config.json` and restart Claude:
 ```json
@@ -66,7 +66,7 @@ Or in Claude Desktop, add this to `claude_desktop_config.json` and restart Claud
   "mcpServers": {
     "faf": {
       "command": "npx",
-      "args": ["-y", "claude-faf-mcp"]
+      "args": ["-y", "claude-faf-mcp@7.0.1"]
     }
   }
 }

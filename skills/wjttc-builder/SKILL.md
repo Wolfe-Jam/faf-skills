@@ -20,13 +20,13 @@ This skill generates F1-inspired test suites following the WJTTC (Wolfe James Te
 | **AI Optimized** | 100% bi-sync with project.faf |
 | **Best Code Possible** | ✪ Championship standard |
 
-## GOLD Code ✨
+## GOLD Code
 
 **Code earns GOLD status when:**
 
 ```
 ┌────────────────────────────────────────┐
-│         ✪ GOLD CODE ✨                │
+│              GOLD CODE                 │
 │  ════════════════════════════════════  │
 │  ✓ Pre-test plan defined               │
 │  ✓ Inline testing at write time        │
@@ -316,7 +316,7 @@ To generate a test suite for the current project:
 
 ```markdown
 ### T1.1 - [Test Name]
-**Status:** ⏳ PENDING
+**Status:** PENDING
 **Priority:** CRITICAL
 
 | Test | Expected | Actual | Status |
@@ -340,4 +340,4 @@ This skill is the **builder**: it plans and generates. It does **not** run the s
 
 ---
 
-*Championship Testing Standards 🏎️*
+*Championship Testing Standards*

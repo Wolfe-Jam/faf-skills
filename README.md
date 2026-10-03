@@ -27,7 +27,7 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 | **faf-go** — `/faf-go` | A guided interview (AskUserQuestion) for the slots only you can fill |
 | **faf-wizard** — `/faf-wizard` | Done-for-you `project.faf` generator |
 | **faf-expert** — `/faf-expert` | The mechanic's manual: scoring internals, MCP setup, sync, the always-33 slot model |
-| **wjttc-builder** — `/wjttc-builder` | Plans and generates tiered test suites (Brake · Engine · Aero · Tyre · Pit) |
+| **wjttc-builder** — `/wjttc-builder` | Plans and generates WJTTC test suites, tiered by risk (Brake · Engine · Aero · Tyre · Pit) |
 | **wjttc-tester** — `/wjttc-tester` | Runs a test plan, reproduces bugs, and files a tiered report |
 | **repo-maintainer** — `/repo-maintainer` | Multi-phase repository health audit |
 
@@ -39,9 +39,9 @@ Ask Claude in any project:
 - *"Interview me for the slots you can't fill, until we hit 100%."* → `faf-go`
 - *"Plan a tiered test suite for this repo."* → `wjttc-builder`
 
-> **Receipt:** a real project taken from `29%` → **`100% ✪`** by following exactly the model `faf-context` teaches: `faf auto` to detect and seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. Deterministic and falsifiable. *(FAF don't lie.)*
+> **Receipt:** a real project taken from `29%` → **`100% ✪`** by following exactly the model `faf-context` teaches: `faf auto` to detect and seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. The score is deterministic: run `faf score` and you get the same number.
 
-Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genuinely procedural).
+Every command, flag and tool a skill names is checked against the live faf-cli and claude-faf-mcp before it ships.
 
 ---
 
@@ -49,7 +49,7 @@ Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genui
 
 | Score | Tier | Symbol |
 |-------|------|--------|
-| 100% | Trophy | ✪ |
+| 100% | <img src="assets/trophy.svg" width="16" alt="Trophy"> Trophy | ✪ |
 | 99% | Gold | ★ |
 | 95% | Silver | ◆ |
 | 85% | Bronze | ◇ |
@@ -58,7 +58,7 @@ Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genui
 | 1% | Red | ○ |
 | 0% | White | ♡ |
 
-> **✪ = 🏆 = 100%** — the same Trophy, two surfaces: **✪** is the FAF-at-Work mark (code · skills · CLI · the Skills Site); **🏆** is the social mark (X · blogs).
+> **✪ Trophy = 100%: AI is optimized to code.** Every definition slot for your app type is filled, so AI has the truth about your stack and your intent.
 
 ---
 
@@ -66,12 +66,12 @@ Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genui
 
 ```bash
 npm install -g faf-cli                           # required (or: brew install wolfe-jam/faf/faf-cli)
-claude mcp add faf -- npx -y claude-faf-mcp      # optional: MCP server
+claude mcp add faf -- npx -y claude-faf-mcp@7.0.1   # optional: MCP server
 ```
 
 ## What this plugin runs
 
-The plugin ships skills only: no hooks, no MCP servers, nothing runs on install. The skills ask Claude to run local `faf` commands, which read and write files in your project (`project.faf`, `CLAUDE.md`, `AGENTS.md`). Network use: installing `faf-cli` or running `npx claude-faf-mcp` downloads from npm; `faf git <url>` shallow-clones a public GitHub repo to a temp folder; `faf bench --submit` (opt-in) posts a score receipt to a public ledger. The plugin itself collects no data.
+The plugin ships skills only: no hooks, no MCP servers, nothing runs on install. The skills ask Claude to run local `faf` commands, which read and write files in your project (`project.faf`, `CLAUDE.md`, `AGENTS.md`). Network use: installing `faf-cli` or running `npx claude-faf-mcp@7.0.1` downloads from npm; `faf git <url>` shallow-clones a public GitHub repo to a temp folder; `faf bench --submit` (opt-in) posts a score receipt to a public ledger. The plugin itself collects no data.
 
 **Support:** [GitHub issues](https://github.com/Wolfe-Jam/faf-skills/issues) · team@faf.one
 
