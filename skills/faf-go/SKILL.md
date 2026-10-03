@@ -31,7 +31,7 @@ FAF Go is built FOR Claude Code:
 ### multiSelect Support
 
 Some questions allow multiple selections:
-- `stack.testing` → "pytest + WJTTC"
+- `stack.testing` → "pytest + WJTTC" (informational — not one of the 33 scored slots)
 - `stack.cicd` → "GitHub Actions + Cloud Build"
 - `stack.frontend` → "React + Tailwind"
 - `human_context.who` → "Developers + AI agents"
@@ -156,7 +156,7 @@ If score < 100: Continue with remaining questions
 
 ### Multi-Select Questions (pick multiple, joined with " + ")
 
-#### stack.testing
+#### stack.testing (informational — not scored)
 ```json
 {
   "question": "What testing tools/methodologies do you use?",
@@ -303,10 +303,10 @@ When 100% ✪ is achieved:
 ✪ 100% — Gold Code
 
 project.faf: complete
-CLAUDE.md:   synced from .faf
+CLAUDE.md:   run `faf sync` to update
 ```
 
-Optionally run `faf sync` to emit CLAUDE.md / AGENTS.md from the .faf. Your AI now starts every session with complete project context.
+Optionally run `faf sync` to emit CLAUDE.md (and `faf export --agents` for AGENTS.md) from the .faf. Your AI now starts every session with complete project context.
 
 ## Related Skills
 

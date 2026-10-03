@@ -42,7 +42,7 @@ faf auto      # 1. AI detects your whole stack + seeds context from your README
 faf score     # 2. See the number + exactly which slots are still empty
 faf go        # 3. Guided fill: confirm the seeded Ws, answer the 1–2 left
 faf score     # 4. 100% ✪
-faf sync      # 5. Push context into CLAUDE.md / AGENTS.md (optional)
+faf sync      # 5. Push context into CLAUDE.md (optional; AGENTS.md: faf export --agents)
 ```
 
 Most projects are 1 good goal sentence + 2 answers away from Trophy.
@@ -80,7 +80,7 @@ The AI **only seeds facts your goal/README literally state** — never invents, 
 
 - Want it done **for** you, one click? → **faf-wizard**
 - Want to **master** the format (scoring internals, MCP config, bi-sync)? → **faf-expert**
-- Driving a repo all the way with an agent? → **`faf go`** / **faf-loop**
+- Driving a repo all the way with an agent? → **`faf go`** / **`faf loop`**
 
 ---
 

@@ -60,6 +60,8 @@ fi
 
 echo ""
 
+mkdir -p "$SKILLS_DIR"
+
 # Count skills to install
 SKILL_COUNT=$(ls -1 skills | wc -l | tr -d ' ')
 echo -e "${BLUE}Installing $SKILL_COUNT FAF skills...${NC}"
@@ -97,10 +99,10 @@ for skill_dir in skills/*/; do
 
     if [ -f "$TARGET_DIR/SKILL.md" ]; then
         echo -e "${GREEN}✓${NC}  Installed: $skill_name"
-        ((INSTALLED++))
+        INSTALLED=$((INSTALLED+1))
     else
         echo -e "${RED}✗${NC}  Failed: $skill_name"
-        ((FAILED++))
+        FAILED=$((FAILED+1))
     fi
 done
 
@@ -126,7 +128,7 @@ echo -e "${BLUE}Installed skills:${NC}"
 echo ""
 
 # List installed skills
-for skill_dir in "$SKILLS_DIR"/faf-*/; do
+for skill_dir in skills/*/; do
     if [ -d "$skill_dir" ]; then
         skill_name=$(basename "$skill_dir")
         echo -e "  • $skill_name"
@@ -141,9 +143,9 @@ echo ""
 echo "  1. Restart Claude Code (skills activate automatically)"
 echo "  2. Try asking Claude:"
 echo ""
-echo -e "     ${BLUE}\"What is FAF?\"${NC}            → faf-teacher activates"
+echo -e "     ${BLUE}\"What is FAF?\"${NC}            → faf-expert activates"
 echo -e "     ${BLUE}\"Set up project context\"${NC}  → faf-wizard activates"
-echo -e "     ${BLUE}\"What's my score?\"${NC}        → faf-score activates"
+echo -e "     ${BLUE}\"Get me to 100%\"${NC}          → faf-go activates"
 echo ""
 echo "  Skills activate automatically on natural language."
 echo "  No commands to memorize. Zero configuration."

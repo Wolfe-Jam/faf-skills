@@ -31,6 +31,14 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 | **wjttc-tester** — `/wjttc-tester` | Runs a test plan, reproduces bugs, and files a tiered report |
 | **repo-maintainer** — `/repo-maintainer` | Multi-phase repository health audit |
 
+## Try it
+
+Ask Claude in any project:
+
+- *"Create a project.faf for this repo and score it."* → `faf-context` / `faf-wizard`
+- *"Interview me for the slots you can't fill, until we hit 100%."* → `faf-go`
+- *"Plan a tiered test suite for this repo."* → `wjttc-builder`
+
 > **Receipt:** a real project taken from `29%` → **`100% ✪`** by following exactly the model `faf-context` teaches: `faf auto` to detect and seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. Deterministic and falsifiable. *(FAF don't lie.)*
 
 Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genuinely procedural).
@@ -57,9 +65,15 @@ Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genui
 ## Prerequisites
 
 ```bash
-npm install -g faf-cli           # required
-npm install -g claude-faf-mcp    # optional: MCP server
+npm install -g faf-cli                           # required (or: brew install wolfe-jam/faf/faf-cli)
+claude mcp add faf -- npx -y claude-faf-mcp      # optional: MCP server
 ```
+
+## What this plugin runs
+
+The plugin ships skills only: no hooks, no MCP servers, nothing runs on install. The skills ask Claude to run local `faf` commands, which read and write files in your project (`project.faf`, `CLAUDE.md`, `AGENTS.md`). Network use: installing `faf-cli` or running `npx claude-faf-mcp` downloads from npm; `faf git <url>` shallow-clones a public GitHub repo to a temp folder; `faf bench --submit` (opt-in) posts a score receipt to a public ledger. The plugin itself collects no data.
+
+**Support:** [GitHub issues](https://github.com/Wolfe-Jam/faf-skills/issues) · team@faf.one
 
 > `skills.json` is **generated** from the SKILL.md frontmatters and verified in CI — never edit it by hand (`node scripts/build-skills-json.mjs`).
 

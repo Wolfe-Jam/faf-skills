@@ -336,7 +336,7 @@ This skill is the **builder**: it plans and generates. It does **not** run the s
 
 - **Execute + report** → use the `wjttc-tester` skill (it runs tests, finds bugs, writes WJTTC reports).
 - **Audit tier balance** → `faf wjttc` classifies an existing suite across the five tiers and flags untiered tests (`--strict` exits non-zero on any untiered; `--json` for CI). Name your generated tests with a tier word (brake/engine/aero/tyre/pit) so the audit can place them.
-- **Wire CI receipts** → `faf taf setup` installs the TAF receipt printer so each run leaves a verifiable record.
+- **Wire CI receipts** → `faf taf setup` prints the TAF receipt workflow (`--write` creates `.github/workflows/taf.yml`) so each run leaves a verifiable record.
 
 ---
 

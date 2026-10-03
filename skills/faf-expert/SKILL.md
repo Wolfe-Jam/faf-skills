@@ -43,7 +43,7 @@ project/
 | AI platform | Emitted file | Command |
 |-------------|--------------|---------|
 | Claude (Desktop / Code) | `CLAUDE.md` | `faf sync` |
-| OpenAI Codex / agents | `AGENTS.md` | `faf sync` |
+| OpenAI Codex / agents | `AGENTS.md` | `faf export --agents` |
 | Cursor | `.cursorrules` | `faf export --cursor` |
 | Google Gemini | `GEMINI.md` | `faf export --gemini` |
 | GitHub Copilot | `.github/copilot-instructions.md` | `faf export --copilot` |
@@ -66,7 +66,7 @@ Or in Claude Desktop, add this to `claude_desktop_config.json` and restart Claud
   "mcpServers": {
     "faf": {
       "command": "npx",
-      "args": ["-y", "claude-faf-mcp@latest"]
+      "args": ["-y", "claude-faf-mcp"]
     }
   }
 }
@@ -78,7 +78,7 @@ faf auto     # 1. detect stack + language, seed context from your README
 faf score    # 2. the % + exactly which slots are still empty
 faf go       # 3. guided fill — answer only the gaps the AI can't source
 faf score    # 4. 100% ✪
-faf sync     # 5. push context → CLAUDE.md / AGENTS.md
+faf sync     # 5. push context → CLAUDE.md  (AGENTS.md: faf export --agents)
 ```
 
 ## CLI commands
@@ -88,12 +88,13 @@ faf sync     # 5. push context → CLAUDE.md / AGENTS.md
 faf auto                # detect + seed (fills what it can)
 faf score               # AI-readiness % + the empty slots
 faf go                  # guided fill — close the gaps
-faf sync                # emit CLAUDE.md / AGENTS.md from the .faf
+faf sync                # emit CLAUDE.md from the .faf
+faf export --agents     # emit AGENTS.md from the .faf
 
 # Anytime
 faf init                # create a fresh project.faf
 faf check               # validate structure (IANA-clean)
-faf git <url>           # score any GitHub repo → .faf, no clone
+faf git <url>           # score any GitHub repo → .faf (shallow-clones to a temp dir)
 faf formats             # browse the supported stacks
 faf migrate             # upgrade an older .faf
 faf export --copilot    # emit .github/copilot-instructions.md
@@ -169,9 +170,9 @@ stack:                            # auto-detected
   backend: express
   database: postgresql
   runtime: node
-  deployment: aws-ecs
+  hosting: aws-ecs
   build: vite
-  testing: vitest
+  testing: vitest                 # informational — not one of the 33 scored slots
   cicd: github-actions
 ```
 
@@ -188,7 +189,8 @@ faf auto                    # 1. baseline: detect + seed
 faf score                   # 2. see the empty slots
 faf go                      # 3. close the gaps (guided)
 faf check                   # 4. IANA compliance
-faf sync                    # 5. emit CLAUDE.md / AGENTS.md
+faf sync                    # 5. emit CLAUDE.md
+faf export --agents         #    and AGENTS.md
 git add project.faf CLAUDE.md AGENTS.md && git commit -m "Add AI context (.faf)"
 ```
 
@@ -200,17 +202,17 @@ The `.faf` **is** the standard — commit it, and everyone's AI shares one conte
 |---------|----------|---------|
 | `faf-cli` (`faf`) | npm | the CLI |
 | `claude-faf-mcp` | npm | Claude Code / Desktop MCP server |
-| `faf-mcp` | npm | universal MCP server |
+| `faf-mcp` | npm | MCP server for Cursor, VS Code and other MCP IDEs |
 | `gemini-faf-mcp` | PyPI | Google Gemini integration |
 | `grok-faf-mcp` | npm | Grok integration |
 | `faf-scoring-kernel` | npm | the WASM scoring engine |
 
-**150k+ downloads across npm + PyPI + crates.io.** **claude-faf-mcp, faf-mcp, and gemini-faf-mcp hold AAA** on Glama (earned, not conferred).
+**150k+ downloads across npm + PyPI + crates.io.** **claude-faf-mcp, faf-mcp, and gemini-faf-mcp hold AAA** on Glama ([claude-faf-mcp](https://glama.ai/mcp/servers/Wolfe-Jam/claude-faf-mcp) · [faf-mcp](https://glama.ai/mcp/servers/Wolfe-Jam/faf-mcp) · [gemini-faf-mcp](https://glama.ai/mcp/servers/Wolfe-Jam/gemini-faf-mcp)).
 
 ## Standing
 
 - **IANA-registered** media type: `application/vnd.faf+yaml`
-- In the **original Anthropic MCP ecosystem** (PR #2759, merged Oct 2025)
+- Listed in **modelcontextprotocol/servers** (PR #2759, merged 2025-10-17)
 - Maintainer of the `.faf` format specification
 
 ## Troubleshooting

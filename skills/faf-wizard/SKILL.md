@@ -89,9 +89,9 @@ stack:
   api_type: rest
   runtime: node
   database: postgresql
-  deployment: vercel
+  hosting: vercel
   build: vite
-  testing: vitest
+  testing: vitest                 # informational — not one of the 33 scored slots
   cicd: github-actions
 ```
 
@@ -103,7 +103,7 @@ Keep under 200 lines. Only what changes AI behavior.
 Generated: project.faf
 AI-Readiness: 87% ◇ Bronze — Production ready
 
-Filled: 9/11 active slots
+Filled: 13/15 active slots
 slotignored: the slots that don't apply to this app_type (never counted)
 
 To reach 100% ✪:
@@ -142,10 +142,10 @@ Generated files must:
 - Be valid YAML
 - Have `faf_version` and `project.name`
 - Contain NO secrets or credentials
-- Stay under 500 lines
+- Stay under 200 lines
 
 ## Credentials
 
 - **IANA Media Type:** `application/vnd.faf+yaml`
-- In the **original Anthropic MCP ecosystem** (#2759, merged Oct 2025)
+- Listed in **modelcontextprotocol/servers** (#2759, merged 2025-10-17)
 - **Website:** https://faf.one
