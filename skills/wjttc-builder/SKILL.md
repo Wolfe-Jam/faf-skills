@@ -20,13 +20,13 @@ This skill generates F1-inspired test suites following the WJTTC (Wolfe James Te
 | **AI Optimized** | 100% bi-sync with project.faf |
 | **Best Code Possible** | ✪ Championship standard |
 
-## GOLD Code ✨
+## GOLD Code
 
 **Code earns GOLD status when:**
 
 ```
 ┌────────────────────────────────────────┐
-│         ✪ GOLD CODE ✨                │
+│              GOLD CODE                 │
 │  ════════════════════════════════════  │
 │  ✓ Pre-test plan defined               │
 │  ✓ Inline testing at write time        │
@@ -293,7 +293,7 @@ Pass rate maps to the canonical FAF tier system (the same tiers FAF uses everywh
 
 | Score | Tier | Symbol | Status |
 |-------|------|--------|--------|
-| 100% | Trophy | ✪ | Perfect — Gold Code |
+| 100% | Trophy | ✪ | AI is optimized to code |
 | 99% | Gold | ★ | Exceptional |
 | 95% | Silver | ◆ | Top tier |
 | 85% | Bronze | ◇ | Production ready |
@@ -316,7 +316,7 @@ To generate a test suite for the current project:
 
 ```markdown
 ### T1.1 - [Test Name]
-**Status:** ⏳ PENDING
+**Status:** PENDING
 **Priority:** CRITICAL
 
 | Test | Expected | Actual | Status |
@@ -336,8 +336,8 @@ This skill is the **builder**: it plans and generates. It does **not** run the s
 
 - **Execute + report** → use the `wjttc-tester` skill (it runs tests, finds bugs, writes WJTTC reports).
 - **Audit tier balance** → `faf wjttc` classifies an existing suite across the five tiers and flags untiered tests (`--strict` exits non-zero on any untiered; `--json` for CI). Name your generated tests with a tier word (brake/engine/aero/tyre/pit) so the audit can place them.
-- **Wire CI receipts** → `faf taf setup` installs the TAF receipt printer so each run leaves a verifiable record.
+- **Wire CI receipts** → `faf taf setup` prints the TAF receipt workflow (`--write` creates `.github/workflows/taf.yml`) so each run leaves a verifiable record.
 
 ---
 
-*Championship Testing Standards 🏎️*
+*Championship Testing Standards*

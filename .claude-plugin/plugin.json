@@ -3,7 +3,7 @@
   "name": "faf",
   "displayName": "FAF Skills",
   "version": "1.1.0",
-  "description": "Claude Code skills for AI-context, testing, and MCP development. IANA-registered format (application/vnd.faf+yaml). Create .faf project DNA, score AI-readiness, sync with CLAUDE.md, build MCP servers, generate test suites.",
+  "description": "Claude Code skills for persistent project context: create, score and fill your project.faf (IANA-registered application/vnd.faf+yaml) to 100%, keep CLAUDE.md in step, and generate WJTTC test suites.",
   "author": {
     "name": "FAF Foundation",
     "email": "team@faf.one",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "keywords": [
     "ai-context",
-    "project-dna",
+    "persistent-project-context",
     "faf",
     "mcp",
     "testing",

@@ -65,7 +65,7 @@ Pull signals from what exists:
 
 ### Step 3: Generate project.faf
 
-Create focused AI context at project root. **faf-cli scores on 21 slots** — `app_type` selects which are *active*; the rest are `slotignored` (never counted against you). Detection fills the stack; the human supplies the underivable bits (`project.name`/`goal` + the 6 Ws). `human_context.how` is **how it's built** (sourced from the stack), not AI preferences.
+Create focused AI context at project root. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. `app_type` selects which are *active*; the rest are `slotignored` (never counted against you). Detection fills the stack; the human supplies the underivable bits (`project.name`/`goal` + the 6 Ws). `human_context.how` is **how it's built** (sourced from the stack), not AI preferences.
 
 ```yaml
 faf_version: "3.0"
@@ -89,9 +89,9 @@ stack:
   api_type: rest
   runtime: node
   database: postgresql
-  deployment: vercel
+  hosting: vercel
   build: vite
-  testing: vitest
+  testing: vitest                 # informational — not one of the 33 scored slots
   cicd: github-actions
 ```
 
@@ -103,7 +103,7 @@ Keep under 200 lines. Only what changes AI behavior.
 Generated: project.faf
 AI-Readiness: 87% ◇ Bronze — Production ready
 
-Filled: 9/11 active slots
+Filled: 13/15 active slots
 slotignored: the slots that don't apply to this app_type (never counted)
 
 To reach 100% ✪:
@@ -118,7 +118,7 @@ To reach 100% ✪:
 
 | Score | Tier | Symbol | Status |
 |-------|------|--------|--------|
-| 100% | Trophy | ✪ | Perfect — Gold Code |
+| 100% | Trophy | ✪ | AI is optimized to code |
 | 99% | Gold | ★ | Exceptional |
 | 95% | Silver | ◆ | Top tier |
 | 85% | Bronze | ◇ | Production ready |
@@ -142,10 +142,10 @@ Generated files must:
 - Be valid YAML
 - Have `faf_version` and `project.name`
 - Contain NO secrets or credentials
-- Stay under 500 lines
+- Stay under 200 lines
 
 ## Credentials
 
 - **IANA Media Type:** `application/vnd.faf+yaml`
-- In the **original Anthropic MCP ecosystem** (#2759, merged Oct 2025)
+- Listed in **modelcontextprotocol/servers** (#2759, merged 2025-10-17)
 - **Website:** https://faf.one

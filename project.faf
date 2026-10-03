@@ -36,3 +36,9 @@ key_files:
   - README.md
   - skills/faf-context/SKILL.md
   - .claude-plugin/marketplace.json
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored

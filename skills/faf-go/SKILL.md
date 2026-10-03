@@ -1,6 +1,6 @@
 ---
 name: faf-go
-description: Guided interview to Gold Code (100% AI-Readiness). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
+description: Guided interview to Trophy ✪ (100% — AI is optimized to code). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
 license: MIT
 ---
 
@@ -8,13 +8,13 @@ license: MIT
 
 **"Just type /faf-go, answer questions till you're done. 100% target."**
 
-`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **faf-cli scores on 21 slots**; your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
+`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. Your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
 
 ## When to Use This Skill
 
 Activate when:
 - User wants to improve their .faf score
-- User mentions "Gold Code" or "100%"
+- User mentions "Trophy" or "100%"
 - User has incomplete project context
 - After `faf init` to fill in missing fields
 - User says "help me with my .faf"
@@ -31,7 +31,7 @@ FAF Go is built FOR Claude Code:
 ### multiSelect Support
 
 Some questions allow multiple selections:
-- `stack.testing` → "pytest + WJTTC"
+- `stack.testing` → "pytest + WJTTC" (informational — not one of the 33 scored slots)
 - `stack.cicd` → "GitHub Actions + Cloud Build"
 - `stack.frontend` → "React + Tailwind"
 - `human_context.who` → "Developers + AI agents"
@@ -89,7 +89,7 @@ faf score
 
 ### Step 4: Celebrate or Continue
 
-If score >= 100: Celebrate Gold Code achievement
+If score >= 100: Celebrate Trophy ✪
 If score < 100: Continue with remaining questions
 
 ## Question Templates for AskUserQuestion
@@ -156,7 +156,7 @@ If score < 100: Continue with remaining questions
 
 ### Multi-Select Questions (pick multiple, joined with " + ")
 
-#### stack.testing
+#### stack.testing (informational — not scored)
 ```json
 {
   "question": "What testing tools/methodologies do you use?",
@@ -249,7 +249,7 @@ Claude: Let me check your current .faf status.
 
 [Runs: faf score --verbose]
 
-Your score is 45%. Let's get you to Gold Code!
+Your score is 45%. Let's get you to Trophy ✪!
 
 [Uses AskUserQuestion for project.goal]
 
@@ -261,7 +261,7 @@ Claude: Great! Now let's capture why this project exists.
 
 ... continues until 100% ...
 
-Claude: ✪ GOLD CODE ACHIEVED!
+Claude: ✪ TROPHY — 100%, AI is optimized to code!
 Your AI now has complete context for championship performance.
 ```
 
@@ -274,7 +274,7 @@ Track progress with todos:
   {"content": "Answer project.goal question", "status": "completed"},
   {"content": "Answer human_context.why question", "status": "in_progress"},
   {"content": "Answer stack.database question", "status": "pending"},
-  {"content": "Verify Gold Code achieved", "status": "pending"}
+  {"content": "Verify Trophy ✪ achieved", "status": "pending"}
 ]
 ```
 
@@ -300,19 +300,19 @@ This skill is the **Claude-native** version of that interview — AskUserQuestio
 When 100% ✪ is achieved:
 
 ```
-✪ 100% — Gold Code
+✪ 100% Trophy — AI is optimized to code
 
 project.faf: complete
-CLAUDE.md:   synced from .faf
+CLAUDE.md:   run `faf sync` to update
 ```
 
-Optionally run `faf sync` to emit CLAUDE.md / AGENTS.md from the .faf. Your AI now starts every session with complete project context.
+Optionally run `faf sync` to emit CLAUDE.md (and `faf export --agents` for AGENTS.md) from the .faf. Your AI now starts every session with complete project context.
 
 ## Related Skills
 
 - **faf-context** — the builder's quickstart: hand the AI what it needs to hit 100%, fast
 - **faf-wizard** — done-for-you, one-click .faf for any project
-- **faf-expert** — master the format: scoring internals, MCP config, bi-sync, the full 21-slot model
+- **faf-expert** — master the format: scoring internals, MCP config, bi-sync, the always-33 slot model
 
 ---
 

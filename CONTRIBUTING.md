@@ -79,14 +79,14 @@ What defines success for this skill.
 ### 3. Skill Quality Standards
 
 **Required elements:**
-- ✅ Clear, descriptive name
-- ✅ One-sentence description with trigger words
-- ✅ Comprehensive "When to Use" section
-- ✅ Detailed "How It Works" workflow
-- ✅ Real examples with user interactions
-- ✅ Troubleshooting section
-- ✅ Related skills section
-- ✅ NO BS ZONE compliance
+- Clear, descriptive name
+- One-sentence description with trigger words
+- Comprehensive "When to Use" section
+- Detailed "How It Works" workflow
+- Real examples with user interactions
+- Troubleshooting section
+- Related skills section
+- NO BS ZONE compliance
 
 **Best practices:**
 - Focus on one clear purpose

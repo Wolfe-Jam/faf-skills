@@ -21,11 +21,11 @@ const SKILLS_DIR = join(ROOT, 'skills');
 // Unknown skills default to 'faf' with a warning — graceful, never breaks the build.
 const CATEGORY = {
   'faf-context': 'faf', 'faf-wizard': 'faf', 'faf-expert': 'faf', 'faf-go': 'faf',
-  'mcp-builder': 'mcp', 'wjttc-builder': 'mcp', 'wjttc-tester': 'mcp',
+  'mcp-builder': 'mcp', 'wjttc-builder': 'testing', 'wjttc-tester': 'testing',
   'skill-creator': 'utility', 'repo-maintainer': 'utility',
 };
 // Render order for the hub (faf first; then the rest).
-const CATEGORY_ORDER = ['faf', 'mcp', 'utility'];
+const CATEGORY_ORDER = ['faf', 'testing', 'mcp', 'utility'];
 
 // Optional curated card taglines — override the mechanical first-sentence extraction
 // for skills where a positioning-led card beats the trigger description. Single place
@@ -33,7 +33,7 @@ const CATEGORY_ORDER = ['faf', 'mcp', 'utility'];
 // (Keeps the generator NON-DESTRUCTIVE: re-running never clobbers curated card copy.)
 const TAGLINE = {
   'faf-context': '100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
-  'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model',
+  'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model',
   'wjttc-tester': 'WJTTC test EXECUTOR + reporter',
 };
 

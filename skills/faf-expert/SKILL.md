@@ -1,6 +1,6 @@
 ---
 name: faf-expert
-description: Master the IANA-registered .faf format (application/vnd.faf+yaml) — the typed, portable context that makes any AI understand your project. Covers scoring internals, MCP server config, bi-directional sync, and the full 21-slot model. The mechanic's manual for expert-level control. New to FAF? Start with faf-context to hit 100%, then come here to go deep. See also faf-wizard for the done-for-you path.
+description: Master the IANA-registered .faf format (application/vnd.faf+yaml) — the typed, portable context that makes any AI understand your project. Covers scoring internals, MCP server config, bi-directional sync, and the always-33 slot model. The mechanic's manual for expert-level control. New to FAF? Start with faf-context to hit 100%, then come here to go deep. See also faf-wizard for the done-for-you path.
 license: MIT
 ---
 
@@ -43,7 +43,7 @@ project/
 | AI platform | Emitted file | Command |
 |-------------|--------------|---------|
 | Claude (Desktop / Code) | `CLAUDE.md` | `faf sync` |
-| OpenAI Codex / agents | `AGENTS.md` | `faf sync` |
+| OpenAI Codex / agents | `AGENTS.md` | `faf export --agents` |
 | Cursor | `.cursorrules` | `faf export --cursor` |
 | Google Gemini | `GEMINI.md` | `faf export --gemini` |
 | GitHub Copilot | `.github/copilot-instructions.md` | `faf export --copilot` |
@@ -56,13 +56,17 @@ npm install -g faf-cli        # or: brew install wolfe-jam/faf/faf-cli
 faf --version
 ```
 
-**2. Configure the MCP server** — add to Claude Desktop's `claude_desktop_config.json`, then restart Claude:
+**2. Add the MCP server.** In Claude Code:
+```bash
+claude mcp add faf -- npx -y claude-faf-mcp@7.0.1
+```
+Or in Claude Desktop, add this to `claude_desktop_config.json` and restart Claude:
 ```json
 {
   "mcpServers": {
     "faf": {
       "command": "npx",
-      "args": ["-y", "claude-faf-mcp@latest"]
+      "args": ["-y", "claude-faf-mcp@7.0.1"]
     }
   }
 }
@@ -74,7 +78,7 @@ faf auto     # 1. detect stack + language, seed context from your README
 faf score    # 2. the % + exactly which slots are still empty
 faf go       # 3. guided fill — answer only the gaps the AI can't source
 faf score    # 4. 100% ✪
-faf sync     # 5. push context → CLAUDE.md / AGENTS.md
+faf sync     # 5. push context → CLAUDE.md  (AGENTS.md: faf export --agents)
 ```
 
 ## CLI commands
@@ -84,12 +88,13 @@ faf sync     # 5. push context → CLAUDE.md / AGENTS.md
 faf auto                # detect + seed (fills what it can)
 faf score               # AI-readiness % + the empty slots
 faf go                  # guided fill — close the gaps
-faf sync                # emit CLAUDE.md / AGENTS.md from the .faf
+faf sync                # emit CLAUDE.md from the .faf
+faf export --agents     # emit AGENTS.md from the .faf
 
 # Anytime
 faf init                # create a fresh project.faf
 faf check               # validate structure (IANA-clean)
-faf git <url>           # score any GitHub repo → .faf, no clone
+faf git <url>           # score any GitHub repo → .faf (shallow-clones to a temp dir)
 faf formats             # browse the supported stacks
 faf migrate             # upgrade an older .faf
 faf export --copilot    # emit .github/copilot-instructions.md
@@ -98,7 +103,7 @@ faf taf setup           # wire up TAF test receipts (CI)
 
 ## MCP server tools
 
-`claude-faf-mcp` brings the format into the tool surface. The live tool set (verified against the running server):
+`claude-faf-mcp` brings the format into the tool surface. The core tools in claude-faf-mcp v7:
 
 ```
 # The path to 100% ✪
@@ -111,7 +116,6 @@ faf_sync     → sync .faf → CLAUDE.md (+ optionally AGENTS.md)
 faf_init     → create a new project.faf (name, goal, language) + starting score
 faf_context  → set / show the active project path faf_ calls resolve against
 faf_doctor   → diagnose: empty / weak slots + how to fix each
-faf_enhance  → refine the .faf with an AI model (claude / gemini / grok, optional consensus)
 faf_trust    → attest integrity: validity, score + a deterministic parity hash anyone can verify
 faf_bench    → prove the .faf earns its place — the context's worth on THIS repo, falsifiably
 faf_about    → explain the FAF format — project DNA for AI (IANA-registered)
@@ -129,7 +133,7 @@ faf_recall   → recall memories from the .fafm, ranked by priority + recency
 
 | Score | Tier | Symbol | Status |
 |-------|------|--------|--------|
-| 100% | Trophy | ✪ | Perfect — Gold Code |
+| 100% | Trophy | ✪ | AI is optimized to code |
 | 99% | Gold | ★ | Exceptional |
 | 95% | Silver | ◆ | Top tier |
 | 85% | Bronze | ◇ | Production ready |
@@ -140,9 +144,9 @@ faf_recall   → recall memories from the .fafm, ranked by priority + recency
 
 The score is **deterministic** — a WASM-compiled engine, mechanical and falsifiable. Same input → same score, every time. **FAF doesn't lie.**
 
-### The 21-slot model
+### The always-33 slot model
 
-**faf-cli scores on 21 slots.** Your `app_type` selects which are *active* — a CLI ignores frontend slots (`slotignored`, never counted against you). Detection fills the stack + language; you supply only the underivable bits — `project.name`/`goal` + the 6 Ws (a sharp goal seeds several). **100% = every *active* slot filled** (not all 21). *(Teams / Enterprise tiers add more slots — separate from faf-cli's 21.)*
+**Every `.faf` is scored against the same 33 slots.** faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them; slotignored slots never count against you. **100% ✪ = every active slot filled.** Your `app_type` selects which are *active*: a CLI ignores frontend slots (`slotignored`, never counted against you). Detection fills the stack + language; you supply only the underivable bits — `project.name`/`goal` + the 6 Ws (a sharp goal seeds several).
 
 ```yaml
 # project.faf — IANA application/vnd.faf+yaml
@@ -166,9 +170,9 @@ stack:                            # auto-detected
   backend: express
   database: postgresql
   runtime: node
-  deployment: aws-ecs
+  hosting: aws-ecs
   build: vite
-  testing: vitest
+  testing: vitest                 # informational — not one of the 33 scored slots
   cicd: github-actions
 ```
 
@@ -185,7 +189,8 @@ faf auto                    # 1. baseline: detect + seed
 faf score                   # 2. see the empty slots
 faf go                      # 3. close the gaps (guided)
 faf check                   # 4. IANA compliance
-faf sync                    # 5. emit CLAUDE.md / AGENTS.md
+faf sync                    # 5. emit CLAUDE.md
+faf export --agents         #    and AGENTS.md
 git add project.faf CLAUDE.md AGENTS.md && git commit -m "Add AI context (.faf)"
 ```
 
@@ -196,18 +201,18 @@ The `.faf` **is** the standard — commit it, and everyone's AI shares one conte
 | Package | Registry | Purpose |
 |---------|----------|---------|
 | `faf-cli` (`faf`) | npm | the CLI |
-| `claude-faf-mcp` | npm | Claude Desktop / Code MCP server |
-| `faf-mcp` | npm | universal MCP server |
+| `claude-faf-mcp` | npm | Claude Code / Desktop MCP server |
+| `faf-mcp` | npm | MCP server for Cursor, VS Code and other MCP IDEs |
 | `gemini-faf-mcp` | PyPI | Google Gemini integration |
-| `grok-faf-mcp` | npm | xAI Grok integration |
+| `grok-faf-mcp` | npm | Grok integration |
 | `faf-scoring-kernel` | npm | the WASM scoring engine |
 
-**100k+ downloads across npm + PyPI + crates.io.** **claude-faf-mcp, faf-mcp, and gemini-faf-mcp hold AAA** on Glama (earned, not conferred).
+**150k+ downloads across npm + PyPI + crates.io.** **claude-faf-mcp, faf-mcp, and gemini-faf-mcp hold AAA** on Glama ([claude-faf-mcp](https://glama.ai/mcp/servers/Wolfe-Jam/claude-faf-mcp) · [faf-mcp](https://glama.ai/mcp/servers/Wolfe-Jam/faf-mcp) · [gemini-faf-mcp](https://glama.ai/mcp/servers/Wolfe-Jam/gemini-faf-mcp)).
 
 ## Standing
 
 - **IANA-registered** media type: `application/vnd.faf+yaml`
-- In the **original Anthropic MCP ecosystem** (PR #2759, merged Oct 2025)
+- Listed in **modelcontextprotocol/servers** (PR #2759, merged 2025-10-17)
 - Maintainer of the `.faf` format specification
 
 ## Troubleshooting

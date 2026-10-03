@@ -22,13 +22,13 @@ Apply championship-grade standards to software testing. When brakes must work, s
 
 Triage every test by blast radius. The first three set severity; Tyre and Pit cover durability and the release gate.
 
-| Tier | Symbol | Meaning | Examples |
-|------|--------|---------|----------|
-| **Brake** | 🚨 | Life-critical — failure is catastrophic | data loss, auth bypass, payment errors, destructive ops without confirm |
-| **Engine** | ⚡ | Performance-critical — wrong results / poor UX | API accuracy, data transforms, calculations, format compliance, perf |
-| **Aero** | 🏁 | Polish & edge cases — minor inconvenience | UI quirks, rare message formatting, optional-feature edges, docs |
-| **Tyre** | 🛞 | Durability under load — degradation over time | stress/volume, concurrency, memory growth, large inputs |
-| **Pit** | 🔧 | Release gate — the stop that lets you go | smoke/regression suite, CI green, the WJTTC report filed |
+| Tier | Meaning | Examples |
+|------|---------|----------|
+| **Brake** | Life-critical — failure is catastrophic | data loss, auth bypass, payment errors, destructive ops without confirm |
+| **Engine** | Performance-critical — wrong results / poor UX | API accuracy, data transforms, calculations, format compliance, perf |
+| **Aero** | Polish & edge cases — minor inconvenience | UI quirks, rare message formatting, optional-feature edges, docs |
+| **Tyre** | Durability under load — degradation over time | stress/volume, concurrency, memory growth, large inputs |
+| **Pit** | Release gate — the stop that lets you go | smoke/regression suite, CI green, the WJTTC report filed |
 
 Test Brake first. If the brakes don't work, nothing else matters.
 
@@ -94,7 +94,7 @@ totals: { total: 25, passed: 23, failed: 2, blocked: 0, pass_rate: "92%" }
 
 ## Failures
 - name: "Long-string handling"
-  tier: "Engine ⚡"
+  tier: "Engine"
   status: "FAIL"
   steps: ["...", "..."]
   expected: "Handle gracefully"
@@ -175,4 +175,4 @@ The FAF score is **deterministic** — same input, same score. A test report sho
 
 ---
 
-*Made with 🧡 by wolfejam.dev — "We break things so others never have to know they were broken."*
+*Made by wolfejam.dev — "We break things so others never have to know they were broken."*

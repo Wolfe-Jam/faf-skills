@@ -7,12 +7,12 @@
   {
     "name": "faf-expert",
     "category": "faf",
-    "description": "Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model"
+    "description": "Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model"
   },
   {
     "name": "faf-go",
     "category": "faf",
-    "description": "Guided interview to Gold Code (100% AI-Readiness)"
+    "description": "Guided interview to Trophy ✪ (100% — AI is optimized to code)"
   },
   {
     "name": "faf-wizard",
@@ -21,12 +21,12 @@
   },
   {
     "name": "wjttc-builder",
-    "category": "mcp",
+    "category": "testing",
     "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project"
   },
   {
     "name": "wjttc-tester",
-    "category": "mcp",
+    "category": "testing",
     "description": "WJTTC test EXECUTOR + reporter"
   },
   {
