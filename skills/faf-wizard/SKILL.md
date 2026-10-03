@@ -118,7 +118,7 @@ To reach 100% ✪:
 
 | Score | Tier | Symbol | Status |
 |-------|------|--------|--------|
-| 100% | Trophy | ✪ | Perfect — Gold Code |
+| 100% | Trophy | ✪ | AI is optimized |
 | 99% | Gold | ★ | Exceptional |
 | 95% | Silver | ◆ | Top tier |
 | 85% | Bronze | ◇ | Production ready |

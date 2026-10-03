@@ -1,6 +1,6 @@
 ---
 name: faf-go
-description: Guided interview to Gold Code (100% AI-Readiness). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
+description: Guided interview to Trophy ✪ (100% — AI is optimized). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
 license: MIT
 ---
 
@@ -14,7 +14,7 @@ license: MIT
 
 Activate when:
 - User wants to improve their .faf score
-- User mentions "Gold Code" or "100%"
+- User mentions "Trophy" or "100%"
 - User has incomplete project context
 - After `faf init` to fill in missing fields
 - User says "help me with my .faf"
@@ -89,7 +89,7 @@ faf score
 
 ### Step 4: Celebrate or Continue
 
-If score >= 100: Celebrate Gold Code achievement
+If score >= 100: Celebrate Trophy ✪
 If score < 100: Continue with remaining questions
 
 ## Question Templates for AskUserQuestion
@@ -249,7 +249,7 @@ Claude: Let me check your current .faf status.
 
 [Runs: faf score --verbose]
 
-Your score is 45%. Let's get you to Gold Code!
+Your score is 45%. Let's get you to Trophy ✪!
 
 [Uses AskUserQuestion for project.goal]
 
@@ -274,7 +274,7 @@ Track progress with todos:
   {"content": "Answer project.goal question", "status": "completed"},
   {"content": "Answer human_context.why question", "status": "in_progress"},
   {"content": "Answer stack.database question", "status": "pending"},
-  {"content": "Verify Gold Code achieved", "status": "pending"}
+  {"content": "Verify Trophy ✪ achieved", "status": "pending"}
 ]
 ```
 
@@ -300,7 +300,7 @@ This skill is the **Claude-native** version of that interview — AskUserQuestio
 When 100% ✪ is achieved:
 
 ```
-✪ 100% — Gold Code
+✪ 100% Trophy — AI is optimized
 
 project.faf: complete
 CLAUDE.md:   run `faf sync` to update

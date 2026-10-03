@@ -293,7 +293,7 @@ Pass rate maps to the canonical FAF tier system (the same tiers FAF uses everywh
 
 | Score | Tier | Symbol | Status |
 |-------|------|--------|--------|
-| 100% | Trophy | ✪ | Perfect — Gold Code |
+| 100% | Trophy | ✪ | AI is optimized |
 | 99% | Gold | ★ | Exceptional |
 | 95% | Silver | ◆ | Top tier |
 | 85% | Bronze | ◇ | Production ready |
