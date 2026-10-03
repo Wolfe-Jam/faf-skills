@@ -1,6 +1,6 @@
 ---
 name: faf-go
-description: Guided interview to Trophy ✪ (100% — AI is optimized). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
+description: Guided interview to Trophy ✪ (100% — AI is optimized to code). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
 license: MIT
 ---
 
@@ -300,7 +300,7 @@ This skill is the **Claude-native** version of that interview — AskUserQuestio
 When 100% ✪ is achieved:
 
 ```
-✪ 100% Trophy — AI is optimized
+✪ 100% Trophy — AI is optimized to code
 
 project.faf: complete
 CLAUDE.md:   run `faf sync` to update

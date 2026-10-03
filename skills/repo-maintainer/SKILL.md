@@ -342,7 +342,7 @@ npm published version
 
 | Score | Tier | Symbol | Status |
 |-------|------|--------|--------|
-| 100% | Trophy | ✪ | AI is optimized |
+| 100% | Trophy | ✪ | AI is optimized to code |
 | 99% | Gold | ★ | Exceptional |
 | 95% | Silver | ◆ | Top tier |
 | 85% | Bronze | ◇ | Production ready |
