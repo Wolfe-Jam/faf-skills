@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf-skills?style=flat&color=FF6B35)](https://github.com/Wolfe-Jam/faf-skills/stargazers)
 
-Claude Code skills for **persistent project context**: create, score and fill your `project.faf` to 100% ✪, keep CLAUDE.md in step, and generate test suites. Every skill is run end-to-end and receipt-proven before it ships. Built on the IANA-registered `.faf` format (`application/vnd.faf+yaml`).
+**Claude starts every session knowing your project.** These skills help you build a `project.faf`: one small file with your project's goal, stack and the who, what and why, scored 0–100% so you can see exactly what's missing. Built on the IANA-registered `.faf` format (`application/vnd.faf+yaml`). The set also includes skills for risk-tiered test plans and repo health checks.
 
 ```bash
 # Plugin marketplace
@@ -23,13 +23,24 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 
 | Skill | What it does |
 |-------|--------------|
-| **faf-context** — `/faf-context` | The quickstart **and the reference standard**: a sharp goal plus the 6 Ws, to **100% ✪** fast |
+| **faf-context** — `/faf-context` | The quickstart: a sharp goal plus the who, what, why, where, when and how, to **100% ✪** fast |
 | **faf-go** — `/faf-go` | A guided interview (AskUserQuestion) for the slots only you can fill |
 | **faf-wizard** — `/faf-wizard` | Done-for-you `project.faf` generator |
-| **faf-expert** — `/faf-expert` | The mechanic's manual: scoring internals, MCP setup, sync, the always-33 slot model |
+| **faf-expert** — `/faf-expert` | The reference: how scoring works, MCP setup, sync, and the 33 slots every `.faf` is scored on |
 | **wjttc-builder** — `/wjttc-builder` | Plans and generates WJTTC test suites, tiered by risk (Brake · Engine · Aero · Tyre · Pit) |
 | **wjttc-tester** — `/wjttc-tester` | Runs a test plan, reproduces bugs, and files a tiered report |
 | **repo-maintainer** — `/repo-maintainer` | Multi-phase repository health audit |
+
+## Works with CLAUDE.md
+
+Claude Code reads `CLAUDE.md` for your project instructions. `project.faf` doesn't replace it. It's the structured source behind it:
+
+- **Scored.** A 0–100% score shows exactly which facts about your project are missing.
+- **Kept in step.** `faf sync` writes CLAUDE.md from it, so the two never drift.
+- **Portable.** The same file writes `AGENTS.md`, `.cursorrules`, `GEMINI.md` and Copilot instructions (`faf export`), so every AI tool gets the same facts.
+- **Yours.** Plain YAML in your repo: read it, diff it, commit it.
+
+Write your instructions in CLAUDE.md. Keep the facts about your project in project.faf.
 
 ## Try it
 
