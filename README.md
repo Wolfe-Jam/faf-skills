@@ -6,18 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/Wolfe-Jam/faf-skills?style=flat&color=FF6B35)](https://github.com/Wolfe-Jam/faf-skills/stargazers)
 
-**A Skill a Day — one genuinely-tested skill, daily this week.**
-
-Quality over quantity, and proof over promises. Every skill ships only after it's **run end-to-end and receipt-proven** — not just written. `faf-context` is the reference standard the rest conform to. Built on the FAF ecosystem (`application/vnd.faf+yaml` — IANA-registered).
-
----
-
-## Live now
-
-### faf-context — `/faf-context`
-The builder's quickstart **and the reference standard**: hand the AI the underivable context (a sharp goal + the 6 Ws) and reach **100% ✪ AI-readiness**, fast.
-
-> **Receipt:** a real project taken from `29%` → **`100% ✪` (19/19 slots)** by following exactly the model this skill teaches — `faf auto` to detect + seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. Deterministic and falsifiable. *(FAF don't lie.)*
+Claude Code skills for **persistent project context**: create, score and fill your `project.faf` to 100% ✪, keep CLAUDE.md in step, and generate test suites. Every skill is run end-to-end and receipt-proven before it ships. Built on the IANA-registered `.faf` format (`application/vnd.faf+yaml`).
 
 ```bash
 # Plugin marketplace
@@ -30,19 +19,21 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 
 ---
 
-## Dropping this week — one a day, each receipt-proven before it lands
+## The skills
 
-| Skill | What it'll do | Ships when… |
-|-------|---------------|-------------|
-| **faf-expert** | The mechanic's manual — scoring internals, MCP config, the full 21-slot model | …it's proven genuinely expert |
-| **faf-wizard** | Done-for-you `.faf` generator | …it's proven the fastest path to 100% |
-| **faf-go** | Guided AskUserQuestion interview to 100% | …a live run hits a verified Trophy |
-| **wjttc-builder** · **wjttc-tester** | Generate + run championship-grade test suites (WJTTC tiers + Signal Integrity) | …a real plan→test→TAF receipt |
-| **mcp-builder** | Build high-quality MCP servers (with FAF's Core-tier discipline) | …a server scaffolds clean |
-| **skill-creator** | Author Claude Code skills to the FAF Skill Standard | …a full create→validate→package run |
-| **repo-maintainer** | Multi-phase repository health audit | …a live repo audit runs |
+| Skill | What it does |
+|-------|--------------|
+| **faf-context** — `/faf-context` | The quickstart **and the reference standard**: a sharp goal plus the 6 Ws, to **100% ✪** fast |
+| **faf-go** — `/faf-go` | A guided interview (AskUserQuestion) for the slots only you can fill |
+| **faf-wizard** — `/faf-wizard` | Done-for-you `project.faf` generator |
+| **faf-expert** — `/faf-expert` | The mechanic's manual: scoring internals, MCP setup, sync, the always-33 slot model |
+| **wjttc-builder** — `/wjttc-builder` | Plans and generates tiered test suites (Brake · Engine · Aero · Tyre · Pit) |
+| **wjttc-tester** — `/wjttc-tester` | Runs a test plan, reproduces bugs, and files a tiered report |
+| **repo-maintainer** — `/repo-maintainer` | Multi-phase repository health audit |
 
-Each is held to the **FAF Skill Standard** (accurate · on-brand · genuinely procedural) and gated before it goes live. The Skills Site grows daily; every entry is earned.
+> **Receipt:** a real project taken from `29%` → **`100% ✪`** by following exactly the model `faf-context` teaches: `faf auto` to detect and seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. Deterministic and falsifiable. *(FAF don't lie.)*
+
+Every skill is held to the **FAF Skill Standard** (accurate · on-brand · genuinely procedural).
 
 ---
 
@@ -83,7 +74,7 @@ npm install -g claude-faf-mcp    # optional: MCP server
 
 ---
 
-If `faf-skills` has been useful, consider starring the repo — it helps others find it.
+★ bookmark repo: [github.com/Wolfe-Jam/faf-skills](https://github.com/Wolfe-Jam/faf-skills)
 
 ## License
 

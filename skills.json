@@ -7,7 +7,7 @@
   {
     "name": "faf-expert",
     "category": "faf",
-    "description": "Master the IANA-registered .faf format — scoring, MCP config, bi-sync, the 21-slot model"
+    "description": "Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model"
   },
   {
     "name": "faf-go",
@@ -21,12 +21,12 @@
   },
   {
     "name": "wjttc-builder",
-    "category": "mcp",
+    "category": "testing",
     "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project"
   },
   {
     "name": "wjttc-tester",
-    "category": "mcp",
+    "category": "testing",
     "description": "WJTTC test EXECUTOR + reporter"
   },
   {

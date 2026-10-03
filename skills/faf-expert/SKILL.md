@@ -1,6 +1,6 @@
 ---
 name: faf-expert
-description: Master the IANA-registered .faf format (application/vnd.faf+yaml) — the typed, portable context that makes any AI understand your project. Covers scoring internals, MCP server config, bi-directional sync, and the full 21-slot model. The mechanic's manual for expert-level control. New to FAF? Start with faf-context to hit 100%, then come here to go deep. See also faf-wizard for the done-for-you path.
+description: Master the IANA-registered .faf format (application/vnd.faf+yaml) — the typed, portable context that makes any AI understand your project. Covers scoring internals, MCP server config, bi-directional sync, and the always-33 slot model. The mechanic's manual for expert-level control. New to FAF? Start with faf-context to hit 100%, then come here to go deep. See also faf-wizard for the done-for-you path.
 license: MIT
 ---
 
@@ -56,7 +56,11 @@ npm install -g faf-cli        # or: brew install wolfe-jam/faf/faf-cli
 faf --version
 ```
 
-**2. Configure the MCP server** — add to Claude Desktop's `claude_desktop_config.json`, then restart Claude:
+**2. Add the MCP server.** In Claude Code:
+```bash
+claude mcp add faf -- npx -y claude-faf-mcp
+```
+Or in Claude Desktop, add this to `claude_desktop_config.json` and restart Claude:
 ```json
 {
   "mcpServers": {
@@ -98,7 +102,7 @@ faf taf setup           # wire up TAF test receipts (CI)
 
 ## MCP server tools
 
-`claude-faf-mcp` brings the format into the tool surface. The live tool set (verified against the running server):
+`claude-faf-mcp` brings the format into the tool surface. The core tools in claude-faf-mcp v7:
 
 ```
 # The path to 100% ✪
@@ -111,7 +115,6 @@ faf_sync     → sync .faf → CLAUDE.md (+ optionally AGENTS.md)
 faf_init     → create a new project.faf (name, goal, language) + starting score
 faf_context  → set / show the active project path faf_ calls resolve against
 faf_doctor   → diagnose: empty / weak slots + how to fix each
-faf_enhance  → refine the .faf with an AI model (claude / gemini / grok, optional consensus)
 faf_trust    → attest integrity: validity, score + a deterministic parity hash anyone can verify
 faf_bench    → prove the .faf earns its place — the context's worth on THIS repo, falsifiably
 faf_about    → explain the FAF format — project DNA for AI (IANA-registered)
@@ -140,9 +143,9 @@ faf_recall   → recall memories from the .fafm, ranked by priority + recency
 
 The score is **deterministic** — a WASM-compiled engine, mechanical and falsifiable. Same input → same score, every time. **FAF doesn't lie.**
 
-### The 21-slot model
+### The always-33 slot model
 
-**faf-cli scores on 21 slots.** Your `app_type` selects which are *active* — a CLI ignores frontend slots (`slotignored`, never counted against you). Detection fills the stack + language; you supply only the underivable bits — `project.name`/`goal` + the 6 Ws (a sharp goal seeds several). **100% = every *active* slot filled** (not all 21). *(Teams / Enterprise tiers add more slots — separate from faf-cli's 21.)*
+**Every `.faf` is scored against the same 33 slots.** faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them; slotignored slots never count against you. **100% ✪ = every active slot filled.** Your `app_type` selects which are *active*: a CLI ignores frontend slots (`slotignored`, never counted against you). Detection fills the stack + language; you supply only the underivable bits — `project.name`/`goal` + the 6 Ws (a sharp goal seeds several).
 
 ```yaml
 # project.faf — IANA application/vnd.faf+yaml
@@ -196,13 +199,13 @@ The `.faf` **is** the standard — commit it, and everyone's AI shares one conte
 | Package | Registry | Purpose |
 |---------|----------|---------|
 | `faf-cli` (`faf`) | npm | the CLI |
-| `claude-faf-mcp` | npm | Claude Desktop / Code MCP server |
+| `claude-faf-mcp` | npm | Claude Code / Desktop MCP server |
 | `faf-mcp` | npm | universal MCP server |
 | `gemini-faf-mcp` | PyPI | Google Gemini integration |
-| `grok-faf-mcp` | npm | xAI Grok integration |
+| `grok-faf-mcp` | npm | Grok integration |
 | `faf-scoring-kernel` | npm | the WASM scoring engine |
 
-**100k+ downloads across npm + PyPI + crates.io.** **claude-faf-mcp, faf-mcp, and gemini-faf-mcp hold AAA** on Glama (earned, not conferred).
+**150k+ downloads across npm + PyPI + crates.io.** **claude-faf-mcp, faf-mcp, and gemini-faf-mcp hold AAA** on Glama (earned, not conferred).
 
 ## Standing
 

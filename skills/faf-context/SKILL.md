@@ -14,15 +14,14 @@ license: MIT
 
 ## How it works: app-type → AI fills the max → you answer the gaps
 
-**faf-cli has 21 slots.** It works in three steps — and only the last one needs you:
+**Every `.faf` is scored against the same 33 slots.** faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them; slotignored slots never count against you. **100% ✪ = every active slot filled.** It works in three steps, and only the last one needs you:
 
 1. **Your app type sets which slots are *required*.** A CLI needs different slots than a full-stack web app — faf-cli right-sizes the set and `slotignored`s the rest (never counted against you).
 2. **The AI fills as many as it can.** `faf auto` detects your stack + language, and a sharp **goal sentence** seeds who/what/where. The better your goal, the more the AI fills for you.
 3. **Whatever's left empty, the AI asks you.** Those are the bits only you know — usually a couple of the 6 Ws (often *why* and *when*). Answer them → **100% ✪.**
 
-So your job isn't "fill 21 boxes." It's: **write one good goal, then answer the few questions the AI couldn't fill itself.**
+So your job isn't "fill 33 boxes." It's: **write one good goal, then answer the few questions the AI couldn't fill itself.**
 
-> *(Teams / Enterprise tiers add more slots — monorepos, caching, versioning — but those aren't faf-cli. **faf-cli is the 21.**)*
 
 ## You rarely type all 6 Ws — here's why
 

@@ -660,8 +660,8 @@ User: "Improve my score"
 ```
 User: "Improve my score"
 → Claude calls faf_score tool
-→ Claude calls faf_enhance tool
-→ Claude calls faf_validate tool
+→ Claude calls faf_auto tool
+→ Claude calls faf_check tool
 → Score improves: 58% → 70%
 → Results shown to user
 ```
@@ -729,7 +729,7 @@ description: Autonomously improve project.faf to target tier
 
 When activated:
 1. Launch Agent-SDK agent
-2. Agent uses MCP tools (faf_score, faf_enhance)
+2. Agent uses MCP tools (faf_score, faf_auto)
 3. Agent loops until goal achieved
 4. Report results to user
 ```

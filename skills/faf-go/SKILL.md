@@ -8,7 +8,7 @@ license: MIT
 
 **"Just type /faf-go, answer questions till you're done. 100% target."**
 
-`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **faf-cli scores on 21 slots**; your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
+`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. Your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
 
 ## When to Use This Skill
 
@@ -312,7 +312,7 @@ Optionally run `faf sync` to emit CLAUDE.md / AGENTS.md from the .faf. Your AI n
 
 - **faf-context** — the builder's quickstart: hand the AI what it needs to hit 100%, fast
 - **faf-wizard** — done-for-you, one-click .faf for any project
-- **faf-expert** — master the format: scoring internals, MCP config, bi-sync, the full 21-slot model
+- **faf-expert** — master the format: scoring internals, MCP config, bi-sync, the always-33 slot model
 
 ---
 

@@ -65,7 +65,7 @@ Pull signals from what exists:
 
 ### Step 3: Generate project.faf
 
-Create focused AI context at project root. **faf-cli scores on 21 slots** — `app_type` selects which are *active*; the rest are `slotignored` (never counted against you). Detection fills the stack; the human supplies the underivable bits (`project.name`/`goal` + the 6 Ws). `human_context.how` is **how it's built** (sourced from the stack), not AI preferences.
+Create focused AI context at project root. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. `app_type` selects which are *active*; the rest are `slotignored` (never counted against you). Detection fills the stack; the human supplies the underivable bits (`project.name`/`goal` + the 6 Ws). `human_context.how` is **how it's built** (sourced from the stack), not AI preferences.
 
 ```yaml
 faf_version: "3.0"
