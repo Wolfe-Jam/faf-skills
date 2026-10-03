@@ -5,7 +5,8 @@
 // the hub (skills.faf.one) fetches at runtime, so the hub's list can never drift
 // from the repo. Re-run after adding/removing/renaming a skill:
 //
-//   node scripts/build-skills-json.mjs
+//   node scripts/build-skills-json.mjs           # writes ./skills.json only
+//   node scripts/build-skills-json.mjs --site    # also copies it to ../faf-skills-site
 //
 // Output: skills.json at repo root — [{ name, category, description }, ...]
 
@@ -21,11 +22,11 @@ const SKILLS_DIR = join(ROOT, 'skills');
 // Unknown skills default to 'faf' with a warning — graceful, never breaks the build.
 const CATEGORY = {
   'faf-context': 'faf', 'faf-wizard': 'faf', 'faf-expert': 'faf', 'faf-go': 'faf',
-  'mcp-builder': 'mcp', 'wjttc-builder': 'testing', 'wjttc-tester': 'testing',
-  'skill-creator': 'utility', 'repo-maintainer': 'utility',
+  'wjttc-builder': 'testing', 'wjttc-tester': 'testing',
+  'repo-maintainer': 'utility',
 };
 // Render order for the hub (faf first; then the rest).
-const CATEGORY_ORDER = ['faf', 'testing', 'mcp', 'utility'];
+const CATEGORY_ORDER = ['faf', 'testing', 'utility'];
 
 // Optional curated card taglines — override the mechanical first-sentence extraction
 // for skills where a positioning-led card beats the trigger description. Single place
@@ -68,11 +69,11 @@ const skills = [];
 for (const dir of dirs) {
   const path = join(SKILLS_DIR, dir, 'SKILL.md');
   let md;
-  try { md = readFileSync(path, 'utf8'); } catch { console.warn(`⚠ no SKILL.md in ${dir} — skipped`); continue; }
+  try { md = readFileSync(path, 'utf8'); } catch { console.warn(`warn: no SKILL.md in ${dir} — skipped`); continue; }
   const name = frontmatter(md, 'name') || dir;
   const description = TAGLINE[name] || shorten(frontmatter(md, 'description'));
   let category = CATEGORY[name];
-  if (!category) { console.warn(`⚠ no category mapping for "${name}" — defaulting to "faf"`); category = 'faf'; }
+  if (!category) { console.warn(`warn: no category mapping for "${name}" — defaulting to "faf"`); category = 'faf'; }
   skills.push({ name, category, description });
 }
 
@@ -86,10 +87,13 @@ writeFileSync(join(ROOT, 'skills.json'), json);
 console.log(`✓ skills.json written — ${skills.length} skills, ${new Set(skills.map((s) => s.category)).size} categories`);
 
 // Same-origin copy for skills.faf.one (sibling checkout). Hub fetches /skills.json.
-const site = join(ROOT, '..', 'faf-skills-site', 'skills.json');
-try {
-  writeFileSync(site, json);
-  console.log(`✓ also wrote ${site}`);
-} catch {
-  /* site repo not checked out — hub copy is a separate commit */
+// Opt-in only: never write outside this repo unless asked.
+if (process.argv.includes('--site')) {
+  const site = join(ROOT, '..', 'faf-skills-site', 'skills.json');
+  try {
+    writeFileSync(site, json);
+    console.log(`✓ also wrote ${site}`);
+  } catch {
+    console.warn(`warn: ${site} not writable — is faf-skills-site checked out beside this repo?`);
+  }
 }
