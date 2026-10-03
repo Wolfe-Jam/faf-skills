@@ -39,7 +39,7 @@ Ask Claude in any project:
 - *"Interview me for the slots you can't fill, until we hit 100%."* → `faf-go`
 - *"Plan a tiered test suite for this repo."* → `wjttc-builder`
 
-> **Receipt:** a real project taken from `29%` → **`100% ✪`** by following exactly the model `faf-context` teaches: `faf auto` to detect and seed, fill the gaps the AI can't source, `slotignored` what doesn't apply, re-score to Trophy. The score is deterministic: run `faf score` and you get the same number.
+> **Receipt:** [agents-md-facts](https://github.com/Wolfe-Jam/agents-md-facts) went from `52%` → **`100% ✪`** ([PR #1](https://github.com/Wolfe-Jam/agents-md-facts/pull/1)) by following exactly the model `faf-context` teaches: `faf auto` to detect and seed, fill the one gap the AI couldn't source (Bun, from `bun.lock`), `slotignored` what doesn't apply, re-score. The score is deterministic: run `npx faf-cli score project.faf` in that repo and you get the same number.
 
 Every command, flag and tool a skill names is checked against the live faf-cli and claude-faf-mcp before it ships.
 
