@@ -17,7 +17,7 @@ This skill generates F1-inspired test suites following the WJTTC (Wolfe James Te
 | **Pre-defined** | Test plan before code → improves code quality |
 | **Inline Testing** | Tests/approves at write time → catches bugs at inception |
 | **Layer 1 → Layer 2** | Industry + Expert = GOLD Code |
-| **AI Optimized** | 100% bi-sync with project.faf |
+| **AI Optimized** | Built on project.faf context |
 | **Best Code Possible** | ✪ Championship standard |
 
 ## GOLD Code
@@ -32,7 +32,7 @@ This skill generates F1-inspired test suites following the WJTTC (Wolfe James Te
 │  ✓ Inline testing at write time        │
 │  ✓ Layer 1: 100% industry coverage     │
 │  ✓ Layer 2: WJTTC expert edge cases    │
-│  ✓ Bi-sync with project.faf            │
+│  ✓ Built on project.faf context        │
 │  ✓ All tests passing                   │
 │  ════════════════════════════════════  │
 │  This code has earned its name.        │

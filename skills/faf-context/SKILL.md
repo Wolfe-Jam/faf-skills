@@ -79,7 +79,7 @@ The AI **only seeds facts your goal/README literally state** — never invents, 
 ## When you're done here
 
 - Want it done **for** you, one click? → **faf-wizard**
-- Want to **master** the format (scoring internals, MCP config, bi-sync)? → **faf-expert**
+- Want to **master** the format (scoring internals, MCP config, sync)? → **faf-expert**
 - Driving a repo all the way with an agent? → **`faf go`** / **`faf loop`**
 
 ---

@@ -26,7 +26,7 @@ FAF Go is built FOR Claude Code:
 - **multiSelect: true** - Allow multiple answers (e.g., "pytest + WJTTC")
 - **TodoWrite** - Track progress through the interview
 - **Structured output** - JSON that Claude Code understands
-- **Bi-sync** - Answers flow to .faf AND CLAUDE.md
+- **Sync** - Answers go into project.faf; `faf sync` writes them into CLAUDE.md (one way)
 
 ### multiSelect Support
 
@@ -312,7 +312,7 @@ Optionally run `faf sync` to emit CLAUDE.md (and `faf export --agents` for AGENT
 
 - **faf-context** — the builder's quickstart: hand the AI what it needs to hit 100%, fast
 - **faf-wizard** — done-for-you, one-click .faf for any project
-- **faf-expert** — master the format: scoring internals, MCP config, bi-sync, the always-33 slot model
+- **faf-expert** — master the format: scoring internals, MCP config, sync, the always-33 slot model
 
 ---
 
