@@ -1,6 +1,6 @@
 ---
 name: wjttc-builder
-description: PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project. Analyzes the codebase, classifies components across the WJTTC five tiers (Brake · Engine · Aero · Tyre · Pit), writes a tiered test plan, and scaffolds executable test files. This is the BUILDER — it plans and generates; use wjttc-tester to execute the suite and write reports.
+description: 'Use when someone wants tests planned or written: "plan tests for this repo", "what should I test first?", "write a test suite for this". Reads the codebase and sorts each part by how bad a failure would be, using the WJTTC tiers (Brake: data loss or security · Engine: wrong results · Aero: edge cases · Tyre: load over time · Pit: the release gate), then writes a test plan in that order and scaffolds the test files. Plans and generates; wjttc-tester runs the suite and reports.'
 license: MIT
 ---
 

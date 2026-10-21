@@ -36,6 +36,11 @@ const TAGLINE = {
   'faf-context': '100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
   'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model',
   'wjttc-tester': 'WJTTC test EXECUTOR + reporter',
+  // Trigger descriptions now open with 'Use when…' (what users type); these keep the hub cards as they were (faf-go, faf-wizard, wjttc-builder, repo-maintainer).
+  'faf-go': 'Guided interview to Trophy ✪ (100% — AI is optimized to code)',
+  'faf-wizard': 'Done-for-you .faf generator',
+  'wjttc-builder': 'PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project',
+  'repo-maintainer': 'Repository health check and cleanup plan',
 };
 
 // Pull a frontmatter scalar (single-line) from the leading --- block.
@@ -44,7 +49,11 @@ function frontmatter(md, key) {
   if (!m) return null;
   const line = m[1].split('\n').find((l) => l.startsWith(key + ':'));
   if (!line) return null;
-  return line.slice(key.length + 1).trim().replace(/^["']|["']$/g, '');
+  const v = line.slice(key.length + 1).trim();
+  // YAML quoted scalars: 'it''s' → it's ; "say \"hi\"" → say "hi"
+  if (v.length > 1 && v.startsWith("'") && v.endsWith("'")) return v.slice(1, -1).replace(/''/g, "'");
+  if (v.length > 1 && v.startsWith('"') && v.endsWith('"')) return v.slice(1, -1).replace(/\\"/g, '"');
+  return v;
 }
 
 // Card descriptions want a short tagline, not the full trigger sentence.

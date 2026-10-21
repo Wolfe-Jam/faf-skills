@@ -1,6 +1,6 @@
 ---
 name: faf-expert
-description: Master the IANA-registered .faf format (application/vnd.faf+yaml) — the typed, portable context that makes any AI understand your project. Covers scoring internals, MCP server config, bi-directional sync, and the always-33 slot model. The mechanic's manual for expert-level control. New to FAF? Start with faf-context to hit 100%, then come here to go deep. See also faf-wizard for the done-for-you path.
+description: 'Use for questions about how FAF works: "how is my score calculated?", "what does slotignored mean?", "set up the FAF MCP server", "how does faf sync work with CLAUDE.md?". The reference for the IANA-registered .faf format (application/vnd.faf+yaml): the 33 slots every .faf is scored on, scoring, MCP setup, `faf sync` to CLAUDE.md, `faf export` to AGENTS.md and other files, and project memory (.fafm) for the BEST rung. New to FAF? Start with faf-context.'
 license: MIT
 ---
 

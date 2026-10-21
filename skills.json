@@ -32,6 +32,6 @@
   {
     "name": "repo-maintainer",
     "category": "utility",
-    "description": "Championship-grade repository maintenance"
+    "description": "Repository health check and cleanup plan"
   }
 ]
