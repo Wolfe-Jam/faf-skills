@@ -36,7 +36,7 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 Claude Code reads `CLAUDE.md` for your project instructions. `project.faf` doesn't replace it. It's the structured source behind it:
 
 - **Scored.** A 0–100% score shows exactly which facts about your project are missing.
-- **Kept in step.** `faf sync` writes CLAUDE.md from it, so the two never drift.
+- **Kept in step.** `faf sync` writes CLAUDE.md from it, so the two stay in step.
 - **Portable.** The same file writes `AGENTS.md`, `.cursorrules`, `GEMINI.md` and Copilot instructions (`faf export`), so every AI tool gets the same facts.
 - **Yours.** Plain YAML in your repo: read it, diff it, commit it.
 
@@ -50,7 +50,7 @@ Ask Claude in any project:
 - *"Interview me for the slots you can't fill, until we hit 100%."* → `faf-go`
 - *"Plan a tiered test suite for this repo."* → `wjttc-builder`
 
-> **Receipt:** [agents-md-facts](https://github.com/Wolfe-Jam/agents-md-facts) went from `52%` → **`100% ✪`** ([PR #1](https://github.com/Wolfe-Jam/agents-md-facts/pull/1)) by following exactly the model `faf-context` teaches: `faf auto` detected and seeded the facts and marked `slotignored` the 12 enterprise slots a single-package CLI doesn't use. Re-scored: 100%. The score is deterministic: run `npx faf-cli score project.faf` in that repo and you get the same number.
+> **Receipt:** [agents-md-facts](https://github.com/Wolfe-Jam/agents-md-facts) went from `52%` → **`100% ✪`** ([PR #1](https://github.com/Wolfe-Jam/agents-md-facts/pull/1)) by following exactly the model `faf-context` teaches: `faf auto` detected and seeded the facts and marked `slotignored` the 11 slots a single-package CLI doesn't use; the one gap it couldn't source was filled from the repo (`bun.lock` → `pkg_manager: bun`). Re-scored: 100%. The score is deterministic: run `npx faf-cli score project.faf` in that repo and you get the same number.
 
 Every command, flag and tool a skill names is checked against the live faf-cli and claude-faf-mcp before it ships.
 
