@@ -1,6 +1,6 @@
 ---
 name: repo-maintainer
-description: Championship-grade repository maintenance. Audits for test artifacts, dependency issues, CI/CD health, documentation sync, and FAF alignment. Generates prioritized cleanup plans. Use when repos need deep cleaning or ongoing maintenance.
+description: 'Use when someone wants a repository cleaned up or checked: "clean up this repo", "audit the repo", "health check before the release". Audits leftover test artifacts, dependencies, CI workflows, docs that have drifted from the code, git hygiene and FAF alignment, then writes a cleanup plan ordered by impact. Changes nothing without approval.'
 license: MIT
 ---
 

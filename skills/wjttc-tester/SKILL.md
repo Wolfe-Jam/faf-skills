@@ -1,6 +1,6 @@
 ---
 name: wjttc-tester
-description: WJTTC test EXECUTOR + reporter. Runs a test plan, finds and reproduces bugs, audits suite signal integrity, then files a WJTTC report (Brake/Engine/Aero/Tyre/Pit) with a tier verdict. Use when you need to test code, validate functionality, reproduce a failure, or produce a test report. For PLANNING/GENERATING test suites and files, use wjttc-builder instead — this skill runs and reports.
+description: 'Use when someone wants tests run or a bug chased down: "run the tests and tell me what broke", "reproduce this bug", "can I trust our CI?". First checks that a failing test still means a real failure, then runs the plan, reproduces and root-causes each failure, and writes a WJTTC report sorted by severity (Brake, Engine, Aero, Tyre, Pit) with a verdict. Runs and reports; wjttc-builder plans and writes the tests.'
 license: MIT
 ---
 
