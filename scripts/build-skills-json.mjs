@@ -40,7 +40,7 @@ const TAGLINE = {
   'faf-go': 'Guided interview to Trophy ✪ (100% — AI is optimized to code)',
   'faf-wizard': 'Done-for-you .faf generator',
   'wjttc-builder': 'PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project',
-  'repo-maintainer': 'Championship-grade repository maintenance',
+  'repo-maintainer': 'Repository health check and cleanup plan',
 };
 
 // Pull a frontmatter scalar (single-line) from the leading --- block.
