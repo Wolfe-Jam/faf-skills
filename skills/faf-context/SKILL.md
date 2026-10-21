@@ -1,6 +1,6 @@
 ---
 name: faf-context
-description: Get your project to 100% ✪ AI-readiness, fast — the AI auto-detects your stack and only asks for what it can't know (your goal and the human "why"). Least typing, maximum context. For time-conscious builders; feeds into faf-expert for depth.
+description: 'Use when someone wants Claude to know their project from the first message: "improve my CLAUDE.md", "set up project context", "Claude keeps forgetting my stack". Runs `faf auto` to detect the stack, asks only for what it can''t detect (the goal and the why), scores the project.faf 0–100%, and `faf sync` writes the facts into CLAUDE.md. Takes a CLAUDE.md from GOOD (it exists) to BETTER (backed by a scored project.faf). The quickest path; faf-go fills the last gaps, faf-expert goes deep.'
 license: MIT
 ---
 

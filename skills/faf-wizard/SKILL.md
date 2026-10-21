@@ -1,6 +1,6 @@
 ---
 name: faf-wizard
-description: Done-for-you .faf generator. Creates AI-context DNA for ANY project — new, legacy, famous, or forgotten. Detects stack, mines existing context, generates project.faf, scores AI-readiness. Use when onboarding AI to any codebase. Works with Claude, Cursor, Gemini CLI, WARP, Windsurf. See also faf-expert for the mechanic's manual.
+description: 'Use when someone wants project context set up for them: "set up Claude for this repo", "onboard AI to this codebase", "make me a project.faf". Detects the stack, reads what already exists (README, docs, an existing CLAUDE.md or .cursorrules), writes project.faf and scores it. Works on new, legacy or inherited code. Turns the CLAUDE.md you already have into the structured facts behind it: GOOD to BETTER, done for you.'
 license: MIT
 ---
 

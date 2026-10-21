@@ -1,6 +1,6 @@
 ---
 name: faf-go
-description: Guided interview to Trophy ✪ (100% — AI is optimized to code). Use when helping users improve their .faf file through questions. Leverages Claude Code's AskUserQuestion for seamless integration. Just type /faf-go and answer questions till done.
+description: 'Use when someone wants to fill in what only they know about their project: "interview me", "ask me what''s missing", "get my project.faf to 100%". Runs `faf score`, then asks about each empty slot with AskUserQuestion, one question at a time, until the score reaches 100%. The answers go into project.faf; `faf sync` carries them into CLAUDE.md. Finishes the BETTER rung: every fact Claude can''t detect, supplied by the person who knows it.'
 license: MIT
 ---
 
