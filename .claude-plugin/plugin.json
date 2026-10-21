@@ -2,8 +2,8 @@
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "faf",
   "displayName": "FAF Skills",
-  "version": "1.2.2",
-  "description": "Claude Code skills for persistent project context: create, score and fill your project.faf (IANA-registered application/vnd.faf+yaml) to 100%, keep CLAUDE.md in step, and generate WJTTC test suites.",
+  "version": "1.2.3",
+  "description": "Claude starts every session knowing your project. Skills that build a project.faf (IANA-registered, application/vnd.faf+yaml): your project's goal, stack and the who, what and why, scored 0-100% and kept in step with CLAUDE.md and AGENTS.md. Plus skills for risk-tiered test plans (WJTTC) and repo health checks.",
   "author": {
     "name": "FAF Foundation",
     "email": "team@faf.one",

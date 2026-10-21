@@ -5,16 +5,24 @@
     "name": "FAF Foundation",
     "email": "team@faf.one"
   },
-  "description": "FAF Skills — Claude Code skills for persistent project context and testing. IANA-registered format (application/vnd.faf+yaml).",
+  "description": "FAF Skills: Claude starts every session knowing your project. Skills for project.faf (IANA-registered, application/vnd.faf+yaml), plus test planning and repo health.",
   "plugins": [
     {
       "name": "faf",
       "source": "./",
-      "description": "Claude Code skills for persistent project context: create, score and fill your project.faf (IANA-registered application/vnd.faf+yaml) to 100%, keep CLAUDE.md in step, and generate WJTTC test suites.",
+      "description": "Claude starts every session knowing your project. Skills that build a project.faf (IANA-registered, application/vnd.faf+yaml): your project's goal, stack and the who, what and why, scored 0-100% and kept in step with CLAUDE.md and AGENTS.md. Plus skills for risk-tiered test plans (WJTTC) and repo health checks.",
       "homepage": "https://skills.faf.one",
       "repository": "https://github.com/Wolfe-Jam/faf-skills",
       "license": "MIT",
-      "keywords": ["ai-context", "persistent-project-context", "faf", "mcp", "testing", "claude-code", "skills"]
+      "keywords": [
+        "ai-context",
+        "persistent-project-context",
+        "faf",
+        "mcp",
+        "testing",
+        "claude-code",
+        "skills"
+      ]
     }
   ]
 }
