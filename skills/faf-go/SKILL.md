@@ -6,6 +6,8 @@ license: MIT
 
 # FAF Go — Guided Path to 100% ✪
 
+> **Needs:** faf-cli on Node 22+. Not installed? Run `npx faf-cli <command>` in place of `faf <command>`.
+
 **"Just type /faf-go, answer questions till you're done. 100% target."**
 
 `.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. Your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
