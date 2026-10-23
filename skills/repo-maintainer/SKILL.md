@@ -72,7 +72,7 @@ Secrets/tokens properly configured
 
 **Common Fixes:**
 - Remove EOL runtimes (e.g. Node 16) from release workflows
-- Align Node versions across all workflows (e.g. 18/20/22)
+- Align Node versions across all workflows (current LTS lines, e.g. 22/24)
 - Pin packages that break under ESM resolution
 
 #### 4. **Documentation Sync**
@@ -87,7 +87,7 @@ Links not broken (404 checks)
 
 **FAF-Specific:**
 - project.faf reflects current state
-- CLAUDE.md bi-sync active
+- CLAUDE.md written from project.faf (`faf sync`, one way)
 - .faf-dna not churning unnecessarily
 
 #### 5. **Git Hygiene**
@@ -125,7 +125,7 @@ For FAF projects specifically:
 ```yaml
 # Check FAF alignment
 .faf score accuracy (run faf score)
-Bi-sync alignment — CLAUDE.md ↔ .faf (run `faf sync`; mtime auto-direction)
+Sync alignment — .faf → CLAUDE.md (run `faf sync`; one way, writes faf's block only)
 MCP server compliance (if applicable)
 WJTTC test coverage (for faf-cli, MCP servers)
 ```

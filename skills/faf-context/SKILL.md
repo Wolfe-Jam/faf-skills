@@ -6,6 +6,8 @@ license: MIT
 
 # FAF Context — Give the AI What It Needs
 
+> **Needs:** faf-cli on Node 22+. Not installed? Run `npx faf-cli <command>` in place of `faf <command>`.
+
 **AI writes its best code when it has your project's context. This skill helps you hand it over — fast, and to 100%.**
 
 `.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI (no bespoke manifest, no vendor lock-in). The whole point is one number: **AI-readiness, 0–100%.** At **100% ✪** the AI starts every session already knowing your project — no re-explaining, no guessing. This skill is the *builder's* path to that number: minimum typing, maximum context.
@@ -79,7 +81,7 @@ The AI **only seeds facts your goal/README literally state** — never invents, 
 ## When you're done here
 
 - Want it done **for** you, one click? → **faf-wizard**
-- Want to **master** the format (scoring internals, MCP config, bi-sync)? → **faf-expert**
+- Want to **master** the format (scoring internals, MCP config, sync)? → **faf-expert**
 - Driving a repo all the way with an agent? → **`faf go`** / **`faf loop`**
 
 ---

@@ -14,7 +14,7 @@ license: MIT
 |-------|---------------|---|
 | **faf-wizard** | Done-for-you — one-click `.faf` for any project | DFY |
 | **faf-context** | The builder's quickstart — hand the AI what it needs to hit **100% ✪**, fast | **← start here if you're new** |
-| **faf-expert** *(you are here)* | Master the format — scoring internals, MCP config, bi-sync, the full slot model | Deep |
+| **faf-expert** *(you are here)* | Master the format — scoring internals, MCP config, sync, the full slot model | Deep |
 
 *New to FAF? Start with **faf-context** to reach 100%. Come here to go deep.*
 
