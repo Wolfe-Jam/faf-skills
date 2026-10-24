@@ -1,5 +1,5 @@
 <!-- faf:start -->
-<!-- faf: faf-skills | Markdown | cli | A curated set of Claude Code skills — the FAF Way — that take any project to 100% ✪ AI-readiness; each skill is receipt-proven before it ships. -->
+<!-- faf: faf-skills | Markdown | skills-plugin | A curated set of Claude Code skills — the FAF Way — that take any project to 100% ✪ AI-readiness; each skill is receipt-proven before it ships. -->
 <!-- faf: claim=project.faf | family=FAF -->
 
 # CLAUDE.md — faf-skills
@@ -28,5 +28,5 @@ A curated set of Claude Code skills — the FAF Way — that take any project to
 
 ---
 
-*STATUS: SYNC ACTIVE — 2026-10-24T21:16:18.604Z*
+*STATUS: SYNC ACTIVE — 2026-10-24T21:52:52.212Z*
 <!-- faf:end -->
