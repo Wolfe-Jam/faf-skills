@@ -3,7 +3,7 @@ project:
   name: faf-skills
   goal: A curated set of Claude Code skills — the FAF Way — that take any project to 100% ✪ AI-readiness; each skill is receipt-proven before it ships.
   main_language: Markdown
-  type: cli-tools
+  type: cli
 human_context:
   who: developers using Claude Code (and any SKILL.md-reading agent)
   what: a curated set of Claude Code skills
