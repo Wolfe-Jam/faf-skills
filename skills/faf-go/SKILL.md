@@ -1,12 +1,27 @@
 ---
 name: faf-go
-description: 'Use when someone wants to fill in what only they know about their project: "interview me", "ask me what''s missing", "get my project.faf to 100%". Runs `faf score`, then asks about each empty slot with AskUserQuestion, one question at a time, until the score reaches 100%. The answers go into project.faf; `faf sync` carries them into CLAUDE.md. Finishes the BETTER rung: every fact Claude can''t detect, supplied by the person who knows it.'
+description: 'Runs `faf score`, then asks about each empty slot with AskUserQuestion, one question at a time, until the score reaches 100%. Use when someone wants to fill in what only they know about their project: "interview me", "ask me what''s missing", "get my project.faf to 100%". The answers go into project.faf; `faf sync` carries them into CLAUDE.md. Finishes the BETTER rung: every fact Claude can''t detect, supplied by the person who knows it.'
 license: MIT
 ---
 
-# FAF Go — Guided Path to 100% ✪
+<!-- faf:start -->
+```yaml
+v: 1
+needs:
+  - "faf-cli on Node 22+ (not installed: run `npx faf-cli <command>` in place of `faf <command>`)"
+  - "AskUserQuestion (Claude Code)"
+reads: [project.faf]
+writes:
+  - "project.faf (the answers)"
+  - "CLAUDE.md (faf sync, faf's block only)"
+network: ["registry.npmjs.org (read, only when npx fetches faf-cli)"]
+publishes: false
+done_when: "project.faf scores 100%, or every slot still empty is one the user chose to skip; CLAUDE.md re-synced by faf sync"
+project: project.faf
+```
+<!-- faf:end -->
 
-> **Needs:** faf-cli on Node 22+. Not installed? Run `npx faf-cli <command>` in place of `faf <command>`.
+# FAF Go — Guided Path to 100% ✪
 
 **"Just type /faf-go, answer questions till you're done. 100% target."**
 

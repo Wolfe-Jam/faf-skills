@@ -1,8 +1,23 @@
 ---
 name: repo-maintainer
-description: 'Use when someone wants a repository cleaned up or checked: "clean up this repo", "audit the repo", "health check before the release". Audits leftover test artifacts, dependencies, CI workflows, docs that have drifted from the code, git hygiene and FAF alignment, then writes a cleanup plan ordered by impact. Changes nothing without approval.'
+description: 'Audits leftover test artifacts, dependencies, CI workflows, docs that have drifted from the code, git hygiene and FAF alignment, then writes a cleanup plan ordered by impact. Use when someone wants a repository cleaned up or checked: "clean up this repo", "audit the repo", "health check before the release". Changes nothing without approval.'
 license: MIT
 ---
+
+<!-- faf:start -->
+```yaml
+v: 1
+needs: [git, "npx (for depcheck and npm outdated)", "faf-cli, for the FAF alignment check"]
+reads: [the repository, dependencies, CI workflows, docs, git history]
+writes:
+  - "the health report and the cleanup plan"
+  - "approved changes only, after an explicit yes"
+network: ["registry.npmjs.org (read: depcheck, npm outdated)"]
+publishes: false
+done_when: "the health report and the cleanup plan, ordered by impact, are written; nothing changed without approval"
+project: project.faf
+```
+<!-- faf:end -->
 
 # Repo Maintainer - Championship Repository Hygiene
 

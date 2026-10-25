@@ -1,8 +1,22 @@
 ---
 name: faf-wizard
-description: 'Use when someone wants project context set up for them: "set up Claude for this repo", "onboard AI to this codebase", "make me a project.faf". Detects the stack, reads what already exists (README, docs, an existing CLAUDE.md or .cursorrules), writes project.faf and scores it. Works on new, legacy or inherited code. Turns the CLAUDE.md you already have into the structured facts behind it: GOOD to BETTER, done for you.'
+description: 'Detects the stack, reads what already exists (README, docs, an existing CLAUDE.md or .cursorrules), writes project.faf and scores it. Use when someone wants project context set up for them: "set up Claude for this repo", "onboard AI to this codebase", "make me a project.faf". Works on new, legacy or inherited code. Turns the CLAUDE.md you already have into the structured facts behind it: GOOD to BETTER, done for you.'
 license: MIT
 ---
+
+<!-- faf:start -->
+```yaml
+v: 1
+needs:
+  - "faf-cli on Node 22+ for the score (not installed: run `npx faf-cli score`)"
+reads: [README.md, docs/, "CLAUDE.md or .cursorrules", package manifests, the directory structure]
+writes: ["project.faf at the project root"]
+network: ["registry.npmjs.org (read, only when npx fetches faf-cli)"]
+publishes: false
+done_when: "project.faf exists at the project root and has a score"
+project: project.faf
+```
+<!-- faf:end -->
 
 # FAF Wizard - Done For You
 

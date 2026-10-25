@@ -1,12 +1,26 @@
 ---
 name: faf-context
-description: 'Use when someone wants Claude to know their project from the first message: "improve my CLAUDE.md", "set up project context", "Claude keeps forgetting my stack". Runs `faf auto` to detect the stack, asks only for what it can''t detect (the goal and the why), scores the project.faf 0–100%, and `faf sync` writes the facts into CLAUDE.md. Takes a CLAUDE.md from GOOD (it exists) to BETTER (backed by a scored project.faf). The quickest path; faf-go fills the last gaps, faf-expert goes deep.'
+description: 'Runs `faf auto` to detect the stack, asks only for what it can''t detect (the goal and the why), scores the project.faf 0–100%, and `faf sync` writes the facts into CLAUDE.md. Use when someone wants Claude to know their project from the first message: "improve my CLAUDE.md", "set up project context", "Claude keeps forgetting my stack". Takes a CLAUDE.md from GOOD (it exists) to BETTER (backed by a scored project.faf). The quickest path; faf-go fills the last gaps, faf-expert goes deep.'
 license: MIT
 ---
 
-# FAF Context — Give the AI What It Needs
+<!-- faf:start -->
+```yaml
+v: 1
+needs:
+  - "faf-cli on Node 22+ (not installed: run `npx faf-cli <command>` in place of `faf <command>`)"
+reads: [project.faf, "the repo's manifests and README"]
+writes:
+  - "project.faf (faf auto)"
+  - "CLAUDE.md (faf sync, faf's block only)"
+network: ["registry.npmjs.org (read, only when npx fetches faf-cli)"]
+publishes: false
+done_when: "project.faf is scored, and CLAUDE.md is written by faf sync"
+project: project.faf
+```
+<!-- faf:end -->
 
-> **Needs:** faf-cli on Node 22+. Not installed? Run `npx faf-cli <command>` in place of `faf <command>`.
+# FAF Context — Give the AI What It Needs
 
 **AI writes its best code when it has your project's context. This skill helps you hand it over — fast, and to 100%.**
 
