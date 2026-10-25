@@ -1,8 +1,23 @@
 ---
 name: wjttc-tester
-description: 'Use when someone wants tests run or a bug chased down: "run the tests and tell me what broke", "reproduce this bug", "can I trust our CI?". First checks that a failing test still means a real failure, then runs the plan, reproduces and root-causes each failure, and writes a WJTTC report sorted by severity (Brake, Engine, Aero, Tyre, Pit) with a verdict. Runs and reports; wjttc-builder plans and writes the tests.'
+description: 'First checks that a failing test still means a real failure, then runs the plan, reproduces and root-causes each failure, and writes a WJTTC report sorted by severity (Brake, Engine, Aero, Tyre, Pit) with a verdict. Use when someone wants tests run or a bug chased down: "run the tests and tell me what broke", "reproduce this bug", "can I trust our CI?". Runs and reports; wjttc-builder plans and writes the tests.'
 license: MIT
 ---
+
+<!-- faf:start -->
+```yaml
+v: 1
+needs:
+  - "the project's test runner"
+  - "faf-cli on Node 22+ (not installed: run `npx faf-cli <command>` in place of `faf <command>`)"
+reads: [the test plan, the tests, CI results, the code under test]
+writes: ["the WJTTC report in ./wjttc-reports/ (or a path the user gives)"]
+network: []
+publishes: false
+done_when: "every test has run, each failure is reproduced and root-caused, and the WJTTC report is saved with its verdict"
+project: project.faf
+```
+<!-- faf:end -->
 
 # WJTTC Championship Tester
 

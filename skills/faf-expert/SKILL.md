@@ -1,12 +1,32 @@
 ---
 name: faf-expert
-description: 'Use for questions about how FAF works: "how is my score calculated?", "what does slotignored mean?", "set up the FAF MCP server", "how does faf sync work with CLAUDE.md?". The reference for the IANA-registered .faf format (application/vnd.faf+yaml): the 33 slots every .faf is scored on, scoring, MCP setup, `faf sync` to CLAUDE.md, `faf export` to AGENTS.md and other files, and project memory (.fafm) for the BEST rung. New to FAF? Start with faf-context.'
+description: 'The reference for the IANA-registered .faf format (application/vnd.faf+yaml): the 33 slots every .faf is scored on, scoring, MCP setup, `faf sync` to CLAUDE.md, `faf export` to AGENTS.md and other files, and project memory (.fafm) for the BEST rung. Use for questions about how FAF works: "how is my score calculated?", "what does slotignored mean?", "set up the FAF MCP server", "how does faf sync work with CLAUDE.md?". New to FAF? Start with faf-context.'
 license: MIT
 ---
+
+<!-- faf:start -->
+```yaml
+v: 1
+needs: []
+reads: ["the project's project.faf, when the question is about it"]
+writes: []
+network: []
+publishes: false
+done_when: "the question is answered, with the command, slot or file it concerns"
+project: project.faf
+```
+<!-- faf:end -->
 
 # FAF Expert — Master the Format
 
 **`.faf` is an IANA-registered context format (`application/vnd.faf+yaml`)** — a typed, portable file *you own*, readable by any AI, with no bespoke manifest and no vendor lock-in. This is the mechanic's manual: scoring internals, MCP configuration, bi-directional sync, and the full slot model.
+
+
+## Steps
+
+1. If the project has a project.faf, read it first: most questions are about that file.
+2. Find the answer in the sections below (the format, the CLI, the MCP tools, scoring).
+3. Answer with the exact command, slot or file, and say which section it came from.
 
 ## The FAF skill family — where this fits
 

@@ -1,8 +1,21 @@
 ---
 name: wjttc-builder
-description: 'Use when someone wants tests planned or written: "plan tests for this repo", "what should I test first?", "write a test suite for this". Reads the codebase and sorts each part by how bad a failure would be, using the WJTTC tiers (Brake: data loss or security · Engine: wrong results · Aero: edge cases · Tyre: load over time · Pit: the release gate), then writes a test plan in that order and scaffolds the test files. Plans and generates; wjttc-tester runs the suite and reports.'
+description: 'Reads the codebase and sorts each part by how bad a failure would be, using the WJTTC tiers (Brake: data loss or security · Engine: wrong results · Aero: edge cases · Tyre: load over time · Pit: the release gate), then writes a test plan in that order and scaffolds the test files. Use when someone wants tests planned or written: "plan tests for this repo", "what should I test first?", "write a test suite for this". Plans and generates; wjttc-tester runs the suite and reports.'
 license: MIT
 ---
+
+<!-- faf:start -->
+```yaml
+v: 1
+needs: ["the project's test runner"]
+reads: [the codebase, "package.json and the main entry points", existing tests]
+writes: ["WJTTC-TEST-SUITE.md", "the scaffolded test files"]
+network: []
+publishes: false
+done_when: "WJTTC-TEST-SUITE.md lists the tests by tier, and the test files are scaffolded"
+project: project.faf
+```
+<!-- faf:end -->
 
 # WJTTC Builder - Championship Test Suite Generator
 
