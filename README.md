@@ -8,6 +8,8 @@
 
 **Claude starts every session knowing your project.** These skills help you build a `project.faf`: one small file with your project's goal, stack and the who, what and why, scored 0–100% so you can see exactly what's missing. Built on the IANA-registered `.faf` format (`application/vnd.faf+yaml`). The set also includes skills for risk-tiered test plans and repo health checks.
 
+⭐ [Star it on GitHub](https://github.com/Wolfe-Jam/faf-skills): bookmarks it for you, helps other devs find it too.
+
 ```bash
 # Plugin marketplace
 /plugin marketplace add Wolfe-Jam/faf-skills
