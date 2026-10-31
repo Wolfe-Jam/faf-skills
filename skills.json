@@ -50,7 +50,7 @@
   {
     "name": "wjttc-builder",
     "category": "testing",
-    "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project",
+    "description": "Plans and generates a tiered WJTTC test suite for any project",
     "ships_in": [
       "claude"
     ]
@@ -58,7 +58,7 @@
   {
     "name": "wjttc-tester",
     "category": "testing",
-    "description": "WJTTC test EXECUTOR + reporter",
+    "description": "Runs a WJTTC test suite and writes the report",
     "ships_in": [
       "claude"
     ]

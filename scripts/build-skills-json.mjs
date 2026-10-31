@@ -46,11 +46,11 @@ const CATEGORY_ORDER = ['faf', 'testing', 'utility'];
 const TAGLINE = {
   'faf-context': '100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)',
   'faf-expert': 'Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model',
-  'wjttc-tester': 'WJTTC test EXECUTOR + reporter',
+  'wjttc-tester': 'Runs a WJTTC test suite and writes the report',
   // Trigger descriptions now open with 'Use when…' (what users type); these keep the hub cards as they were (faf-go, faf-wizard, wjttc-builder, repo-maintainer).
   'faf-go': 'Guided interview to Trophy ✪ (100% — AI is optimized to code)',
   'faf-wizard': 'Done-for-you .faf generator',
-  'wjttc-builder': 'PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project',
+  'wjttc-builder': 'Plans and generates a tiered WJTTC test suite for any project',
   'repo-maintainer': 'Repository health check and cleanup plan',
   // Grok Build plugin skills (faf-grok-plugins).
   'faf-load-context': 'Loads project.faf: path first, then score, then summary',
