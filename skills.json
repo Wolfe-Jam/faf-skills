@@ -2,36 +2,73 @@
   {
     "name": "faf-context",
     "category": "faf",
-    "description": "100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)"
+    "description": "100% ✪ AI-readiness, fast — typed, portable context you own (IANA-registered .faf)",
+    "ships_in": [
+      "claude"
+    ]
   },
   {
     "name": "faf-expert",
     "category": "faf",
-    "description": "Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model"
+    "description": "Master the IANA-registered .faf format — scoring, MCP config, sync, the always-33 slot model",
+    "ships_in": [
+      "claude"
+    ]
   },
   {
     "name": "faf-go",
     "category": "faf",
-    "description": "Guided interview to Trophy ✪ (100% — AI is optimized to code)"
+    "description": "Guided interview to Trophy ✪ (100% — AI is optimized to code)",
+    "ships_in": [
+      "claude"
+    ]
+  },
+  {
+    "name": "faf-load-context",
+    "category": "faf",
+    "description": "Loads project.faf at session start: path first, then score, then summary",
+    "ships_in": [
+      "grok"
+    ]
+  },
+  {
+    "name": "faf-score",
+    "category": "faf",
+    "description": "Scores project.faf for AI-readiness: the number, the tier, and what to fill next",
+    "ships_in": [
+      "grok"
+    ]
   },
   {
     "name": "faf-wizard",
     "category": "faf",
-    "description": "Done-for-you .faf generator"
+    "description": "Done-for-you .faf generator",
+    "ships_in": [
+      "claude"
+    ]
   },
   {
     "name": "wjttc-builder",
     "category": "testing",
-    "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project"
+    "description": "PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project",
+    "ships_in": [
+      "claude"
+    ]
   },
   {
     "name": "wjttc-tester",
     "category": "testing",
-    "description": "WJTTC test EXECUTOR + reporter"
+    "description": "WJTTC test EXECUTOR + reporter",
+    "ships_in": [
+      "claude"
+    ]
   },
   {
     "name": "repo-maintainer",
     "category": "utility",
-    "description": "Repository health check and cleanup plan"
+    "description": "Repository health check and cleanup plan",
+    "ships_in": [
+      "claude"
+    ]
   }
 ]
