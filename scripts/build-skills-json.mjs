@@ -8,14 +8,24 @@
 //   node scripts/build-skills-json.mjs           # writes ./skills.json only
 //   node scripts/build-skills-json.mjs --site    # also copies it to ../faf-skills-site
 //
-// Output: skills.json at repo root — [{ name, category, description }, ...]
+// Reads two sources: this repo's skills/ (Claude Code) and the Grok plugin's skills
+// in the sibling checkout ../faf-grok-plugins/plugins/faf/skills (Grok Build).
+// The Grok checkout is required, so a run can't silently drop its skills;
+// pass --claude-only to build from this repo alone.
+//
+// Output: skills.json at repo root — [{ name, category, description, ships_in }, ...]
+// ships_in lists the installs that carry the skill: "claude", "grok".
 
 import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const SKILLS_DIR = join(ROOT, 'skills');
+const SOURCES = [
+  { ships: 'claude', dir: join(ROOT, 'skills') },
+  // FAF_GROK_PLUGINS points at a faf-grok-plugins checkout (CI); default is the sibling folder.
+  { ships: 'grok', dir: join(process.env.FAF_GROK_PLUGINS || join(ROOT, '..', 'faf-grok-plugins'), 'plugins', 'faf', 'skills') },
+];
 
 // Category is not a SKILL.md frontmatter field (repo convention is lean:
 // name/description/license). It's editorial grouping, kept in this ONE place.
@@ -24,6 +34,7 @@ const CATEGORY = {
   'faf-context': 'faf', 'faf-wizard': 'faf', 'faf-expert': 'faf', 'faf-go': 'faf',
   'wjttc-builder': 'testing', 'wjttc-tester': 'testing',
   'repo-maintainer': 'utility',
+  'faf-load-context': 'faf', 'faf-score': 'faf',
 };
 // Render order for the hub (faf first; then the rest).
 const CATEGORY_ORDER = ['faf', 'testing', 'utility'];
@@ -41,6 +52,9 @@ const TAGLINE = {
   'faf-wizard': 'Done-for-you .faf generator',
   'wjttc-builder': 'PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project',
   'repo-maintainer': 'Repository health check and cleanup plan',
+  // Grok Build plugin skills (faf-grok-plugins).
+  'faf-load-context': 'Loads project.faf: path first, then score, then summary',
+  'faf-score': 'Scores project.faf for AI-readiness: the number, the tier, and what to fill next',
 };
 
 // Pull a frontmatter scalar (single-line) from the leading --- block.
@@ -70,21 +84,34 @@ function shorten(desc, cap = 160) {
   return s.trimEnd() + '…';
 }
 
-const dirs = readdirSync(SKILLS_DIR).filter((d) => {
-  try { return statSync(join(SKILLS_DIR, d)).isDirectory(); } catch { return false; }
-});
-
-const skills = [];
-for (const dir of dirs) {
-  const path = join(SKILLS_DIR, dir, 'SKILL.md');
-  let md;
-  try { md = readFileSync(path, 'utf8'); } catch { console.warn(`warn: no SKILL.md in ${dir} — skipped`); continue; }
-  const name = frontmatter(md, 'name') || dir;
-  const description = TAGLINE[name] || shorten(frontmatter(md, 'description'));
-  let category = CATEGORY[name];
-  if (!category) { console.warn(`warn: no category mapping for "${name}" — defaulting to "faf"`); category = 'faf'; }
-  skills.push({ name, category, description });
+const claudeOnly = process.argv.includes('--claude-only');
+const byName = new Map();
+for (const { ships, dir: base } of SOURCES) {
+  if (ships !== 'claude' && claudeOnly) continue;
+  let dirs;
+  try {
+    dirs = readdirSync(base).filter((d) => {
+      try { return statSync(join(base, d)).isDirectory(); } catch { return false; }
+    });
+  } catch {
+    console.error(`error: ${base} not found. Check out faf-grok-plugins beside this repo, or pass --claude-only.`);
+    process.exit(1);
+  }
+  for (const dir of dirs) {
+    const path = join(base, dir, 'SKILL.md');
+    let md;
+    try { md = readFileSync(path, 'utf8'); } catch { console.warn(`warn: no SKILL.md in ${dir} — skipped`); continue; }
+    const name = frontmatter(md, 'name') || dir;
+    const seen = byName.get(name);
+    // Same name in two installs: one card, both installs listed.
+    if (seen) { if (!seen.ships_in.includes(ships)) seen.ships_in.push(ships); continue; }
+    const description = TAGLINE[name] || shorten(frontmatter(md, 'description'));
+    let category = CATEGORY[name];
+    if (!category) { console.warn(`warn: no category mapping for "${name}" — defaulting to "faf"`); category = 'faf'; }
+    byName.set(name, { name, category, description, ships_in: [ships] });
+  }
 }
+const skills = [...byName.values()];
 
 skills.sort((a, b) => {
   const c = CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category);

@@ -3,7 +3,8 @@ name: skills.json sync
 # Drift guard: skills.json is GENERATED from the SKILL.md frontmatters by
 # scripts/build-skills-json.mjs and fetched live by skills.faf.one. This fails
 # the build if skills.json wasn't regenerated after a SKILL.md change — so the
-# single-source claim is ENFORCED, not trusted. Fix locally with:
+# single-source claim is ENFORCED, not trusted. It reads this repo's skills and
+# the Grok plugin's (faf-grok-plugins main). Fix locally with:
 #   node scripts/build-skills-json.mjs  &&  git add skills.json
 
 on:
@@ -24,11 +25,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+      # The Grok Build plugin's skills are listed too (ships_in: grok).
+      - uses: actions/checkout@v7
+        with:
+          repository: Wolfe-Jam/faf-grok-plugins
+          path: .faf-grok-plugins
       - uses: actions/setup-node@v7
         with:
           node-version: '22'
       - name: Regenerate skills.json from the SKILL.md files
         run: node scripts/build-skills-json.mjs
+        env:
+          FAF_GROK_PLUGINS: .faf-grok-plugins
       - name: Fail if skills.json drifted from source
         run: |
           if git diff --quiet skills.json; then

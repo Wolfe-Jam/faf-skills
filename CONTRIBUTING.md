@@ -119,6 +119,9 @@ node scripts/build-skills-json.mjs   # updates skills.json
 git add skills.json
 ```
 The **skills.json sync** workflow fails the build if `skills.json` is out of sync.
+The manifest also lists the Grok Build plugin's skills, so keep a checkout of
+[faf-grok-plugins](https://github.com/Wolfe-Jam/faf-grok-plugins) beside this repo
+(or set `FAF_GROK_PLUGINS` to its path). `--claude-only` builds from this repo alone.
 
 ### 5. Submit Pull Request
 
