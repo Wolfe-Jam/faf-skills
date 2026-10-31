@@ -53,7 +53,7 @@ const TAGLINE = {
   'wjttc-builder': 'PLAN and GENERATE WJTTC (Championship-Grade) test suites for any project',
   'repo-maintainer': 'Repository health check and cleanup plan',
   // Grok Build plugin skills (faf-grok-plugins).
-  'faf-load-context': 'Loads project.faf at session start: path first, then score, then summary',
+  'faf-load-context': 'Loads project.faf: path first, then score, then summary',
   'faf-score': 'Scores project.faf for AI-readiness: the number, the tier, and what to fill next',
 };
 
