@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 // build-skills-json.mjs — generate skills.json from the SKILL.md frontmatters.
 //
-// Single source of truth = the skills/*/SKILL.md files. This emits the manifest
+// Single source of truth = the plugin/skills/*/SKILL.md files. This emits the manifest
 // the hub (skills.faf.one) fetches at runtime, so the hub's list can never drift
 // from the repo. Re-run after adding/removing/renaming a skill:
 //
 //   node scripts/build-skills-json.mjs           # writes ./skills.json only
 //   node scripts/build-skills-json.mjs --site    # also copies it to ../faf-skills-site
 //
-// Reads two sources: this repo's skills/ (Claude Code) and the Grok plugin's skills
+// Reads two sources: this repo's plugin/skills/ (Claude Code) and the Grok plugin's skills
 // in the sibling checkout ../faf-grok-plugins/plugins/faf/skills (Grok Build).
 // The Grok checkout is required, so a run can't silently drop its skills;
 // pass --claude-only to build from this repo alone.
@@ -22,7 +22,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SOURCES = [
-  { ships: 'claude', dir: join(ROOT, 'skills') },
+  { ships: 'claude', dir: join(ROOT, 'plugin', 'skills') },
   // FAF_GROK_PLUGINS points at a faf-grok-plugins checkout (CI); default is the sibling folder.
   { ships: 'grok', dir: join(process.env.FAF_GROK_PLUGINS || join(ROOT, '..', 'faf-grok-plugins'), 'plugins', 'faf', 'skills') },
 ];

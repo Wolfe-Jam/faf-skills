@@ -16,7 +16,7 @@
 /plugin install faf@faf-skills
 
 # Or manual
-git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills/* ~/.claude/skills/
+git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/plugin/skills/* ~/.claude/skills/
 ```
 
 ---

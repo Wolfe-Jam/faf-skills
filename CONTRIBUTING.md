@@ -21,7 +21,7 @@ Skills are markdown files with YAML frontmatter. Follow this structure:
 
 **File location:**
 ```
-skills/your-skill-name/SKILL.md
+plugin/skills/your-skill-name/SKILL.md
 ```
 
 **Template:**
@@ -229,15 +229,15 @@ Enhancing existing skills:
 git checkout -b feat/your-skill-name
 
 # 2. Create skill
-mkdir -p skills/your-skill-name
+mkdir -p plugin/skills/your-skill-name
 # Write SKILL.md following template
 
 # 3. Test manually
-cp -r skills/your-skill-name ~/.claude/skills/
+cp -r plugin/skills/your-skill-name ~/.claude/skills/
 # Test activation with Claude Code
 
 # 4. Commit with clear message
-git add skills/your-skill-name/
+git add plugin/skills/your-skill-name/
 git commit -m "feat: add your-skill-name skill
 
 - Purpose: [what it does]
