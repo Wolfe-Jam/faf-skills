@@ -248,6 +248,14 @@ git commit -m "feat: add your-skill-name skill
 git push origin feat/your-skill-name
 ```
 
+### Claude directory: allowed file types
+
+This repository is the FAF Skills plugin in the Claude directory, which reads it from the root. From a non-Verified organization the directory accepts only Markdown, text, JSON, YAML, and PNG, JPEG, GIF, WebP or ICO images; nothing that starts with `#!`, no package manager configuration. One file outside those types refuses the whole version.
+
+- **`project.faf.yaml`, not `project.faf`:** an exception for the Claude directory, which doesn't accept the `.faf` extension. The content is the same `.faf` (`application/vnd.faf+yaml`). Score it with the path: `faf score project.faf.yaml`.
+- **No scripts:** the `skills.json` generator lives in [faf-skills-site](https://github.com/Wolfe-Jam/faf-skills-site) (`scripts/build-skills-json.mjs`).
+- **`.claude-plugin/marketplace.json`:** known fields only.
+
 ---
 
 ## Code of Conduct
