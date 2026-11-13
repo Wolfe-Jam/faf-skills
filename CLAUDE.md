@@ -13,7 +13,7 @@ A curated set of Claude Code skills — the FAF Way — that take any project to
 - **Language:** Markdown
 - **Runtime:** Node.js
 - **Framework:** Claude Code Skills
-- **Build:** scripts/build-skills-json.mjs (manifest generator)
+- **Build:** faf-skills-site/scripts/build-skills-json.mjs (manifest generator)
 - **CI/CD:** GitHub Actions
 - **Hosting:** GitHub + Cloudflare Pages (skills.faf.one)
 

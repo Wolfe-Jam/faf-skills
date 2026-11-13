@@ -16,7 +16,7 @@
 /plugin install faf@faf-skills
 
 # Or manual
-git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/plugin/skills/* ~/.claude/skills/
+git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills/* ~/.claude/skills/
 ```
 
 ---
@@ -62,7 +62,7 @@ Every command, flag and tool a skill names is checked against the live faf-cli a
 
 | Score | Tier | Symbol |
 |-------|------|--------|
-| 100% | <img src="assets/trophy.svg" width="16" alt="Trophy"> Trophy | ✪ |
+| 100% | <img src="assets/trophy.png" width="16" alt="Trophy"> Trophy | ✪ |
 | 99% | Gold | ★ |
 | 95% | Silver | ◆ |
 | 85% | Bronze | ◇ |
@@ -88,7 +88,7 @@ The plugin ships skills only: no hooks, no MCP servers, nothing runs on install.
 
 **Support:** [GitHub issues](https://github.com/Wolfe-Jam/faf-skills/issues) · team@faf.one
 
-> `skills.json` is **generated** from the SKILL.md frontmatters and verified in CI — never edit it by hand (`node scripts/build-skills-json.mjs`).
+> `skills.json` is **generated** from the SKILL.md frontmatters and verified in CI — never edit it by hand (`node ../faf-skills-site/scripts/build-skills-json.mjs`, from a faf-skills-site checkout beside this repo).
 
 ---
 

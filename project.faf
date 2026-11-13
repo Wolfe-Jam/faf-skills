@@ -14,7 +14,7 @@ human_context:
 stack:
   runtime: Node.js
   framework: Claude Code Skills
-  build: scripts/build-skills-json.mjs (manifest generator)
+  build: faf-skills-site/scripts/build-skills-json.mjs (manifest generator)
   cicd: GitHub Actions
   hosting: GitHub + Cloudflare Pages (skills.faf.one)
   frontend: slotignored
@@ -34,7 +34,7 @@ stack:
   storage: slotignored
 key_files:
   - README.md
-  - plugin/skills/faf-context/SKILL.md
+  - skills/faf-context/SKILL.md
   - .claude-plugin/marketplace.json
 monorepo:
   packages_count: slotignored

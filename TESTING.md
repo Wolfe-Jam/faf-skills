@@ -14,13 +14,13 @@ Each skill must pass four dimensions before it's listed:
 ## Automated checks
 
 - **`skills.json` drift guard** — `.github/workflows/skills-json-sync.yml` regenerates the manifest from the `SKILL.md` frontmatters on every push and **fails the build if it drifts**. The skills.faf.one listing can't go stale.
-- **Manifest validation** — `claude plugin validate .` checks `.claude-plugin/marketplace.json`; `claude plugin validate plugin` checks `plugin/.claude-plugin/plugin.json`.
+- **Manifest validation** — `claude plugin validate .` checks `.claude-plugin/plugin.json` + `marketplace.json`.
 
 ## Test a skill locally
 
 ```bash
 # install one skill (or the whole plugin)
-cp -r plugin/skills/<name> ~/.claude/skills/<name>
+cp -r skills/<name> ~/.claude/skills/<name>
 # or: /plugin marketplace add Wolfe-Jam/faf-skills  →  /plugin install faf@faf-skills
 ```
 
@@ -29,7 +29,7 @@ Restart Claude Code, then confirm the skill **activates on its trigger descripti
 ## After changing any skill
 
 ```bash
-node scripts/build-skills-json.mjs   # regenerate skills.json (CI enforces sync)
+node ../faf-skills-site/scripts/build-skills-json.mjs   # regenerate skills.json (CI enforces sync; needs faf-skills-site beside this repo)
 ```
 
 ---
