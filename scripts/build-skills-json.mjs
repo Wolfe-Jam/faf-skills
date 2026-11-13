@@ -49,7 +49,7 @@ const TAGLINE = {
   'wjttc-tester': 'Runs a WJTTC test suite and writes the report',
   // Trigger descriptions now open with 'Use when…' (what users type); these keep the hub cards as they were (faf-go, faf-wizard, wjttc-builder, repo-maintainer).
   'faf-go': 'Guided interview to Trophy ✪ (100% — AI is optimized to code)',
-  'faf-wizard': 'Done-for-you .faf generator',
+  'faf-wizard': '.faf generator: repo facts filled in, the goal and six W\'s suggested for you to confirm',
   'wjttc-builder': 'Plans and generates a tiered WJTTC test suite for any project',
   'repo-maintainer': 'Repository health check and cleanup plan',
   // Grok Build plugin skills (faf-grok-plugins).

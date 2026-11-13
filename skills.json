@@ -42,7 +42,7 @@
   {
     "name": "faf-wizard",
     "category": "faf",
-    "description": "Done-for-you .faf generator",
+    "description": ".faf generator: repo facts filled in, the goal and six W's suggested for you to confirm",
     "ships_in": [
       "claude"
     ]

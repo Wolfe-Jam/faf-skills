@@ -27,7 +27,7 @@ git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills
 |-------|--------------|
 | **faf-context** — `/faf-context` | The quickstart: a sharp goal plus the who, what, why, where, when and how, to **100% ✪** fast |
 | **faf-go** — `/faf-go` | A guided interview (AskUserQuestion) for the slots only you can fill |
-| **faf-wizard** — `/faf-wizard` | Done-for-you `project.faf` generator |
+| **faf-wizard** — `/faf-wizard` | `project.faf` generator: repo facts filled in, the goal and six W's suggested for you to confirm |
 | **faf-expert** — `/faf-expert` | The reference: how scoring works, MCP setup, sync, and the 33 slots every `.faf` is scored on |
 | **wjttc-builder** — `/wjttc-builder` | Plans and generates WJTTC test suites, tiered by risk (Brake · Engine · Aero · Tyre · Pit) |
 | **wjttc-tester** — `/wjttc-tester` | Runs a test plan, reproduces bugs, and files a tiered report |

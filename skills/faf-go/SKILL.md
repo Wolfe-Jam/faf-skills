@@ -1,6 +1,6 @@
 ---
 name: faf-go
-description: 'Runs `faf score`, then asks about each empty slot with AskUserQuestion, one question at a time, until the score reaches 100%. Use when someone wants to fill in what only they know about their project: "interview me", "ask me what''s missing", "get my project.faf to 100%". The answers go into project.faf; `faf sync` carries them into CLAUDE.md. Finishes the BETTER rung: every fact Claude can''t detect, supplied by the person who knows it.'
+description: 'Runs `faf score`, then asks about each empty slot with AskUserQuestion, one question at a time, until the score reaches 100%. For the goal and six W''s it offers a suggestion from the repo with its source, and writes only what the user confirms. Use when someone wants to fill in what only they know about their project: "interview me", "ask me what''s missing", "get my project.faf to 100%". The answers go into project.faf; `faf sync` carries them into CLAUDE.md. Finishes the BETTER rung: every fact Claude can''t detect, supplied by the person who knows it.'
 license: MIT
 ---
 
@@ -25,7 +25,7 @@ project: project.faf
 
 **"Just type /faf-go, answer questions till you're done. 100% target."**
 
-`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. Your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: the AI fills what it can detect, then asks you — via Claude Code's AskUserQuestion — only for the gaps it can't source.
+`.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI. **Every `.faf` is scored against the same 33 slots**: faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them. Your `app_type` selects which are *active*, and **100% ✪ = every active slot filled**. This skill is the guided interview that gets you there: faf-cli fills what it can detect, then Claude asks you, through AskUserQuestion, for the rest. The goal and six W's are yours: Claude suggests them where the repo has something to quote, shows where each came from, and writes only what you confirm.
 
 ## When to Use This Skill
 
@@ -51,7 +51,8 @@ Some questions allow multiple selections:
 - `stack.testing` → "pytest + WJTTC" (informational — not one of the 33 scored slots)
 - `stack.cicd` → "GitHub Actions + Cloud Build"
 - `stack.frontend` → "React + Tailwind"
-- `human_context.who` → "Developers + AI agents"
+
+The goal and six W's are never multi-pick: each is one line in the user's words (see the templates below).
 
 When `multiSelect: true`, user can pick 2+ options. Results are joined with " + ".
 
@@ -78,68 +79,68 @@ faf score --json
 For each missing field, use Claude Code's AskUserQuestion tool:
 
 **Priority Order (most impactful first):**
-1. `project.goal` - What does this project do?
-2. `human_context.why` - Why does this exist?
-3. `human_context.who` - Who uses this?
-4. `human_context.what` - What problem does it solve?
+1. `project.goal` - What does it do, and for whom? (one sentence)
+2. `human_context.why` - What problem does it remove?
+3. `human_context.who` - Who uses it? (not the author)
+4. `human_context.what` - What do they make or do with it?
 5. `project.main_language` - Primary language
 6. `stack.database` - Database choice
 7. `stack.hosting` - Where is it deployed?
 8. `stack.frontend` - Frontend framework
 9. `stack.backend` - Backend framework
-10. `human_context.where` - Environment
-11. `human_context.when` - Timeline/phase
-12. `human_context.how` - How the project is built (sourced from the stack)
+10. `human_context.where` - Where does it run or ship? (platform, store, registry)
+11. `human_context.when` - What stage is it at, and since when? (not a version)
+12. `human_context.how` - How does it work? (the mechanism, and the choice that shapes the code; not an install command or a stack list)
+
+**The goal and six W's: suggest, then ask.** They are human slots: AI suggests, the user confirms. Before asking one, look for something to quote: the README's first paragraph (goal), the package `description` (what), a `## Why` section (why), and an existing CLAUDE.md `## Context` block (`CLAUDE.md § Context`) for any W it states. Words a person already wrote are still confirmed, not copied. `faf init` and `faf auto` say how many suggestions are waiting, and in which files. Put the suggestion first in the question, with its source; never offer an install line, a badge or link row, a notice, or a heading. No suggestion: ask, with the slot's definition as help.
 
 ### Step 3: Apply Answers
 
-After collecting answers, update the .faf file:
+After collecting answers, write each one as the user gave it, nothing else:
 
 ```bash
-# Read current .faf
-cat project.faf
-
-# Update fields (use Edit tool)
-# Then verify:
-faf score
+faf edit human_context.why "<the user's words>"   # one call per answer
+faf score                                         # verify
 ```
 
-### Step 4: Celebrate or Continue
+A slot the user skipped stays empty. Never write a goal or W the user didn't confirm.
 
-If score >= 100: Celebrate Trophy ✪
-If score < 100: Continue with remaining questions
+### Step 4: Celebrate, or stop with what's open
+
+- Score 100%: celebrate Trophy ✪.
+- Under 100%: ask the next empty slot. **Never re-ask a slot the user skipped this session.** When every empty slot has been asked or skipped, stop: report the score and the slots still open (the user can run faf-go again any time).
 
 ## Question Templates for AskUserQuestion
 
 ### Single-Select Questions (pick one)
 
-#### project.goal
+#### project.goal (with a suggestion from the repo)
 ```json
 {
-  "question": "What does this project do? (one clear sentence)",
+  "question": "What does it do, and for whom? Suggested from README.md § first paragraph.",
   "header": "Goal",
   "multiSelect": false,
   "options": [
-    {"label": "Let me type it", "description": "I'll describe it myself"},
-    {"label": "Help me write it", "description": "Guide me through it"}
+    {"label": "Use the suggestion", "description": "A tiny parser that turns small config files into typed objects for Node.js apps."},
+    {"label": "Skip for now", "description": "Leave the goal empty"}
   ]
 }
 ```
+"Other" lets the user edit it or type their own. Write exactly what they chose.
 
-#### human_context.why
+#### human_context.why (with a suggestion from the repo)
 ```json
 {
-  "question": "Why does this project exist?",
+  "question": "What problem does it remove? Suggested from README.md § Why.",
   "header": "Why",
   "multiSelect": false,
   "options": [
-    {"label": "Business need", "description": "Solving a business problem"},
-    {"label": "Personal project", "description": "Learning or hobby"},
-    {"label": "Open source", "description": "Community contribution"},
-    {"label": "Let me explain", "description": "Custom reason"}
+    {"label": "Use the suggestion", "description": "Hand-rolled config parsing breaks on edge cases and gives you untyped data."},
+    {"label": "Skip for now", "description": "Leave why empty"}
   ]
 }
 ```
+No suggestion in the repo: ask the question with the slot's definition as help, and let the user type the answer.
 
 #### stack.database
 ```json
@@ -224,21 +225,19 @@ If score < 100: Continue with remaining questions
 }
 ```
 
-#### human_context.who
+#### human_context.who (and what, where, when, how) with no suggestion in the repo
 ```json
 {
-  "question": "Who uses this project?",
-  "header": "Users",
-  "multiSelect": true,
+  "question": "Who uses it? The people who use it, not the author. One line.",
+  "header": "Who",
+  "multiSelect": false,
   "options": [
-    {"label": "Developers", "description": "Software developers"},
-    {"label": "End users", "description": "Non-technical users"},
-    {"label": "AI agents", "description": "Claude, Gemini, etc."},
-    {"label": "Internal team", "description": "Your team only"}
+    {"label": "Help me word it", "description": "Claude drafts one line from what you've said; you confirm or edit it"},
+    {"label": "Skip for now", "description": "Leave who empty"}
   ]
 }
 ```
-**Result format:** `Developers + AI agents`
+The same shape for every W without a suggestion: the question is the slot's definition (Step 2). The user types their answer in "Other" (e.g. `Small teams tracking shared tasks`), or picks "Help me word it": draft one line from what they've said in the session, and ask them to confirm or edit it before writing. With a suggestion from the repo, use the goal/why shape instead: the suggestion first, with its source.
 
 ### Processing Multi-Select Answers
 
@@ -328,7 +327,7 @@ Optionally run `faf sync` to emit CLAUDE.md (and `faf export --agents` for AGENT
 ## Related Skills
 
 - **faf-context** — the builder's quickstart: hand the AI what it needs to hit 100%, fast
-- **faf-wizard** — done-for-you, one-click .faf for any project
+- **faf-wizard**: a .faf for any project: the repo's facts filled in, the goal and six W's suggested for you to confirm
 - **faf-expert** — master the format: scoring internals, MCP config, sync, the always-33 slot model
 
 ---

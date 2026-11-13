@@ -26,7 +26,7 @@ project: project.faf
 
 `.faf` is an **IANA-registered context format** (`application/vnd.faf+yaml`) — a typed, portable file *you own*, readable by any AI (no bespoke manifest, no vendor lock-in). The whole point is one number: **AI-readiness, 0–100%.** At **100% ✪** the AI starts every session already knowing your project — no re-explaining, no guessing. This skill is the *builder's* path to that number: minimum typing, maximum context.
 
-> For the done-for-you one-click path, use **faf-wizard**. To master the format, use **faf-expert**. This skill is the quickstart in between.
+> For a .faf generated from the repo, with the goal and six W's suggested for you to confirm, use **faf-wizard**. To master the format, use **faf-expert**. This skill is the quickstart in between.
 
 ## How it works: app-type → AI fills the max → you answer the gaps
 
