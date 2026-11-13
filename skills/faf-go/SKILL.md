@@ -51,7 +51,8 @@ Some questions allow multiple selections:
 - `stack.testing` → "pytest + WJTTC" (informational — not one of the 33 scored slots)
 - `stack.cicd` → "GitHub Actions + Cloud Build"
 - `stack.frontend` → "React + Tailwind"
-- `human_context.who` → "Developers + AI agents"
+
+The goal and six W's are never multi-pick: each is one line in the user's words (see the templates below).
 
 When `multiSelect: true`, user can pick 2+ options. Results are joined with " + ".
 
@@ -91,7 +92,7 @@ For each missing field, use Claude Code's AskUserQuestion tool:
 11. `human_context.when` - What stage is it at, and since when? (not a version)
 12. `human_context.how` - How does it work? (the mechanism, and the choice that shapes the code; not an install command or a stack list)
 
-**The goal and six W's: suggest, then ask.** They are human slots: AI suggests, the user confirms. Before asking one, look for something to quote: the README's first paragraph (goal), the package `description` (what), a `## Why` section (why). `faf init` and `faf auto` print where suggestions wait (`3 suggestions for the goal and the six W's (README.md, package.json)`). Put the suggestion first in the question, with its source; never offer an install line, a badge or link row, a notice, or a heading. No suggestion: ask, with the slot's definition as help.
+**The goal and six W's: suggest, then ask.** They are human slots: AI suggests, the user confirms. Before asking one, look for something to quote: the README's first paragraph (goal), the package `description` (what), a `## Why` section (why). `faf init` and `faf auto` say how many suggestions are waiting, and in which files. Put the suggestion first in the question, with its source; never offer an install line, a badge or link row, a notice, or a heading. No suggestion: ask, with the slot's definition as help.
 
 ### Step 3: Apply Answers
 
@@ -104,10 +105,10 @@ faf score                                         # verify
 
 A slot the user skipped stays empty. Never write a goal or W the user didn't confirm.
 
-### Step 4: Celebrate or Continue
+### Step 4: Celebrate, or stop with what's open
 
-If score >= 100: Celebrate Trophy ✪
-If score < 100: Continue with remaining questions
+- Score 100%: celebrate Trophy ✪.
+- Under 100%: ask the next empty slot. **Never re-ask a slot the user skipped this session.** When every empty slot has been asked or skipped, stop: report the score and the slots still open (the user can run faf-go again any time).
 
 ## Question Templates for AskUserQuestion
 
@@ -224,21 +225,19 @@ No suggestion in the repo: ask the question with the slot's definition as help, 
 }
 ```
 
-#### human_context.who
+#### human_context.who (and what, where, when, how) with no suggestion in the repo
 ```json
 {
-  "question": "Who uses this project?",
-  "header": "Users",
-  "multiSelect": true,
+  "question": "Who uses it? The people who use it, not the author. One line.",
+  "header": "Who",
+  "multiSelect": false,
   "options": [
-    {"label": "Developers", "description": "Software developers"},
-    {"label": "End users", "description": "Non-technical users"},
-    {"label": "AI agents", "description": "Claude, Gemini, etc."},
-    {"label": "Internal team", "description": "Your team only"}
+    {"label": "Let me type it", "description": "e.g. Small teams tracking shared tasks"},
+    {"label": "Skip for now", "description": "Leave who empty"}
   ]
 }
 ```
-**Result format:** `Developers + AI agents`
+The same shape for every W without a suggestion: the question is the slot's definition (Step 2), the example shows the kind of answer, and "Other" takes the user's words. With a suggestion from the repo, use the goal/why shape instead: the suggestion first, with its source.
 
 ### Processing Multi-Select Answers
 

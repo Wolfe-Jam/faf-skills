@@ -88,7 +88,7 @@ faf_version: "3.0"
 
 project:
   name: my-project
-  goal: One-line purpose
+  goal: A task API that tells small teams who owns what
   main_language: typescript
 
 human_context:               # the user's words, confirmed in Step 3b
@@ -117,7 +117,7 @@ Keep under 200 lines. Only what changes AI behavior.
 
 The goal and the six W's are human slots: AI suggests them, a person confirms each one. Never write one the user hasn't seen and approved.
 
-1. **Draft a suggestion only where something exists to quote**, with its source: the README's first paragraph for the goal, the package `description` for `what`, a `## Why` section for `why`. Never offer an install line, a badge or link row, a notice ("deprecated", "sponsored by"), or a heading.
+1. **Draft a suggestion only where something exists to quote**, with its source: the README's first paragraph for the goal, the package `description` for `what`, a `## Why` section for `why`, and an existing CLAUDE.md `## Context` block (`CLAUDE.md § Context`) for any W it states. Words a person already wrote are still confirmed, not copied. Never offer an install line, a badge or link row, a notice ("deprecated", "sponsored by"), or a heading.
 2. **Ask with AskUserQuestion**, one question per slot: the suggestion and its source (`README.md § Why`), with use it · edit it (Other) · skip. No suggestion: ask the question, with the slot's definition as help.
 3. **Write only what the user confirmed, word for word:** `faf edit human_context.why "<their text>"` (or `project.goal`). Skipped slots stay empty.
 
@@ -165,7 +165,7 @@ To reach 100% ✪:
 ## Migration
 
 When CLAUDE.md or .cursorrules exist:
-- Offer to migrate to .faf (portable format)
+- Offer to migrate to .faf (portable format). Migration moves the stack and the rules; it never writes the goal or a W directly. Those go through Step 3b as suggestions (`CLAUDE.md § Context`), each confirmed by the user
 - .faf works in Cursor, Gemini, WARP, Windsurf — not just Claude
 - YAML structure parses better than freeform markdown
 
