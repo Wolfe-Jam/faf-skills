@@ -32,7 +32,7 @@ project: project.faf
 
 | Skill | What it's for | |
 |-------|---------------|---|
-| **faf-wizard** | Done-for-you — one-click `.faf` for any project | DFY |
+| **faf-wizard** | A `.faf` for any project: repo facts filled in, the goal and six W's suggested for you to confirm | Generate |
 | **faf-context** | The builder's quickstart — hand the AI what it needs to hit **100% ✪**, fast | **← start here if you're new** |
 | **faf-expert** *(you are here)* | Master the format — scoring internals, MCP config, sync, the full slot model | Deep |
 
