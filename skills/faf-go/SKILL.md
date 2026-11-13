@@ -92,7 +92,7 @@ For each missing field, use Claude Code's AskUserQuestion tool:
 11. `human_context.when` - What stage is it at, and since when? (not a version)
 12. `human_context.how` - How does it work? (the mechanism, and the choice that shapes the code; not an install command or a stack list)
 
-**The goal and six W's: suggest, then ask.** They are human slots: AI suggests, the user confirms. Before asking one, look for something to quote: the README's first paragraph (goal), the package `description` (what), a `## Why` section (why). `faf init` and `faf auto` say how many suggestions are waiting, and in which files. Put the suggestion first in the question, with its source; never offer an install line, a badge or link row, a notice, or a heading. No suggestion: ask, with the slot's definition as help.
+**The goal and six W's: suggest, then ask.** They are human slots: AI suggests, the user confirms. Before asking one, look for something to quote: the README's first paragraph (goal), the package `description` (what), a `## Why` section (why), and an existing CLAUDE.md `## Context` block (`CLAUDE.md § Context`) for any W it states. Words a person already wrote are still confirmed, not copied. `faf init` and `faf auto` say how many suggestions are waiting, and in which files. Put the suggestion first in the question, with its source; never offer an install line, a badge or link row, a notice, or a heading. No suggestion: ask, with the slot's definition as help.
 
 ### Step 3: Apply Answers
 
@@ -232,12 +232,12 @@ No suggestion in the repo: ask the question with the slot's definition as help, 
   "header": "Who",
   "multiSelect": false,
   "options": [
-    {"label": "Let me type it", "description": "e.g. Small teams tracking shared tasks"},
+    {"label": "Help me word it", "description": "Claude drafts one line from what you've said; you confirm or edit it"},
     {"label": "Skip for now", "description": "Leave who empty"}
   ]
 }
 ```
-The same shape for every W without a suggestion: the question is the slot's definition (Step 2), the example shows the kind of answer, and "Other" takes the user's words. With a suggestion from the repo, use the goal/why shape instead: the suggestion first, with its source.
+The same shape for every W without a suggestion: the question is the slot's definition (Step 2). The user types their answer in "Other" (e.g. `Small teams tracking shared tasks`), or picks "Help me word it": draft one line from what they've said in the session, and ask them to confirm or edit it before writing. With a suggestion from the repo, use the goal/why shape instead: the suggestion first, with its source.
 
 ### Processing Multi-Select Answers
 
