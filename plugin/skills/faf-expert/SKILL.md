@@ -255,7 +255,7 @@ faf go             # guided fill — close them to 100%
 ## Get this skill
 
 - **Plugin marketplace (recommended):** `/plugin marketplace add Wolfe-Jam/faf-skills` → `/plugin install faf@faf-skills`
-- **Manual:** `git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/skills/* ~/.claude/skills/`
+- **Manual:** `git clone https://github.com/Wolfe-Jam/faf-skills.git && cp -r faf-skills/plugin/skills/* ~/.claude/skills/`
 - **Browse the family:** https://skills.faf.one
 
 ## Resources
