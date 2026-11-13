@@ -1,11 +1,12 @@
 {
-  "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
   "name": "faf-skills",
   "owner": {
     "name": "FAF Foundation",
     "email": "team@faf.one"
   },
-  "description": "FAF Skills: Claude starts every session knowing your project. Skills for project.faf (IANA-registered, application/vnd.faf+yaml), plus test planning and repo health.",
+  "metadata": {
+    "description": "FAF Skills: Claude starts every session knowing your project. Skills for project.faf (IANA-registered, application/vnd.faf+yaml), plus test planning and repo health."
+  },
   "plugins": [
     {
       "name": "faf",
