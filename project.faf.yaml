@@ -1,0 +1,44 @@
+faf_version: "3.0"
+project:
+  name: faf-skills
+  goal: A curated set of Claude Code skills — the FAF Way — that take any project to 100% ✪ AI-readiness; each skill is receipt-proven before it ships.
+  main_language: Markdown
+  type: skills-plugin
+human_context:
+  who: developers using Claude Code (and any SKILL.md-reading agent)
+  what: a curated set of Claude Code skills
+  why: reach 100% ✪ AI-readiness with skills that are proven, not just written
+  where: GitHub (Wolfe-Jam/faf-skills) → ~/.claude/skills; browsed at skills.faf.one
+  when: launched 2026 — one proven skill a day
+  how: SKILL.md format; install via /plugin marketplace add or git clone
+stack:
+  runtime: Node.js
+  framework: Claude Code Skills
+  build: faf-skills-site/scripts/build-skills-json.mjs (manifest generator)
+  cicd: GitHub Actions
+  hosting: GitHub + Cloudflare Pages (skills.faf.one)
+  frontend: slotignored
+  css_framework: slotignored
+  ui_library: slotignored
+  state_management: slotignored
+  backend: slotignored
+  api_type: slotignored
+  database: slotignored
+  connection: slotignored
+  monorepo_tool: slotignored
+  package_manager: slotignored
+  workspaces: slotignored
+  admin: slotignored
+  cache: slotignored
+  search: slotignored
+  storage: slotignored
+key_files:
+  - README.md
+  - skills/faf-context/SKILL.md
+  - .claude-plugin/marketplace.json
+monorepo:
+  packages_count: slotignored
+  build_orchestrator: slotignored
+  versioning_strategy: slotignored
+  shared_configs: slotignored
+  remote_cache: slotignored
