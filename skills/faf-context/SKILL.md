@@ -1,6 +1,6 @@
 ---
 name: faf-context
-description: 'Runs `faf auto` to detect the stack, asks only for what it can''t detect (the goal and the why), scores the project.faf 0–100%, and `faf sync` writes the facts into CLAUDE.md. Use when someone wants Claude to know their project from the first message: "improve my CLAUDE.md", "set up project context", "Claude keeps forgetting my stack". Takes a CLAUDE.md from GOOD (it exists) to BETTER (backed by a scored project.faf). The quickest path; faf-go fills the last gaps, faf-expert goes deep.'
+description: 'Runs `faf auto` to detect the stack, suggests the goal and six W''s from what the repo already says and asks you to confirm each one, scores the project.faf 0–100%, and `faf sync` writes the facts into CLAUDE.md. Use when someone wants Claude to know their project from the first message: "improve my CLAUDE.md", "set up project context", "Claude keeps forgetting my stack". Takes a CLAUDE.md from GOOD (it exists) to BETTER (backed by a scored project.faf). The quickest path; faf-go fills the last gaps, faf-expert goes deep.'
 license: MIT
 ---
 
@@ -33,56 +33,56 @@ project: project.faf
 **Every `.faf` is scored against the same 33 slots.** faf-cli fills the 21 base slots and marks the 12 enterprise slots `slotignored` unless your app type uses them; slotignored slots never count against you. **100% ✪ = every active slot filled.** It works in three steps, and only the last one needs you:
 
 1. **Your app type sets which slots are *required*.** A CLI needs different slots than a full-stack web app — faf-cli right-sizes the set and `slotignored`s the rest (never counted against you).
-2. **The AI fills as many as it can.** `faf auto` detects your stack + language, and a sharp **goal sentence** seeds who/what/where. The better your goal, the more the AI fills for you.
-3. **Whatever's left empty, the AI asks you.** Those are the bits only you know — usually a couple of the 6 Ws (often *why* and *when*). Answer them → **100% ✪.**
+2. **The AI fills what it can detect.** `faf auto` detects your stack and language. The goal and six W's it only **suggests**, from your README and package.json, and a sharp **goal sentence** seeds suggestions for who/what/where.
+3. **You confirm the rest.** `faf go` shows each suggestion with where it came from; you accept it, edit it, or skip. Anything with no suggestion, you answer. → **100% ✪.**
 
-So your job isn't "fill 33 boxes." It's: **write one good goal, then answer the few questions the AI couldn't fill itself.**
+So your job isn't "fill 33 boxes." It's: **write one good goal, confirm the suggestions, and answer the few the repo can't.**
 
 
 ## You rarely type all 6 Ws — here's why
 
-The 6 Ws are "the underivable half" — but you almost never write all six from scratch:
+The 6 Ws are "the underivable half": they're yours, and nothing is written into them until you confirm it. But you rarely type all six from scratch:
 
-- **who / what / where** → **seeded from your goal sentence** (the AI extracts the facts your goal literally states)
-- **how** → **sourced from your stack** (detection knows how it's built)
-- **why / when** → **the only two that are purely yours**
+- **who / what / where** → **suggested from your goal sentence** (the facts your goal literally states)
+- **why / how** → **suggested from your README** when it has a `## Why` or `## How it works` section
+- **when** → usually yours to type: the stage it's at, and since when
 
-**So the fast path is: write one sharp goal, confirm the seeds, fill `why` + `when`. → 100%.**
+**So the fast path is: write one sharp goal, confirm the suggestions, type what's left. → 100%.**
 
-> **"Sometimes 3 Ws is enough. Sometimes the goal alone is enough."** A great goal sentence + auto-detection can carry who/what/where/how on their own — leaving you two small answers. The better your goal, the less you type.
+> **"Sometimes the goal alone is enough."** A great goal sentence and a README with a Why section can suggest most of the six, leaving you one or two short answers. You still confirm each one.
 
 ## The fastest path to 100% ✪
 
 ```bash
-faf auto      # 1. AI detects your whole stack + seeds context from your README
+faf auto      # 1. Detects your stack; says how many suggestions wait for the goal and 6 Ws
 faf score     # 2. See the number + exactly which slots are still empty
-faf go        # 3. Guided fill: confirm the seeded Ws, answer the 1–2 left
+faf go        # 3. Each suggestion in gray, with its source: Enter confirms, Tab edits, skip leaves it
 faf score     # 4. 100% ✪
 faf sync      # 5. Push context into CLAUDE.md (optional; AGENTS.md: faf export --agents)
 ```
 
-Most projects are 1 good goal sentence + 2 answers away from Trophy.
+Most projects are one good goal sentence, a few confirmations and an answer or two away from Trophy.
 
 ## Write the ONE goal sentence (this does the heavy lifting)
 
-The goal is the **generative input** — it seeds who/what/where automatically. Make it a real, specific sentence (it's also your *use-case*):
+The goal is the **generative input**: it seeds suggestions for who/what/where, which you confirm in `faf go`. Make it a real, specific sentence (it's also your *use-case*):
 
 - ✓ *"A CLI that scores any repo's AI-readiness and syncs context to Claude, Cursor, and Gemini — for solo developers."*
-  → seeds **what** (a CLI that scores AI-readiness), **where** (Claude, Cursor, Gemini), **who** (solo developers). You'd only add **why** + **when**.
+  → suggests **what** (a CLI that scores AI-readiness), **where** (Claude, Cursor, Gemini), **who** (solo developers). You confirm those and add **why**, **when** and **how**.
 - ✗ *"A tool to improve development."* → generic; seeds nothing. (Generic phrases are *ignored* on purpose — empty beats wrong.)
 
-## The 6 Ws — terse labels, not prose
+## The 6 Ws — one line each, every word earns its place
 
-Each W is a **3–4 word label** (hard cap < 6) — a scannable spec card, not a paragraph:
+Each W is one line of fact, not a paragraph: short when the fact is short, a full line when it needs one.
 
-| W | Asks | Example |
+| W | Holds | Example |
 |---|------|---------|
-| Who | who is it for? | `solo developers` |
-| What | what are they building? | `AI-readiness scorer` |
-| Why | why does it exist? | `eliminate context re-explaining` |
-| Where | where does it run/ship? | `npm, Homebrew` |
-| When | timeline / stage? | `production, since 2025` |
-| How | how is it built/used? | `Bun CLI + WASM` |
+| Who | the people who use it, not the author | `solo developers` |
+| What | what they make or do with it | `an AI-readiness score for any repo` |
+| Why | the problem it removes | `AI forgets the project every session` |
+| Where | where it runs or ships | `npm, Homebrew` |
+| When | the stage it's at, and since when (not a version) | `production since September 2025` |
+| How | how it works: the mechanism, not an install command or a stack list | `detects the stack from repo files; scores with a WASM kernel` |
 
 ## Slots that don't apply → `slotignored`
 
@@ -90,11 +90,11 @@ A CLI has no frontend; an API has no UI library. Mark those **`slotignored`** an
 
 ## The honesty rule (why this works)
 
-The AI **only seeds facts your goal/README literally state** — never invents, never uses templates. What it can't source, it leaves empty for you. **Empty beats wrong.** That's why the resulting context is trustworthy: every slot is either detected, stated by you, or honestly blank.
+The AI **only suggests facts your goal/README literally state**, never invents, never uses templates, and **writes none of the goal or six W's until you confirm it.** What it can't source, it leaves empty for you. **Empty beats wrong.** That's why the resulting context is trustworthy: every slot is either detected, confirmed by you, or honestly blank.
 
 ## When you're done here
 
-- Want it done **for** you, one click? → **faf-wizard**
+- Want a `.faf` generated from the repo, with the goal and six W's suggested for you to confirm? → **faf-wizard**
 - Want to **master** the format (scoring internals, MCP config, sync)? → **faf-expert**
 - Driving a repo all the way with an agent? → **`faf go`** / **`faf loop`**
 
