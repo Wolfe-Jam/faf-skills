@@ -21,7 +21,7 @@ Skills are markdown files with YAML frontmatter. Follow this structure:
 
 **File location:**
 ```
-plugin/skills/your-skill-name/SKILL.md
+skills/your-skill-name/SKILL.md
 ```
 
 **Template:**
@@ -115,7 +115,7 @@ What defines success for this skill.
 After adding, renaming, or editing a skill's `name`/`description`, regenerate the
 single-source manifest that skills.faf.one reads:
 ```bash
-node scripts/build-skills-json.mjs   # updates skills.json
+node ../faf-skills-site/scripts/build-skills-json.mjs   # updates skills.json (needs faf-skills-site beside this repo)
 git add skills.json
 ```
 The **skills.json sync** workflow fails the build if `skills.json` is out of sync.
@@ -229,15 +229,15 @@ Enhancing existing skills:
 git checkout -b feat/your-skill-name
 
 # 2. Create skill
-mkdir -p plugin/skills/your-skill-name
+mkdir -p skills/your-skill-name
 # Write SKILL.md following template
 
 # 3. Test manually
-cp -r plugin/skills/your-skill-name ~/.claude/skills/
+cp -r skills/your-skill-name ~/.claude/skills/
 # Test activation with Claude Code
 
 # 4. Commit with clear message
-git add plugin/skills/your-skill-name/
+git add skills/your-skill-name/
 git commit -m "feat: add your-skill-name skill
 
 - Purpose: [what it does]
