@@ -124,7 +124,7 @@ The goal and the six W's are human slots: AI suggests them, a person confirms ea
 What each slot holds (one line, every word earns its place):
 - **goal:** what it does, and for whom
 - **who:** the people who use it, not the author
-- **what:** what they make or do with it
+- **what:** what it is, in a line
 - **why:** the problem it removes
 - **where:** where it runs or ships
 - **when:** the stage it's at, and since when (not a version or a date to ship)

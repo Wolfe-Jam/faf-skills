@@ -82,7 +82,7 @@ For each missing field, use Claude Code's AskUserQuestion tool:
 1. `project.goal` - What does it do, and for whom? (one sentence)
 2. `human_context.why` - What problem does it remove?
 3. `human_context.who` - Who uses it? (not the author)
-4. `human_context.what` - What do they make or do with it?
+4. `human_context.what` - What is it?
 5. `project.main_language` - Primary language
 6. `stack.database` - Database choice
 7. `stack.hosting` - Where is it deployed?

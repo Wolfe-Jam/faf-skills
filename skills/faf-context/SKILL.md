@@ -78,7 +78,7 @@ Each W is one line of fact, not a paragraph: short when the fact is short, a ful
 | W | Holds | Example |
 |---|------|---------|
 | Who | the people who use it, not the author | `solo developers` |
-| What | what they make or do with it | `an AI-readiness score for any repo` |
+| What | what it is, in a line | `an AI-readiness score for any repo` |
 | Why | the problem it removes | `AI forgets the project every session` |
 | Where | where it runs or ships | `npm, Homebrew` |
 | When | the stage it's at, and since when (not a version) | `production since September 2025` |
